@@ -3,7 +3,7 @@
 ## How to build
 ```
 npm install -g @ionic/cli
-npm instal
+npm install
 ionic serve
 ```
 ## Why? </br>
