@@ -2,7 +2,8 @@ import React from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonImg } from '@ionic/react';
 import taskspage from '../images/taskspage.png';
 
-const TopicPage: React.FC = () => {
+
+const TaskPage: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
@@ -16,12 +17,10 @@ const TopicPage: React.FC = () => {
             <IonTitle size="large">Tasks Page</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <a href="/home">
-          <IonImg src={taskspage} />
-        </a>
+        <a href="/home" ><IonImg src={taskspage}/></a>
       </IonContent>
     </IonPage>
   );
 };
 
-export default TopicPage;
+export default TaskPage;
