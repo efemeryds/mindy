@@ -33,6 +33,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import TopicPage from './pages/TopicPage';
 
 const App: React.FC = () => (
   <IonApp>
@@ -42,6 +43,7 @@ const App: React.FC = () => (
           <Route path="/login" component={LoginPage} exact={true} />
           <Route path="/home" component={HomePage} exact={true} />
           <Route path="/relax" component={RelaxPage} />
+          <Route path="/topic" component={TopicPage} />
           <Route path="/" render={() => <Redirect to="/login" />} exact={true} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
@@ -56,6 +58,10 @@ const App: React.FC = () => (
           <IonTabButton tab="Relax" href="/relax">
             <IonIcon icon={square} />
             <IonLabel>Relax</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="Topic" href="/topic">
+            <IonIcon icon={square} />
+            <IonLabel>Topic</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
