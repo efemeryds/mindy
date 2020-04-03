@@ -13,7 +13,7 @@ import { IonReactRouter } from '@ionic/react-router';
 import { ellipse, square, triangle } from 'ionicons/icons';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
-import Tab3 from './pages/Tab3';
+import RelaxPage from './pages/RelaxPage';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -41,21 +41,21 @@ const App: React.FC = () => (
         <IonRouterOutlet>
           <Route path="/login" component={LoginPage} exact={true} />
           <Route path="/home" component={HomePage} exact={true} />
-          <Route path="/tab3" component={Tab3} />
-          <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />
+          <Route path="/relax" component={RelaxPage} />
+          <Route path="/" render={() => <Redirect to="/login" />} exact={true} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="tab1" href="/login">
             <IonIcon icon={triangle} />
-            <IonLabel>Tab 1</IonLabel>
+            <IonLabel>Login</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab2" href="/home">
             <IonIcon icon={ellipse} />
-            <IonLabel>Tab 2</IonLabel>
+            <IonLabel>Home</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
+          <IonTabButton tab="Relax" href="/relax">
             <IonIcon icon={square} />
-            <IonLabel>Tab 3</IonLabel>
+            <IonLabel>Relax</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
