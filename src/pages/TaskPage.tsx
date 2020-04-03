@@ -61,27 +61,23 @@ const TaskPage: React.FC = () => {
           </IonFabButton>
         </IonFab>
         <IonList>
-          {task.map((t, i) => (
+          {task.map((task, i) => (
             <IonItem key={i} onClick={() => history.push("/task/" + i)}>
-              <span className="checkbox-container">
                 <IonCheckbox
                   checked={false}
                   onIonChange={() => removeTask(i)}
                 />
-              </span>
-              <IonLabel className="ion-padding-start">{t}</IonLabel>
+              <IonLabel className="ion-padding-start">{task}</IonLabel>
             </IonItem>
           ))}
         </IonList>
         <IonModal isOpen={showNewTaskModal}>
           <h1>Create a new task</h1>
-          <IonItem>
             <IonTextarea
               value={newTask}
               placeholder="Task details...."
               onIonChange={(e) => setNewTask(e.detail.value!)}
             ></IonTextarea>
-          </IonItem>
           <IonButton
             onClick={() => {
               addTask(newTask);
