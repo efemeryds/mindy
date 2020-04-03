@@ -1,9 +1,25 @@
-import React from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonImg } from '@ionic/react';
-import taskspage from '../images/taskspage.png';
-
+import React, { useState } from "react";
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonFabButton,
+  IonFab,
+  IonIcon,
+  IonLabel,
+  IonList,
+  IonItem,
+  IonCheckbox,
+} from "@ionic/react";
+import { addOutline } from "ionicons/icons";
 
 const TaskPage: React.FC = () => {
+  const [task, setTask] = useState(["Catch'em all!", "Win a hackathon"]);
+  const remove = (index: number ) => {
+    setTask([...task.slice(0, index), ...task.slice(index + 1)]);
+  };
   return (
     <IonPage>
       <IonHeader>
@@ -14,10 +30,22 @@ const TaskPage: React.FC = () => {
       <IonContent>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Tasks Page</IonTitle>
+            <IonTitle size="large">My tasks</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <a href="/home" ><IonImg src={taskspage}/></a>
+        <IonFab vertical="bottom" horizontal="end" slot="fixed">
+          <IonFabButton>
+            <IonIcon icon={addOutline} />
+          </IonFabButton>
+        </IonFab>
+        <IonList>
+          {task.map((t, i) => (
+            <IonItem key={i} button href={"/task/"+i}>
+              <IonCheckbox checked={false} onIonChange={(e) => remove(i)} />
+              <IonLabel className="ion-padding-start">{t}</IonLabel>
+            </IonItem>
+          ))}
+        </IonList>
       </IonContent>
     </IonPage>
   );

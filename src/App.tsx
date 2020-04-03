@@ -28,6 +28,7 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import TopicPage from './pages/TopicPage';
 import MoodPage from './pages/MoodPage';
+import SingleTaskPage from './pages/SingleTaskPage';
 
 const App: React.FC = () => (
   <IonApp>
@@ -38,6 +39,7 @@ const App: React.FC = () => (
           <Route path="/home" component={HomePage} exact={true} />
           <Route path="/relax" component={RelaxPage} />
           <Route path="/topic" component={TopicPage} />
+          <Route path="/task/:taskId" component={SingleTaskPage} />
           <Route path="/task" component={TaskPage} />
           <Route path="/mood" component={MoodPage} />
           <Route path="/" render={() => <Redirect to="/login" />} exact={true} />
