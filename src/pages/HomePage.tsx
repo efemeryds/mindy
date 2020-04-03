@@ -1,7 +1,9 @@
 import React from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonImg } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import './HomePage.css';
+import homepage from '../images/homepage.png';
+
 
 const HomePage: React.FC = () => {
   return (
@@ -17,7 +19,7 @@ const HomePage: React.FC = () => {
             <IonTitle size="large">Start</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="#COVID-19 Hackathon #hackYeah" />
+        <a href="/home" ><IonImg src={homepage}/></a>
       </IonContent>
     </IonPage>
   );
