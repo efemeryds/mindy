@@ -13,18 +13,31 @@ import {
   IonItem,
   IonCheckbox,
   IonToast,
+  IonModal,
+  IonButton,
+  IonTextarea,
 } from "@ionic/react";
 import { addOutline } from "ionicons/icons";
 import "./TaskPage.css";
 import { useHistory } from "react-router-dom";
 
 const TaskPage: React.FC = () => {
-  const [task, setTask] = useState(["Catch'em all!", "Win a hackathon"]);
-  const [showToast, setShowToast] = useState(false);
-  const remove = (index: number) => {
-    setShowToast(true);
+  const [task, setTask] = useState([
+    "Cure covid-19!",
+    "Win a hackathon",
+    "Catch'em all!",
+  ]);
+  const [showTaskDeletedToast, setShowTaskDeletedToast] = useState(false);
+  const removeTask = (index: number) => {
+    setShowTaskDeletedToast(true);
     setTask([...task.slice(0, index), ...task.slice(index + 1)]);
   };
+  const addTask = (title: string) => {
+    setTask([...task, title]);
+    setNewTask("");
+  };
+  const [showNewTaskModal, setShowNewTaskModal] = useState(false);
+  const [newTask, setNewTask] = useState("");
   let history = useHistory();
   return (
     <IonPage>
@@ -41,21 +54,45 @@ const TaskPage: React.FC = () => {
         </IonHeader>
         <IonFab vertical="bottom" horizontal="end" slot="fixed">
           <IonFabButton>
-            <IonIcon icon={addOutline} />
+            <IonIcon
+              icon={addOutline}
+              onClick={() => setShowNewTaskModal(true)}
+            />
           </IonFabButton>
         </IonFab>
         <IonList>
           {task.map((t, i) => (
-            <IonItem key={i} onClick={(e) => history.push("/task/" + i)}>
+            <IonItem key={i} onClick={() => history.push("/task/" + i)}>
               <span className="checkbox-container">
-                <IonCheckbox checked={false} onIonChange={(e) => remove(i)} />
+                <IonCheckbox
+                  checked={false}
+                  onIonChange={() => removeTask(i)}
+                />
               </span>
               <IonLabel className="ion-padding-start">{t}</IonLabel>
             </IonItem>
           ))}
         </IonList>
+        <IonModal isOpen={showNewTaskModal}>
+          <h1>Create a new task</h1>
+          <IonItem>
+            <IonTextarea
+              value={newTask}
+              placeholder="Task details...."
+              onIonChange={(e) => setNewTask(e.detail.value!)}
+            ></IonTextarea>
+          </IonItem>
+          <IonButton
+            onClick={() => {
+              addTask(newTask);
+              setShowNewTaskModal(false);
+            }}
+          >
+            OK
+          </IonButton>
+        </IonModal>
         <IonToast
-          isOpen={showToast}
+          isOpen={showTaskDeletedToast}
           message="Task has been completed."
           duration={2000}
         />
