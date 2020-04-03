@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonImg } from '@ionic/react';
 import './LoginPage.css';
 import loginpage from '../images/loginpage.png';
 
@@ -17,7 +17,9 @@ const LoginPage: React.FC = () => {
             <IonTitle size="large">Test</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <a href="/home" ><img src={loginpage}/></a>
+        <a href="/home">
+          <IonImg src={loginpage} />
+        </a>
       </IonContent>
     </IonPage>
   );

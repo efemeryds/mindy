@@ -4,7 +4,6 @@ import ExploreContainer from '../components/ExploreContainer';
 import './HomePage.css';
 import homepage from '../images/homepage.png';
 
-
 const HomePage: React.FC = () => {
   return (
     <IonPage>
@@ -19,7 +18,9 @@ const HomePage: React.FC = () => {
             <IonTitle size="large">Start</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <a href="/home" ><IonImg src={homepage}/></a>
+        <a href="/home">
+          <IonImg src={homepage} />
+        </a>
       </IonContent>
     </IonPage>
   );

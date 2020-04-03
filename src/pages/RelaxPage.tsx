@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonImg } from '@ionic/react';
 import './RelaxPage.css';
 import relaxpage from '../images/relaxpage.png';
 
@@ -8,7 +8,7 @@ const RelaxPage: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Logowanie</IonTitle>
+          <IonTitle>Relax</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
@@ -17,7 +17,9 @@ const RelaxPage: React.FC = () => {
             <IonTitle size="large">Test</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <a href="/home" ><img src={relaxpage}/></a>
+        <a href="/home">
+          <IonImg src={relaxpage} />
+        </a>
       </IonContent>
     </IonPage>
   );

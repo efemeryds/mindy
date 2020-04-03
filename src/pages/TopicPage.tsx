@@ -1,9 +1,8 @@
 import React from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonImg } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import './TopicPage.css';
-import relaxpage from '../images/topicpage.png';
-
+import topicpage from '../images/topicpage.png';
 
 const TopicPage: React.FC = () => {
   return (
@@ -19,8 +18,9 @@ const TopicPage: React.FC = () => {
             <IonTitle size="large">Topic Page</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <a href="/home" ><img src={relaxpage}/></a>
-
+        <a href="/home">
+          <IonImg src={topicpage} />
+        </a>
       </IonContent>
     </IonPage>
   );
