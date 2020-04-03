@@ -9,6 +9,7 @@ import {
 } from "@ionic/react";
 import { useParams } from "react-router-dom";
 
+
 const SingleTaskPage: React.FC = () => {
   let { taskId } = useParams();
   
