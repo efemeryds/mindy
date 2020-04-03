@@ -14,7 +14,7 @@ import { ellipse, square, triangle } from 'ionicons/icons';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import RelaxPage from './pages/RelaxPage';
-import TaskPage from './pages/TasksPage';
+import TaskPage from './pages/TaskPage';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -35,6 +35,7 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import TopicPage from './pages/TopicPage';
+import MoodPage from './pages/MoodPage';
 
 const App: React.FC = () => (
   <IonApp>
@@ -46,6 +47,7 @@ const App: React.FC = () => (
           <Route path="/relax" component={RelaxPage} />
           <Route path="/topic" component={TopicPage} />
           <Route path="/task" component={TaskPage} />
+          <Route path="/mood" component={MoodPage} />
           <Route path="/" render={() => <Redirect to="/login" />} exact={true} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
@@ -68,6 +70,10 @@ const App: React.FC = () => (
           <IonTabButton tab="Task" href="/task">
             <IonIcon icon={square} />
             <IonLabel>Task</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="Mood" href="/mood">
+            <IonIcon icon={square} />
+            <IonLabel>Mood</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
