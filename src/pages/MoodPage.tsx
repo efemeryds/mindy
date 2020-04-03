@@ -1,9 +1,14 @@
 import React from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonImg } from '@ionic/react';
-import moodpage from '../images/moodpage.png';
+
+import PlotComponent from '../components/PlotComponent';
+
 
 const MoodPage: React.FC = () => {
+
+
   return (
+    
     <IonPage>
       <IonHeader>
         <IonToolbar>
@@ -16,12 +21,13 @@ const MoodPage: React.FC = () => {
             <IonTitle size="large">Mood Page</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <a href="/home">
-          <IonImg src={moodpage} />
-        </a>
+        chart1
+      <PlotComponent/>
+      chart2
+      <PlotComponent/>
       </IonContent>
     </IonPage>
-  );
-};
+  )
+}
 
 export default MoodPage;
