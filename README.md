@@ -3,7 +3,7 @@
 ## How to build
 ```
 npm install -g @ionic/cli
-ionit serve
+ionic serve
 ```
 ## Why? </br>
 We want to increase our self-awareness to calm the mind
