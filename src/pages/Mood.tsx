@@ -26,9 +26,9 @@ const MoodPage: React.FC = () => {
       </IonHeader>
       <IonContent>
         <div className="ion-text-center mood-container">
-          <h1>Mood in time</h1>
+          <h3>Mood vs time</h3>
           <PlotComponent />
-          <h1>Mood and tasks corelation</h1>
+          <h3>Mood vs tasks corelation</h3>
           <PlotTasks />
         </div>
       </IonContent>
