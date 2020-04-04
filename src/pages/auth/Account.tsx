@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonList, IonItem, IonAlert } from '@ionic/react';
 import './Account.scss';
-import { setUsername } from '../data/user/user.actions';
-import { connect } from '../data/connect';
+import { setUsername } from '../../data/user/user.actions';
+import { connect } from '../../data/connect';
 import { RouteComponentProps } from 'react-router';
 
 interface OwnProps extends RouteComponentProps { }

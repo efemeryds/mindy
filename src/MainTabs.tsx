@@ -2,16 +2,16 @@ import React  from 'react';
 import { IonTabs, IonRouterOutlet, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/react';
 import { Route, Redirect } from 'react-router';
 import { calendar, informationCircle, people,man, homeSharp } from 'ionicons/icons';
-import TasksPage from './TasksPage';
-import SpeakerList from './SpeakerList';
-import SpeakerDetail from './SpeakerDetail';
-import About from './About';
-import Mood from './Mood'
+import TasksPage from './pages/task/TasksPage';
+import SpeakerList from './pages/SpeakerList';
+import SpeakerDetail from './pages/SpeakerDetail';
+import About from './pages/About';
+import Mood from './pages/Mood'
 
-import Mind from './Mind';
-import Talks from './Talks';
-import Home from "./Home";
-import TaskDetailPage from './TaskDetailPage';
+import Mind from './pages/Mind';
+import Talks from './pages/Talks';
+import Home from "./pages/Home";
+import TaskDetailPage from './pages/task/TaskDetailPage';
 
 interface MainTabsProps {}
 
