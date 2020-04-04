@@ -61,7 +61,7 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
           </IonRow>
           <IonRow class="ion-justify-content-center">
           <IonLabel class="font">
-            know thyself
+            structure your life
           </IonLabel>
           </IonRow> 
           <br/>         
@@ -79,12 +79,12 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
           <br/>
           <IonRow class="ion-justify-content-center">
             <IonLabel class="fontless">
-              Clear your mind by planning, reviewing, practicing and meaningful converstaions
+              by planning, reviewing, practicing and meaningful converstaions
             </IonLabel>
           </IonRow>
          
           <div className="down">
-            <IonButton routerLink="/signup" expand="full">Signup</IonButton>
+            <IonButton routerLink="/signup" expand="full">Sign up</IonButton>
           </div>
           </IonGrid>
       </IonContent>
