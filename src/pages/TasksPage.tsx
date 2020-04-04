@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef } from "react";
 
 import {
   IonToolbar,
@@ -8,7 +8,6 @@ import {
   IonTitle,
   IonMenuButton,
   IonSegment,
-  IonSegmentButton,
   IonButton,
   IonIcon,
   IonSearchbar,
@@ -27,12 +26,9 @@ import {
   IonLabel,
   IonItemOptions,
   IonItemOption,
-  AlertButton,
-  IonAlert,
 } from "@ionic/react";
 import { options, search, addOutline } from "ionicons/icons";
 
-import ScheduleList from "../components/TaskList";
 import SessionListFilter from "../components/SessionListFilter";
 import "./TasksPage.scss";
 
@@ -41,14 +37,11 @@ import ShareSocialFab from "../components/ShareSocialFab";
 import * as selectors from "../data/selectors";
 import { connect } from "../data/connect";
 import { setSearchText, removeTask } from "../data/sessions/sessions.actions";
-import { Schedule as Task2 } from "../models/Schedule";
 import { Task } from "../models/Task";
 
 interface OwnProps {}
 
 interface StateProps {
-  taskList: Task2;
-  favoritesSchedule: Task2;
   mode: "ios" | "md";
   tasks: Task[];
 }
@@ -61,8 +54,6 @@ interface DispatchProps {
 type TasksPageProps = OwnProps & StateProps & DispatchProps;
 
 const TasksPage: React.FC<TasksPageProps> = ({
-  favoritesSchedule,
-  taskList: schedule,
   setSearchText,
   mode,
   tasks,
@@ -86,9 +77,6 @@ const TasksPage: React.FC<TasksPageProps> = ({
     }, 2500);
   };
   const [showTaskDeletedToast, setShowTaskDeletedToast] = useState(false);
-  const addTask = (title: string) => {
-    console.log("tasks.new called");
-  };
   const [showNewTaskModal, setShowNewTaskModal] = useState(false);
   const [newTask, setNewTask] = useState("");
 
@@ -228,7 +216,6 @@ const TasksPage: React.FC<TasksPageProps> = ({
         ></IonTextarea>
         <IonButton
           onClick={() => {
-            addTask(newTask);
             setShowNewTaskModal(false);
           }}
         >
@@ -255,7 +242,6 @@ const TasksPage: React.FC<TasksPageProps> = ({
 export default connect<OwnProps, StateProps, DispatchProps>({
   mapStateToProps: (state) => ({
     taskList: selectors.getSearchedSchedule(state),
-    favoritesSchedule: selectors.getGroupedFavorites(state),
     mode: getConfig()!.get("mode"),
     tasks: state.data.tasks,
   }),

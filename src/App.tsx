@@ -38,8 +38,6 @@ import Signup from "./pages/Signup";
 import Support from "./pages/Support";
 import Intro from "./pages/Intro";
 import HomeOrTutorial from "./components/HomeOrTutorial";
-import { Schedule } from "./models/Schedule";
-import Mind from "./pages/Mind";
 import { Task } from "./models/Task";
 
 const App: React.FC = () => {
@@ -52,8 +50,7 @@ const App: React.FC = () => {
 
 interface StateProps {
   darkMode: boolean;
-  schedule: Schedule;
-  tasks:Task[];
+  tasks: Task[];
 }
 
 interface DispatchProps {
@@ -67,23 +64,20 @@ interface IonicAppProps extends StateProps, DispatchProps {}
 
 const IonicApp: React.FC<IonicAppProps> = ({
   darkMode,
-  schedule,
   setIsLoggedIn,
   setUsername,
   loadConfData,
   loadUserData,
-  tasks
+  tasks,
 }) => {
   useEffect(() => {
     loadUserData();
     loadConfData();
     // eslint-disable-next-line
   }, []);
-  console.log('app.run tasks state',tasks);
+  console.log("app.run tasks state", tasks);
 
-  return schedule.groups.length === 0 ? (
-    <div></div>
-  ) : (
+  return (
     <IonApp className={`${darkMode ? "dark-theme" : ""}`}>
       <IonReactRouter>
         <IonSplitPane contentId="main">
@@ -117,7 +111,7 @@ const IonicAppConnected = connect<{}, StateProps, DispatchProps>({
   mapStateToProps: (state) => ({
     darkMode: state.user.darkMode,
     schedule: state.data.schedule,
-    tasks:state.data.tasks
+    tasks: state.data.tasks,
   }),
   mapDispatchToProps: {
     loadConfData,

@@ -16,7 +16,6 @@ import { connect } from "../data/connect";
 import { withRouter, RouteComponentProps } from "react-router";
 import * as selectors from "../data/selectors";
 import { starOutline, star, share } from "ionicons/icons";
-import "./SessionDetail.scss";
 import { removeTask } from "../data/sessions/sessions.actions";
 import { Task } from "../models/Task";
 

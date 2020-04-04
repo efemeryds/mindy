@@ -1,11 +1,10 @@
 import React  from 'react';
 import { IonTabs, IonRouterOutlet, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/react';
 import { Route, Redirect } from 'react-router';
-import { calendar, location, informationCircle, people,man, homeSharp } from 'ionicons/icons';
+import { calendar, informationCircle, people,man, homeSharp } from 'ionicons/icons';
 import TasksPage from './TasksPage';
 import SpeakerList from './SpeakerList';
 import SpeakerDetail from './SpeakerDetail';
-import TaskDetail from './SessionDetail';
 import About from './About';
 import Mood from './Mood'
 
