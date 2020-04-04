@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 import { IonToolbar, IonContent, IonPage, IonButtons, IonTitle, IonMenuButton, IonSegment, IonSegmentButton, IonButton, IonIcon, IonSearchbar, IonRefresher, IonRefresherContent, IonToast, IonModal, IonHeader, getConfig, IonTextarea, IonFab, IonFabButton } from '@ionic/react';
 import { options, search, addOutline } from 'ionicons/icons';
 
-import TaskList from '../components/TaskList';
+import ScheduleList from '../components/TaskList';
 import SessionListFilter from '../components/SessionListFilter';
 import './TasksPage.scss'
 
@@ -134,12 +134,12 @@ const TasksPage: React.FC<TasksPageProps> = ({ favoritesSchedule, taskList: sche
   console.log('task remove clicked',task)
   removeTask(task.id)
 }}>{task.id}</div>)}
-        <TaskList
+        <ScheduleList
           tasks={schedule}
           listType={segment}
           hide={segment === 'favorites'}
         />
-        <TaskList
+        <ScheduleList
           // schedule={schedule}
           tasks={favoritesSchedule}
           listType={segment}
