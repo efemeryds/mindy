@@ -1,7 +1,7 @@
 import React  from 'react';
 import { IonTabs, IonRouterOutlet, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/react';
 import { Route, Redirect } from 'react-router';
-import { calendar, informationCircle, people,man, homeSharp } from 'ionicons/icons';
+import { calendar, informationCircle, people,man, homeSharp, statsChartOutline, heartOutline } from 'ionicons/icons';
 import TasksPage from './pages/task/TasksPage';
 import SpeakerList from './pages/SpeakerList';
 import SpeakerDetail from './pages/SpeakerDetail';
@@ -54,9 +54,15 @@ const MainTabs: React.FC<MainTabsProps> = () => {
           <IonIcon icon={calendar} />
           <IonLabel>Tasks</IonLabel>
         </IonTabButton>
+
+        <IonTabButton tab="mood" href="/tabs/mood">
+          <IonIcon icon={statsChartOutline} />
+          <IonLabel>Mood</IonLabel>
+        </IonTabButton>
         <IonTabButton tab="mind" href="/tabs/mind">
-          <IonIcon icon={man} />
-          <IonLabel>Mind</IonLabel>
+          <IonIcon icon={heartOutline} />
+          <IonLabel>Relax</IonLabel>
+
         </IonTabButton>
         <IonTabButton tab="talks" href="/tabs/talks">
           <IonIcon icon={people} />
@@ -66,6 +72,7 @@ const MainTabs: React.FC<MainTabsProps> = () => {
           <IonIcon icon={informationCircle} />
           <IonLabel>Mood</IonLabel>
         </IonTabButton>
+
       </IonTabBar>
     </IonTabs>
   );
