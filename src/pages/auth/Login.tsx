@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonRow, IonCol, IonButton, IonList, IonItem, IonLabel, IonInput, IonText, IonGrid } from '@ionic/react';
 import './Login.scss';
-import { setIsLoggedIn, setUsername } from '../data/user/user.actions';
-import { connect } from '../data/connect';
+import { setIsLoggedIn, setUsername } from '../../data/user/user.actions';
+import { connect } from '../../data/connect';
 import { RouteComponentProps } from 'react-router';
-import {loginUser} from '../firebase/firebaseConfig';
+import {loginUser} from '../../firebase/firebaseConfig';
 interface OwnProps extends RouteComponentProps {}
 
 interface DispatchProps {

@@ -23,7 +23,7 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
-import MainTabs from "./pages/MainTabs";
+import MainTabs from "./MainTabs";
 import { connect } from "./data/connect";
 import { AppContextProvider } from "./data/AppContext";
 import { loadConfData } from "./data/sessions/sessions.actions";
@@ -32,10 +32,9 @@ import {
   setUsername,
   loadUserData,
 } from "./data/user/user.actions";
-import Account from "./pages/Account";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Support from "./pages/Support";
+import Account from "./pages/auth/Account";
+import Login from "./pages/auth/Login";
+import Signup from "./pages/auth/Signup";
 import Intro from "./pages/Intro";
 import HomeOrTutorial from "./components/HomeOrTutorial";
 import { Task } from "./models/Task";
@@ -87,7 +86,6 @@ const IonicApp: React.FC<IonicAppProps> = ({
             <Route path="/account" component={Account} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <Route path="/support" component={Support} />
             <Route path="/intro" component={Intro} />
             <Route
               path="/logout"

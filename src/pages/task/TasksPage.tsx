@@ -29,15 +29,15 @@ import {
 } from "@ionic/react";
 import { options, search, addOutline } from "ionicons/icons";
 
-import SessionListFilter from "../components/SessionListFilter";
+import SessionListFilter from "../../components/SessionListFilter";
 import "./TasksPage.scss";
 
-import ShareSocialFab from "../components/ShareSocialFab";
+import ShareSocialFab from "../../components/ShareSocialFab";
 
-import * as selectors from "../data/selectors";
-import { connect } from "../data/connect";
-import { setSearchText, removeTask } from "../data/sessions/sessions.actions";
-import { Task } from "../models/Task";
+import * as selectors from "../../data/selectors";
+import { connect } from "../../data/connect";
+import { setSearchText, removeTask } from "../../data/sessions/sessions.actions";
+import { Task } from "../../models/Task";
 
 interface OwnProps {}
 

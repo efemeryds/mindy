@@ -86,14 +86,14 @@ const Menu: React.FC<MenuProps> = ({
           {isAuthenticated
             ? renderlistItems(routes.loggedInPages)
             : renderlistItems(routes.loggedOutPages)}
-          <IonItem>
+          {/* <IonItem>
             <IonIcon slot="start" icon={moonOutline}></IonIcon>
             <IonLabel>Dark Mode</IonLabel>
             <IonToggle
               checked={darkMode}
               onClick={() => setDarkMode(!darkMode)}
             />
-          </IonItem>
+          </IonItem> */}
         </IonList>
         <IonList lines="none">
           <IonListHeader>Intro</IonListHeader>

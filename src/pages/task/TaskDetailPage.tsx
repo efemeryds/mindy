@@ -12,12 +12,12 @@ import {
   IonItem,
   IonLabel,
 } from "@ionic/react";
-import { connect } from "../data/connect";
+import { connect } from "../../data/connect";
 import { withRouter, RouteComponentProps } from "react-router";
-import * as selectors from "../data/selectors";
+import * as selectors from "../../data/selectors";
 import { starOutline, star, share } from "ionicons/icons";
-import { removeTask } from "../data/sessions/sessions.actions";
-import { Task } from "../models/Task";
+import { removeTask } from "../../data/sessions/sessions.actions";
+import { Task } from "../../models/Task";
 
 interface OwnProps extends RouteComponentProps {}
 
