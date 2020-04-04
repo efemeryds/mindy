@@ -66,12 +66,9 @@ const MainTabs: React.FC<MainTabsProps> = () => {
         </IonTabButton>
         <IonTabButton tab="talks" href="/tabs/talks">
           <IonIcon icon={people} />
-          <IonLabel>Inspiration</IonLabel>
+          <IonLabel>Topics</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="mood" href="/tabs/mood">
-          <IonIcon icon={informationCircle} />
-          <IonLabel>Mood</IonLabel>
-        </IonTabButton>
+
 
       </IonTabBar>
     </IonTabs>

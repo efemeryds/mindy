@@ -58,6 +58,7 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
             <IonMenuButton></IonMenuButton>
           </IonButtons>
           <IonTitle>Sign up</IonTitle>
+          
         </IonToolbar>
       </IonHeader>
       <IonContent color="secondary">
@@ -66,8 +67,10 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
         <form noValidate onSubmit={register}>
        
         <IonItem class="input-style">
-         
-              <IonLabel position="stacked" color="primary">Username</IonLabel>
+      
+              <IonLabel position="stacked" color="primary">
+                
+              Username </IonLabel>
               <IonInput name="username" type="text" value={username} spellCheck={false} autocapitalize="off" onIonChange={e => {
                 setUsername(e.detail.value!);
                 setUsernameError(false);
