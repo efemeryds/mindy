@@ -47,20 +47,15 @@ const Home: React.FC = () => {
         <IonHeader>
           <IonToolbar></IonToolbar>
         </IonHeader>
-        
-        <div className="home-title">
-          mindy
-        </div>
-        <div className="font2">
-       structure your life
-        </div>
+        <div className="home-title">mindy</div>
+        <div className="font2">structure your life</div>
         <IonGrid>
           <IonRow>
             <IonCol>
               <IconNav url="/tabs/tasks" text="Tasks" iconName="tasks.png" />
             </IonCol>
             <IonCol>
-              <IconNav url="/tabs/talks" text="Topics" iconName="topics.png" />
+              <IconNav url="/tabs/topic" text="Topics" iconName="topics.png" />
             </IonCol>
           </IonRow>
           <IonRow>
@@ -68,12 +63,16 @@ const Home: React.FC = () => {
               <IconNav url="/tabs/mood" text="Mood" iconName="mood.png" />
             </IonCol>
             <IonCol>
-            <IconNav url="/tabs/speakers" text="Inspirations" iconName="mind.png" />
+              <IconNav
+                url="/tabs/speakers"
+                text="Inspirations"
+                iconName="mind.png"
+              />
             </IonCol>
           </IonRow>
           <IonRow>
             <IonCol>
-            <IconNav url="/tabs/mind" text="Relax" iconName="cloud.png" />
+              <IconNav url="/tabs/mind" text="Relax" iconName="cloud.png" />
             </IonCol>
           </IonRow>
         </IonGrid>

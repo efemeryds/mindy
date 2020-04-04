@@ -10,9 +10,7 @@ import {
 import { Route, Redirect } from "react-router";
 import {
   calendar,
-  informationCircle,
   people,
-  man,
   homeSharp,
   statsChartOutline,
   heartOutline,
@@ -22,11 +20,12 @@ import SpeakerList from "./pages/SpeakerList";
 import SpeakerDetail from "./pages/SpeakerDetail";
 import About from "./pages/About";
 import Mood from "./pages/Mood";
-
-import Mind from "./pages/Mind";
-import Talks from "./pages/Talks";
 import Home from "./pages/Home";
 import TaskDetailPage from "./pages/task/TaskDetailPage";
+import RelaxActivityDetailPage from "./pages/relax-activity/RelaxActivityDetailPage";
+import RelaxActivityPage from "./pages/relax-activity/RelaxActivityPage";
+import TopicDetailPage from "./pages/topic/TopicDetailPage";
+import TopicPage from "./pages/topic/TopicPage";
 
 interface MainTabsProps {}
 
@@ -40,7 +39,7 @@ const MainTabs: React.FC<MainTabsProps> = () => {
           Use the component prop when your component depends on the RouterComponentProps passed in automatically.
 
         */}
-        <Route path="/tabs/tasks" render={() => <TaskPage />} exact={true} />
+
         <Route
           path="/tabs/speakers"
           render={() => <SpeakerList />}
@@ -51,12 +50,19 @@ const MainTabs: React.FC<MainTabsProps> = () => {
           component={SpeakerDetail}
           exact={true}
         />
+        <Route path="/tabs/tasks" render={() => <TaskPage />} exact={true} />
         <Route path="/tabs/tasks/:id" component={TaskDetailPage} />
         <Route path="/tabs/about" render={() => <About />} exact={true} />
         <Route path="/tabs/mood" render={() => <Mood />} exact={true} />
 
-        <Route path="/tabs/mind" render={() => <Mind />} exact={true} />
-        <Route path="/tabs/talks" render={() => <Talks />} exact={true} />
+        <Route
+          path="/tabs/mind"
+          render={() => <RelaxActivityPage />}
+          exact={true}
+        />
+        <Route path="/tabs/mind/:id" component={RelaxActivityDetailPage} />
+        <Route path="/tabs/topic" render={() => <TopicPage />} exact={true} />
+        <Route path="/tabs/topic/:id" component={TopicDetailPage} />
         <Route path="/tabs/home" render={() => <Home />} exact={true} />
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
@@ -77,12 +83,10 @@ const MainTabs: React.FC<MainTabsProps> = () => {
           <IonIcon icon={heartOutline} />
           <IonLabel>Relax</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="talks" href="/tabs/talks">
+        <IonTabButton tab="topic" href="/tabs/topic">
           <IonIcon icon={people} />
           <IonLabel>Topics</IonLabel>
         </IonTabButton>
-
-
       </IonTabBar>
     </IonTabs>
   );

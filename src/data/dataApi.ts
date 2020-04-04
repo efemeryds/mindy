@@ -3,6 +3,8 @@ import { Schedule, Session } from "../models/Schedule";
 import { Speaker } from "../models/Speaker";
 import { Location } from "../models/Location";
 import { Task } from "../models/Task";
+import { Topic } from "../models/Topic";
+import { RelaxActivity } from "../models/RelaxActivity";
 
 const { Storage } = Plugins;
 
@@ -27,8 +29,8 @@ export const getConfData = async () => {
   ]);
 
   const tasks = (await response[2].json()) as Task[];
-  const topics = (await response[2].json()) as Task[];
-  const relaxActivities = (await response[2].json()) as Task[];
+  const topics = (await response[3].json()) as Topic[];
+  const relaxActivities = (await response[4].json()) as RelaxActivity[];
 
   const responseData = await response[0].json();
   const schedule = responseData.schedule[0] as Schedule;

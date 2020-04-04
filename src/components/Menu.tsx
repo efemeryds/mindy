@@ -1,8 +1,28 @@
 import React, { useState } from "react";
 import { RouteComponentProps, withRouter, useLocation } from "react-router";
 
-import { IonContent, IonIcon, IonItem, IonLabel, IonList, IonListHeader, IonMenu, IonMenuToggle, IonToggle } from '@ionic/react';
-import { calendarOutline, man, people, hammer, moonOutline, help, informationCircleOutline, logIn, logOut, mapOutline, peopleOutline, person, personAdd, statsChartOutline, heartOutline } from 'ionicons/icons';
+import {
+  IonContent,
+  IonIcon,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonListHeader,
+  IonMenu,
+  IonMenuToggle,
+} from "@ionic/react";
+import {
+  calendarOutline,
+  people,
+  hammer,
+  logIn,
+  logOut,
+  peopleOutline,
+  person,
+  personAdd,
+  statsChartOutline,
+  heartOutline,
+} from "ionicons/icons";
 
 import { connect } from "../data/connect";
 import { setDarkMode } from "../data/user/user.actions";
@@ -11,22 +31,20 @@ import "./Menu.css";
 
 const routes = {
   appPages: [
-    { title: 'Task list', path: '/tabs/tasks', icon: calendarOutline },
-    { title: 'Mood', path: '/tabs/mood', icon: statsChartOutline},
-    { title: 'Relax', path: '/tabs/mind', icon: heartOutline},
-    { title: 'Topics', path: '/tabs/talks', icon: people},
-    { title: 'Inspiration', path: '/tabs/speakers', icon: peopleOutline }
-  
-
-    ],
+    { title: "Task list", path: "/tabs/tasks", icon: calendarOutline },
+    { title: "Mood", path: "/tabs/mood", icon: statsChartOutline },
+    { title: "Relax", path: "/tabs/mind", icon: heartOutline },
+    { title: "Topics", path: "/tabs/topic", icon: people },
+    { title: "Inspiration", path: "/tabs/speakers", icon: peopleOutline },
+  ],
   loggedInPages: [
-    { title: 'Account', path: '/account', icon: person },
-    { title: 'Logout', path: '/logout', icon: logOut }
+    { title: "Account", path: "/account", icon: person },
+    { title: "Logout", path: "/logout", icon: logOut },
   ],
   loggedOutPages: [
-    { title: 'Login', path: '/login', icon: logIn },
-    { title: 'Signup', path: '/signup', icon: personAdd }
-  ]
+    { title: "Login", path: "/login", icon: logIn },
+    { title: "Signup", path: "/signup", icon: personAdd },
+  ],
 };
 
 interface Pages {

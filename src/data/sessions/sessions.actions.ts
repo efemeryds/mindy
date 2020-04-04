@@ -57,6 +57,12 @@ export const addTask = (task: Task) =>
     type: "add-task",
     task,
   } as const);
+export const updateTask = (task: Task) =>
+  ({
+    type: "update-task",
+    task,
+  } as const);
+
 export const removeTopic = (topicId: string) =>
   ({
     type: "remove-topic",
@@ -65,6 +71,11 @@ export const removeTopic = (topicId: string) =>
 export const addTopic = (topic: Topic) =>
   ({
     type: "add-topic",
+    topic,
+  } as const);
+export const updateTopic = (topic: Topic) =>
+  ({
+    type: "update-topic",
     topic,
   } as const);
 export const removeRelaxActivity = (relaxActivityId: string) =>
@@ -77,6 +88,12 @@ export const addRelaxActivity = (relaxActivity: RelaxActivity) =>
     type: "add-relaxActivity",
     relaxActivity,
   } as const);
+export const updateRelaxActivity = (relaxActivity: RelaxActivity) =>
+  ({
+    type: "update-relaxActivity",
+    relaxActivity,
+  } as const);
+
 export const setMenuEnabled = (menuEnabled: boolean) =>
   ({
     type: "set-menu-enabled",
@@ -91,6 +108,12 @@ export type SessionsActions =
   | ActionType<typeof removeTask>
   | ActionType<typeof addTask>
   | ActionType<typeof updateTask>
+  | ActionType<typeof removeRelaxActivity>
+  | ActionType<typeof addRelaxActivity>
+  | ActionType<typeof updateRelaxActivity>
+  | ActionType<typeof removeTopic>
+  | ActionType<typeof addTopic>
+  | ActionType<typeof updateTopic>
   | ActionType<typeof updateFilteredTracks>
   | ActionType<typeof setSearchText>
   | ActionType<typeof setMenuEnabled>;

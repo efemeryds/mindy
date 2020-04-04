@@ -43,7 +43,6 @@ import {
 } from "../../data/sessions/sessions.actions";
 import { Task } from "../../models/Task";
 import * as uuid from "uuid";
-import { useLocation, useHistory } from "react-router";
 
 interface OwnProps {}
 

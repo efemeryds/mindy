@@ -29,7 +29,7 @@ import {
 import { options, search, addOutline } from "ionicons/icons";
 
 import SessionListFilter from "../../components/SessionListFilter";
-import "./RelaxActivityDetailPage.scss";
+import "./RelaxActivityPage.scss";
 
 import ShareSocialFab from "../../components/ShareSocialFab";
 
@@ -152,7 +152,7 @@ const RelaxActivitysPage: React.FC<RelaxActivitysPageProps> = ({
         <IonList>
           {relaxactivitys.map((relaxactivity) => (
             <IonItemSliding key={relaxactivity.id}>
-              <IonItem routerLink={`/tabs/relaxactivity/${relaxactivity.id}`}>
+              <IonItem routerLink={`/tabs/mind/${relaxactivity.id}`}>
                 <IonLabel>
                   <h3>{relaxactivity.title}</h3>
                 </IonLabel>
