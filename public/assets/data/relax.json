@@ -1,10 +1,32 @@
 [
-    { "id": "D4A00876-AA58-BB8A-D406-DC14EC7311F8", "title": "Breath focus", "description": "In this simple, powerful technique, you take long, slow, deep breaths (also known as abdominal or belly breathing). As you breathe, you gently disengage your mind from distracting thoughts and sensations. Breath focus can be especially helpful for people with eating disorders to help them focus on their bodies in a more positive way. However, this technique may not be appropriate for those with health problems that make breathing difficult, such as respiratory ailments or heart failure." },
-    { "id": "E74E00ED-022A-A7FE-F6D6-21346CBDF342", "title": "Body scan", "description": "This technique blends breath focus with progressive muscle relaxation. After a few minutes of deep breathing, you focus on one part of the body or group of muscles at a time and mentally releasing any physical tension you feel there. A body scan can help boost your awareness of the mind-body connection. If you have had a recent surgery that affects your body image or other difficulties with body image, this technique may be less helpful for you." },
-    { "id": "529A9907-F185-2EDD-B2F7-7FE72E2FA2B3", "title": "Guided imagery", "description": " For this technique, you conjure up soothing scenes, places, or experiences in your mind to help you relax and focus. You can find free apps and online recordings of calming scenes—just make sure to choose imagery you find soothing and that has personal significance. Guided imagery may help you reinforce a positive vision of yourself, but it can be difficult for those who have intrusive thoughts or find it hard to conjure up mental images." },
-    { "id": "ed3381e4-178a-492c-b08a-edb9ca46f300", "title": "Mindfulness meditation", "description": "This practice involves sitting comfortably, focusing on your breathing, and bringing your mind's attention to the present moment without drifting into concerns about the past or the future. This form of meditation has enjoyed increasing popularity in recent years. Research suggests it may be helpful for people with anxiety, depression, and pain." },
-    { "id": "830cdfae-192e-4886-8a8d-25a50b6c957f", "title": "Yoga, tai chi, and qigong", "description": "These three ancient arts combine rhythmic breathing with a series of postures or flowing movements. The physical aspects of these practices offer a mental focus that can help distract you from racing thoughts. They can also enhance your flexibility and balance. But if you are not normally active, have health problems, or a painful or disabling condition, these relaxation techniques might be too challenging. Check with your doctor before starting them." },
-    { "id": "6951e993-e4e5-4151-ac40-ec7a13c5be6a", "title": "Yoga, tai chi, and qigong", "description": "For this technique, you silently repeat a short prayer or phrase from a prayer while practicing breath focus. This method may be especially appealing if religion or spirituality is meaningful to you." }
-
+    {
+        "id": "D4A00876-AA58-BB8A-D406-DC14EC7311F8",
+        "title": "Breath focus",
+        "description": "In this simple, powerful technique, you take long, slow, deep breaths (also known as abdominal or belly breathing). As you breathe, you gently disengage your mind from distracting thoughts and sensations. Breath focus can be especially helpful for people with eating disorders to help them focus on their bodies in a more positive way. However, this technique may not be appropriate for those with health problems that make breathing difficult, such as respiratory ailments or heart failure."
+    },
+    {
+        "id": "E74E00ED-022A-A7FE-F6D6-21346CBDF342",
+        "title": "Body scan",
+        "description": "This technique blends breath focus with progressive muscle relaxation. After a few minutes of deep breathing, you focus on one part of the body or group of muscles at a time and mentally releasing any physical tension you feel there. A body scan can help boost your awareness of the mind-body connection. If you have had a recent surgery that affects your body image or other difficulties with body image, this technique may be less helpful for you."
+    },
+    {
+        "id": "529A9907-F185-2EDD-B2F7-7FE72E2FA2B3",
+        "title": "Guided imagery",
+        "description": " For this technique, you conjure up soothing scenes, places, or experiences in your mind to help you relax and focus. You can find free apps and online recordings of calming scenes—just make sure to choose imagery you find soothing and that has personal significance. Guided imagery may help you reinforce a positive vision of yourself, but it can be difficult for those who have intrusive thoughts or find it hard to conjure up mental images."
+    },
+    {
+        "id": "ed3381e4-178a-492c-b08a-edb9ca46f300",
+        "title": "Mindfulness meditation",
+        "description": "This practice involves sitting comfortably, focusing on your breathing, and bringing your mind's attention to the present moment without drifting into concerns about the past or the future. This form of meditation has enjoyed increasing popularity in recent years. Research suggests it may be helpful for people with anxiety, depression, and pain."
+    },
+    {
+        "id": "830cdfae-192e-4886-8a8d-25a50b6c957f",
+        "title": "Yoga, tai chi, and qigong",
+        "description": "These three ancient arts combine rhythmic breathing with a series of postures or flowing movements. The physical aspects of these practices offer a mental focus that can help distract you from racing thoughts. They can also enhance your flexibility and balance. But if you are not normally active, have health problems, or a painful or disabling condition, these relaxation techniques might be too challenging. Check with your doctor before starting them."
+    },
+    {
+        "id": "6951e993-e4e5-4151-ac40-ec7a13c5be6a",
+        "title": "Yoga, tai chi, and qigong",
+        "description": "For this technique, you silently repeat a short prayer or phrase from a prayer while practicing breath focus. This method may be especially appealing if religion or spirituality is meaningful to you."
+    }
 ]
-

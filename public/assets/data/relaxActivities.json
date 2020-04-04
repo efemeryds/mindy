@@ -1,5 +1,37 @@
 [
-    { "id": "D4A00876-AA58-BB8A-D406-DC14EC7311F8", "title": "throw out trash", "description": "......." },
-    { "id": "E74E00ED-022A-A7FE-F6D6-21346CBDF342", "title": "throw out trash2", "description": ".......2" },
-    { "id": "529A9907-F185-2EDD-B2F7-7FE72E2FA2B3", "title": "throw out trash3", "description": ".......3" }
+    {
+        "id": "D4A00876-AA58-BB8A-D406-DC14EC7311F8",
+        "title": "Where is the line between art and not art?",
+        "description": ""
+    },
+    {
+        "id": "E74E00ED-022A-A7FE-F6D6-21346CBDF342",
+        "title": "Why do we dream?",
+        "description": ""
+    },
+    {
+        "id": "529A9907-F185-2EDD-B2F7-7FE72E2FA2B3",
+        "title": "Can artificial intelligence be creative?",
+        "description": ""
+    },
+    {
+        "id": "ed3381e4-178a-492c-b08a-edb9ca46f300",
+        "title": "Do parallel universes exist?",
+        "description": ""
+    },
+    {
+        "id": "830cdfae-192e-4886-8a8d-25a50b6c957f",
+        "title": "Are we losing our right to privacy?",
+        "description": ""
+    },
+    {
+        "id": "6951e993-e4e5-4151-ac40-ec7a13c5be6a",
+        "title": "What should a healthy relationship provide for the people in it?",
+        "description": ""
+    },
+    {
+        "id": "76bc0c4d-288c-49d1-a2fa-def7cd95bf24",
+        "title": "What would your perfect day look like?",
+        "description": ""
+    }
 ]
