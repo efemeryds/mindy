@@ -26,7 +26,7 @@ export const sessionsReducer = (state: ConfState, action: SessionsActions): Conf
     }
     case 'remove-task':{
       console.log('called remove tasks!')
-      return {...state,sessions:[...state.sessions.slice(0, action.taskId), ...state.sessions.slice(action.taskId+ 1)]}
+      return {...state,}// TODO: remove task sessions:[...state.sessions.slice(0, action.taskId), ...state.sessions.slice(action.taskId+ 1)]}
     }
   }
 }

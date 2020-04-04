@@ -11,10 +11,8 @@ import './Menu.css'
 
 const routes = {
   appPages: [
-    { title: 'Schedule', path: '/tabs/schedule', icon: calendarOutline },
-    { title: 'Speakers', path: '/tabs/speakers', icon: peopleOutline },
-    { title: 'Map', path: '/tabs/map', icon: mapOutline },
-    { title: 'About', path: '/tabs/about', icon: informationCircleOutline }
+    { title: 'Task list', path: '/tabs/task', icon: calendarOutline },
+    { title: 'Inspiration', path: '/tabs/speakers', icon: peopleOutline },
   ],
   loggedInPages: [
     { title: 'Account', path: '/account', icon: person },
@@ -66,7 +64,7 @@ const Menu: React.FC<MenuProps> = ({ darkMode, history, isAuthenticated, setDark
     <IonMenu  type="overlay" disabled={!menuEnabled} contentId="main">
       <IonContent forceOverscroll={false}>
         <IonList lines="none">
-          <IonListHeader>Conference</IonListHeader>
+          <IonListHeader>Tasks</IonListHeader>
           {renderlistItems(routes.appPages)}
         </IonList>
         <IonList lines="none">
