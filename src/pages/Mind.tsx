@@ -12,7 +12,7 @@ const Mind: React.FC = () => {
           <IonButtons slot="start">
             <IonMenuButton></IonMenuButton>
           </IonButtons>
-          <IonTitle>Mind</IonTitle>
+          <IonTitle>Relax</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>

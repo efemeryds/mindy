@@ -51,7 +51,7 @@ const MainTabs: React.FC<MainTabsProps> = () => {
           component={SpeakerDetail}
           exact={true}
         />
-        <Route path="/tabs/task/:id" component={TaskDetailPage} />
+        <Route path="/tabs/tasks/:id" component={TaskDetailPage} />
         <Route path="/tabs/about" render={() => <About />} exact={true} />
         <Route path="/tabs/mood" render={() => <Mood />} exact={true} />
 
@@ -79,12 +79,10 @@ const MainTabs: React.FC<MainTabsProps> = () => {
         </IonTabButton>
         <IonTabButton tab="talks" href="/tabs/talks">
           <IonIcon icon={people} />
-          <IonLabel>Inspiration</IonLabel>
+          <IonLabel>Topics</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="mood" href="/tabs/mood">
-          <IonIcon icon={informationCircle} />
-          <IonLabel>Mood</IonLabel>
-        </IonTabButton>
+
+
       </IonTabBar>
     </IonTabs>
   );

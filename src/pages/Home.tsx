@@ -47,9 +47,12 @@ const Home: React.FC = () => {
         <IonHeader>
           <IonToolbar></IonToolbar>
         </IonHeader>
-
+        
         <div className="home-title">
-          mindy <p>structure your life</p>
+          mindy
+        </div>
+        <div className="font2">
+       structure your life
         </div>
         <IonGrid>
           <IonRow>
@@ -65,12 +68,12 @@ const Home: React.FC = () => {
               <IconNav url="/tabs/mood" text="Mood" iconName="mood.png" />
             </IonCol>
             <IonCol>
-              <IconNav url="/tabs/mind" text="Mind" iconName="mind.png" />
+            <IconNav url="/tabs/speakers" text="Inspirations" iconName="mind.png" />
             </IonCol>
           </IonRow>
           <IonRow>
             <IonCol>
-              <IconNav url="/tabs/speakers" text="Inspirations" iconName="cloud.png" />
+            <IconNav url="/tabs/mind" text="Relax" iconName="cloud.png" />
             </IonCol>
           </IonRow>
         </IonGrid>

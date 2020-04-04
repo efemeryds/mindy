@@ -31,14 +31,22 @@ ion-content ion-toolbar {
 }
 
 .font{
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 40px;
-  font-style: italic;
+  font-family: Georgia, serif;
+  font-size: 52px;
+  //font-style: italic;
   text-align: center;
 }
+
+.font2{
+  font-family: Georgia, serif;
+  font-size: 26px;
+  font-style: italic;
+  text-align: center;
+  color:  	#888888
+}
 .fontless{
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 30px;
+  font-family: Georgia, serif;
+  font-size: 22px;
   font-style: italic;
   text-align: center;
 }

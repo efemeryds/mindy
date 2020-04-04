@@ -31,7 +31,10 @@ export const sessionsReducer = (
     case "add-task": {
       return { ...state, tasks: [...state.tasks, action.task] };
     }
-    case "update-filtered-tracks": {
+    case 'update-task': {
+      return { ...state, tasks: [...(state.tasks).filter(x => x.id !== action.task.id), action.task]}
+    }
+    case 'update-filtered-tracks': {
       return { ...state, filteredTracks: action.filteredTracks };
     }
     case "set-search-text": {

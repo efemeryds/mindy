@@ -90,6 +90,7 @@ export type SessionsActions =
   | ActionType<typeof removeFavorite>
   | ActionType<typeof removeTask>
   | ActionType<typeof addTask>
+  | ActionType<typeof updateTask>
   | ActionType<typeof updateFilteredTracks>
   | ActionType<typeof setSearchText>
   | ActionType<typeof setMenuEnabled>;
