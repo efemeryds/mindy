@@ -7,7 +7,6 @@ import {
   IonButtons,
   IonTitle,
   IonMenuButton,
-  IonSegment,
   IonButton,
   IonIcon,
   IonSearchbar,
@@ -16,7 +15,6 @@ import {
   IonToast,
   IonModal,
   IonHeader,
-  getConfig,
   IonTextarea,
   IonFab,
   IonFabButton,
@@ -26,14 +24,13 @@ import {
   IonLabel,
   IonItemOptions,
   IonItemOption,
-  IonText,
   IonInput,
   useIonViewWillEnter,
 } from "@ionic/react";
 import { options, search, addOutline } from "ionicons/icons";
 
 import SessionListFilter from "../../components/SessionListFilter";
-import "./TasksPage.scss";
+import "./TopicPage.scss";
 
 import ShareSocialFab from "../../components/ShareSocialFab";
 
@@ -41,33 +38,33 @@ import * as selectors from "../../data/selectors";
 import { connect } from "../../data/connect";
 import {
   setSearchText,
-  removeTask,
-  addTask,
+  removeTopic,
+  addTopic,
 } from "../../data/sessions/sessions.actions";
-import { Task } from "../../models/Task";
+import { Topic } from "../../models/Topic";
 import * as uuid from "uuid";
-import { useLocation, useHistory } from "react-router";
 
 interface OwnProps {}
 
 interface StateProps {
-  tasks: Task[];
+  topics: Topic[];
 }
 
 interface DispatchProps {
   setSearchText: typeof setSearchText;
-  removeTask: typeof removeTask;
-  addTask: typeof addTask;
+  removeTopic: typeof removeTopic;
+  addTopic: typeof addTopic;
 }
 
-type TasksPageProps = OwnProps & StateProps & DispatchProps;
+type TopicsPageProps = OwnProps & StateProps & DispatchProps;
 
-const TasksPage: React.FC<TasksPageProps> = ({
+const TopicPage: React.FC<TopicsPageProps> = ({
   setSearchText,
-  tasks,
-  removeTask,
-  addTask,
+  topics,
+  removeTopic,
+  addTopic,
 }) => {
+  console.log("topicspage.topics loaded", topics);
   const [showSearchbar, setShowSearchbar] = useState<boolean>(false);
   const [showFilterModal, setShowFilterModal] = useState(false);
   const ionRefresherRef = useRef<HTMLIonRefresherElement>(null);
@@ -81,12 +78,11 @@ const TasksPage: React.FC<TasksPageProps> = ({
       setShowCompleteToast(true);
     }, 2500);
   };
-  const [showTaskDeletedToast, setShowTaskDeletedToast] = useState(false);
-  const [showNewTaskModal, setShowNewTaskModal] = useState(false);
-  const [taskTitle, setTaskTitle] = useState("");
-  const [taskMotivation, setTaskMotivation] = useState("");
+  const [showTopicDeletedToast, setShowTopicDeletedToast] = useState(false);
+  const [showNewTopicModal, setShowNewTopicModal] = useState(false);
+  const [topicTitle, setTopicTitle] = useState("");
+  const [topicDescription, setTopicDescription] = useState("");
   const [, setForceRefreshAfterTaskEditHack] = useState(0);
-
   useIonViewWillEnter(() => {
     setForceRefreshAfterTaskEditHack((state) => state + 1);
   });
@@ -100,7 +96,7 @@ const TasksPage: React.FC<TasksPageProps> = ({
               <IonMenuButton />
             </IonButtons>
           )}
-          {!showSearchbar && <IonTitle>My Tasks</IonTitle>}
+          {!showSearchbar && <IonTitle>Topics to discuss</IonTitle>}
           {showSearchbar && (
             <IonSearchbar
               showCancelButton="always"
@@ -128,7 +124,7 @@ const TasksPage: React.FC<TasksPageProps> = ({
       <IonContent fullscreen={true}>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Tasks</IonTitle>
+            <IonTitle size="large">Topics to discuss</IonTitle>
           </IonToolbar>
           <IonToolbar>
             <IonSearchbar
@@ -154,19 +150,19 @@ const TasksPage: React.FC<TasksPageProps> = ({
         />
 
         <IonList>
-          {tasks.map((task) => (
-            <IonItemSliding key={task.id}>
-              <IonItem routerLink={`/tabs/tasks/${task.id}`}>
+          {topics.map((topic) => (
+            <IonItemSliding key={topic.id}>
+              <IonItem routerLink={`/tabs/topic/${topic.id}`}>
                 <IonLabel>
-                  <h3>{task.title}</h3>
+                  <h3>{topic.title}</h3>
                 </IonLabel>
               </IonItem>
               <IonItemOptions>
                 <IonItemOption
                   color="danger"
                   onClick={() => {
-                    removeTask(task.id);
-                    setShowTaskDeletedToast(true);
+                    removeTopic(topic.id);
+                    setShowTopicDeletedToast(true);
                   }}
                 >
                   Done
@@ -187,24 +183,25 @@ const TasksPage: React.FC<TasksPageProps> = ({
         <SessionListFilter onDismissModal={() => setShowFilterModal(false)} />
       </IonModal>
 
-      <IonModal isOpen={showNewTaskModal}>
+      <ShareSocialFab />
+      <IonModal isOpen={showNewTopicModal}>
         <IonContent>
-          <h1>Create a new task</h1>
+          <h1>Create a new topic</h1>
           <IonInput
-            value={taskTitle}
-            placeholder="What do you want to achieve?"
-            onIonChange={(e) => setTaskTitle(e.detail.value!)}
+            value={topicTitle}
+            placeholder="Topic Title"
+            onIonChange={(e) => setTopicTitle(e.detail.value!)}
           />
           <IonTextarea
-            value={taskMotivation}
-            placeholder="I want to do that, because it will ..."
-            onIonChange={(e) => setTaskMotivation(e.detail.value!)}
+            value={topicDescription}
+            placeholder="Description..."
+            onIonChange={(e) => setTopicDescription(e.detail.value!)}
             rows={5}
           />
           <IonButton
             onClick={() => {
-              addTask(new Task(uuid.v4(), taskTitle, taskMotivation));
-              setShowNewTaskModal(false);
+              addTopic(new Topic(uuid.v4(), topicTitle, topicDescription));
+              setShowNewTopicModal(false);
             }}
           >
             Add
@@ -215,13 +212,13 @@ const TasksPage: React.FC<TasksPageProps> = ({
         <IonFabButton>
           <IonIcon
             icon={addOutline}
-            onClick={() => setShowNewTaskModal(true)}
+            onClick={() => setShowNewTopicModal(true)}
           />
         </IonFabButton>
       </IonFab>
       <IonToast
-        isOpen={showTaskDeletedToast}
-        message="Task has been completed."
+        isOpen={showTopicDeletedToast}
+        message="Topic has been completed."
         duration={2000}
       />
     </IonPage>
@@ -230,13 +227,13 @@ const TasksPage: React.FC<TasksPageProps> = ({
 
 export default connect<OwnProps, StateProps, DispatchProps>({
   mapStateToProps: (state) => ({
-    taskList: selectors.getSearchedSchedule(state),
-    tasks: state.data.tasks,
+    topicList: selectors.getSearchedSchedule(state),
+    topics: state.data.topics,
   }),
   mapDispatchToProps: {
     setSearchText,
-    removeTask,
-    addTask,
+    removeTopic,
+    addTopic,
   },
-  component: React.memo(TasksPage),
+  component: React.memo(TopicPage),
 });

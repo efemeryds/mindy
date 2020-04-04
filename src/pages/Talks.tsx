@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
-import { RouteComponentProps } from 'react-router';
-import { IonPage, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent } from '@ionic/react';
+import React from "react";
+import {
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonButtons,
+  IonMenuButton,
+  IonTitle,
+  IonContent,
+} from "@ionic/react";
 
-interface TalksProps { }
-
-const Talks: React.FC = () => { 
- 
+const Talks: React.FC = () => {
   return (
     <IonPage>
-    <IonHeader id="talks-page">
+      <IonHeader id="talks-page">
         <IonToolbar class="header-class">
           <IonButtons slot="start">
             <IonMenuButton></IonMenuButton>
@@ -16,11 +20,8 @@ const Talks: React.FC = () => {
           <IonTitle>Topics</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent >
-    </IonContent>
+      <IonContent></IonContent>
     </IonPage>
   );
 };
-
-
-export default Talks
+export default Talks;

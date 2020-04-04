@@ -67,8 +67,7 @@ export const getSearchedSchedule = createSelector(
   }
 );
 
-
-export const getIdParam = (_state: AppState, props: any) : any => {
+export const getIdParam = (_state: AppState, props: any): any => {
   return props.match.params["id"];
 };
 
@@ -98,4 +97,19 @@ export const getTasks = (state: AppState) => state.data.tasks;
 
 export const getTask = createSelector(getTasks, getIdParam, (tasks, id) =>
   tasks.find((t) => t.id == id)
+);
+
+export const getTopics = (state: AppState) => state.data.topics;
+
+export const getTopic = createSelector(getTopics, getIdParam, (topics, id) =>
+  topics.find((t) => t.id == id)
+);
+
+export const getRelaxActivities = (state: AppState) =>
+  state.data.relaxActivities;
+
+export const getRelaxActivity = createSelector(
+  getRelaxActivities,
+  getIdParam,
+  (getRelaxActivities, id) => getRelaxActivities.find((t) => t.id == id)
 );
