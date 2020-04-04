@@ -54,23 +54,23 @@ const Home: React.FC = () => {
         <IonGrid>
           <IonRow>
             <IonCol>
-              <IconNav url="/tab/tasks" text="Tasks" iconName="tasks.png" />
+              <IconNav url="/tabs/tasks" text="Tasks" iconName="tasks.png" />
             </IonCol>
             <IonCol>
-              <IconNav url="/topic" text="Topic" iconName="topics.png" />
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol>
-              <IconNav url="/mood" text="Mood" iconName="mood.png" />
-            </IonCol>
-            <IonCol>
-              <IconNav url="tab/mind" text="Mind" iconName="mind.png" />
+              <IconNav url="/tabs/topic" text="Topic" iconName="topics.png" />
             </IonCol>
           </IonRow>
           <IonRow>
             <IonCol>
-              <IconNav url="tabs/talks" text="Cloud" iconName="cloud.png" />
+              <IconNav url="/tabs/mood" text="Mood" iconName="mood.png" />
+            </IonCol>
+            <IonCol>
+              <IconNav url="/mind" text="Mind" iconName="mind.png" />
+            </IonCol>
+          </IonRow>
+          <IonRow>
+            <IonCol>
+              <IconNav url="/tabs/talks" text="Cloud" iconName="cloud.png" />
             </IonCol>
           </IonRow>
         </IonGrid>
