@@ -2,20 +2,28 @@ import { Plugins } from '@capacitor/core';
 import { Schedule, Session } from '../models/Schedule';
 import { Speaker } from '../models/Speaker';
 import { Location } from '../models/Location';
+import { Task } from '../models/Task';
 
 const { Storage } = Plugins;
 
 const dataUrl = '/assets/data/data.json';
 const locationsUrl = '/assets/data/locations.json';
+const tasksUrl = '/assets/data/tasks.json';
 
 const HAS_LOGGED_IN = 'hasLoggedIn';
 const HAS_SEEN_TUTORIAL = 'hasSeenTutorial';
 const USERNAME = 'username';
 
 export const getConfData = async () => {
+  console.log('state.reload reloading from file')
   const response = await Promise.all([
     fetch(dataUrl),
-    fetch(locationsUrl)]);
+    fetch(locationsUrl),
+    fetch(tasksUrl)
+  ]);
+
+  const tasks = await response[2].json() as Task[];
+
   const responseData = await response[0].json();
   const schedule = responseData.schedule[0] as Schedule;
   const sessions = parseSessions(schedule);
@@ -27,6 +35,7 @@ export const getConfData = async () => {
     .sort();
 
   const data = {
+    tasks,
     schedule,
     sessions,
     locations,

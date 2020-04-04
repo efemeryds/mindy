@@ -15,6 +15,10 @@ export const sessionsReducer = (state: ConfState, action: SessionsActions): Conf
     case 'remove-favorite': {
       return { ...state, favorites: [...(state.favorites).filter(x => x !== action.sessionId)] };
     }
+    case 'remove-task': {
+      console.log('reducer.remove-task')
+      return { ...state, tasks: [...(state.tasks).filter(x => x.id !== action.taskId)]}
+    }
     case 'update-filtered-tracks': {
       return { ...state, filteredTracks: action.filteredTracks };
     }
@@ -23,10 +27,6 @@ export const sessionsReducer = (state: ConfState, action: SessionsActions): Conf
     }
     case 'set-menu-enabled': {
       return { ...state, menuEnabled: action.menuEnabled };
-    }
-    case 'remove-task':{
-      console.log('called remove tasks!')
-      return {...state,}// TODO: remove task sessions:[...state.sessions.slice(0, action.taskId), ...state.sessions.slice(action.taskId+ 1)]}
     }
   }
 }

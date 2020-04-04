@@ -16,7 +16,6 @@ interface SessionListItemProps {
   onAddFavorite: (id: number) => void;
   onRemoveFavorite: (id: number) => void;
   onShowAlert: (header: string, buttons: AlertButton[]) => void;
-  onRemoveTask: (id: number) => void;
   isFavorite: boolean;
 }
 
@@ -25,7 +24,6 @@ const SessionListItem: React.FC<SessionListItemProps> = ({
   onAddFavorite,
   onRemoveFavorite,
   onShowAlert,
-  onRemoveTask,
   task,
   listType,
 }) => {
@@ -69,9 +67,6 @@ const SessionListItem: React.FC<SessionListItemProps> = ({
     }
   };
 
-  const removeTask = () => {
-    onRemoveTask(task.id);
-  };
 
   return (
     <IonItemSliding
@@ -84,7 +79,7 @@ const SessionListItem: React.FC<SessionListItemProps> = ({
         </IonLabel>
       </IonItem>
       <IonItemOptions>
-        <IonItemOption color="danger" onClick={() => removeTask()}>
+        <IonItemOption color="danger" onClick={() =>{}}>
           Done
         </IonItemOption>
       </IonItemOptions>
