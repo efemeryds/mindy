@@ -1,6 +1,7 @@
 import { getConfData } from '../dataApi';
 import { ActionType } from '../../util/types';
 import { ConfState } from './conf.state';
+import { Task } from '../../models/Task';
 
 export const loadConfData = () => async (dispatch: React.Dispatch<any>) => {
   dispatch(setLoading(true));
@@ -39,11 +40,14 @@ export const setSearchText = (searchText?: string) => ({
   type: 'set-search-text', 
   searchText 
 } as const);
-export const removeTask = (taskId: number) => ({ 
+export const removeTask = (taskId: string) => ({ 
   type: 'remove-task', 
   taskId
 } as const);
-
+export const addTask = (task: Task) => ({ 
+  type: 'add-task', 
+  task
+} as const);
 export const setMenuEnabled = (menuEnabled: boolean) => ({ 
   type: 'set-menu-enabled', 
   menuEnabled
@@ -55,6 +59,7 @@ export type SessionsActions =
   | ActionType<typeof addFavorite>
   | ActionType<typeof removeFavorite>
   | ActionType<typeof removeTask>
+  | ActionType<typeof addTask>
   | ActionType<typeof updateFilteredTracks>
   | ActionType<typeof setSearchText>
   | ActionType<typeof setMenuEnabled>

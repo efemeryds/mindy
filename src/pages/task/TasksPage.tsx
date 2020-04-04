@@ -26,6 +26,8 @@ import {
   IonLabel,
   IonItemOptions,
   IonItemOption,
+  IonText,
+  IonInput,
 } from "@ionic/react";
 import { options, search, addOutline } from "ionicons/icons";
 
@@ -36,8 +38,13 @@ import ShareSocialFab from "../../components/ShareSocialFab";
 
 import * as selectors from "../../data/selectors";
 import { connect } from "../../data/connect";
-import { setSearchText, removeTask } from "../../data/sessions/sessions.actions";
+import {
+  setSearchText,
+  removeTask,
+  addTask,
+} from "../../data/sessions/sessions.actions";
 import { Task } from "../../models/Task";
+import * as uuid from "uuid";
 
 interface OwnProps {}
 
@@ -48,6 +55,7 @@ interface StateProps {
 interface DispatchProps {
   setSearchText: typeof setSearchText;
   removeTask: typeof removeTask;
+  addTask: typeof addTask;
 }
 
 type TasksPageProps = OwnProps & StateProps & DispatchProps;
@@ -56,6 +64,7 @@ const TasksPage: React.FC<TasksPageProps> = ({
   setSearchText,
   tasks,
   removeTask,
+  addTask,
 }) => {
   console.log("taskspage.tasks loaded", tasks);
   const [showSearchbar, setShowSearchbar] = useState<boolean>(false);
@@ -73,7 +82,8 @@ const TasksPage: React.FC<TasksPageProps> = ({
   };
   const [showTaskDeletedToast, setShowTaskDeletedToast] = useState(false);
   const [showNewTaskModal, setShowNewTaskModal] = useState(false);
-  const [newTask, setNewTask] = useState("");
+  const [taskTitle, setTaskTitle] = useState("");
+  const [taskDescription, setTaskDescription] = useState("");
 
   return (
     <IonPage ref={pageRef} id="schedule-page">
@@ -112,7 +122,7 @@ const TasksPage: React.FC<TasksPageProps> = ({
       <IonContent fullscreen={true}>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Schedule</IonTitle>
+            <IonTitle size="large">Tasks</IonTitle>
           </IonToolbar>
           <IonToolbar>
             <IonSearchbar
@@ -173,19 +183,28 @@ const TasksPage: React.FC<TasksPageProps> = ({
 
       <ShareSocialFab />
       <IonModal isOpen={showNewTaskModal}>
-        <h1>Create a new task</h1>
-        <IonTextarea
-          value={newTask}
-          placeholder="Task details...."
-          onIonChange={(e) => setNewTask(e.detail.value!)}
-        ></IonTextarea>
-        <IonButton
-          onClick={() => {
-            setShowNewTaskModal(false);
-          }}
-        >
-          OK
-        </IonButton>
+        <IonContent>
+          <h1>Create a new task</h1>
+          <IonInput
+            value={taskTitle}
+            placeholder="Task Title"
+            onIonChange={(e) => setTaskTitle(e.detail.value!)}
+          />
+          <IonTextarea
+            value={taskDescription}
+            placeholder="Description..."
+            onIonChange={(e) => setTaskDescription(e.detail.value!)}
+            rows={5}
+          />
+          <IonButton
+            onClick={() => {
+              addTask(new Task(uuid.v4(), taskTitle, taskDescription));
+              setShowNewTaskModal(false);
+            }}
+          >
+            Add
+          </IonButton>
+        </IonContent>
       </IonModal>
       <IonFab vertical="bottom" horizontal="end" slot="fixed">
         <IonFabButton>
@@ -212,6 +231,7 @@ export default connect<OwnProps, StateProps, DispatchProps>({
   mapDispatchToProps: {
     setSearchText,
     removeTask,
+    addTask,
   },
   component: React.memo(TasksPage),
 });
