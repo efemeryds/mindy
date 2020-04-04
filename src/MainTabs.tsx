@@ -36,7 +36,7 @@ const MainTabs: React.FC<MainTabsProps> = () => {
           component={SpeakerDetail}
           exact={true}
         />
-        <Route path="/tabs/task/:id" component={TaskDetailPage} />
+        <Route path="/tabs/tasks/:id" component={TaskDetailPage} />
         <Route path="/tabs/about" render={() => <About />} exact={true} />
         <Route path="/tabs/mood" render={() => <Mood />} exact={true} />
 

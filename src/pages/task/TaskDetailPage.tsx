@@ -11,30 +11,38 @@ import {
   IonList,
   IonItem,
   IonLabel,
+  IonModal,
+  IonInput,
+  IonTextarea,
 } from "@ionic/react";
 import { connect } from "../../data/connect";
 import { withRouter, RouteComponentProps } from "react-router";
 import * as selectors from "../../data/selectors";
-import { starOutline, star, share } from "ionicons/icons";
-import { removeTask } from "../../data/sessions/sessions.actions";
+import { starOutline, star, share, createOutline } from "ionicons/icons";
+import { removeTask, updateTask } from "../../data/sessions/sessions.actions";
 import { Task } from "../../models/Task";
 
 interface OwnProps extends RouteComponentProps {}
 
 interface StateProps {
   task?: Task;
-
 }
 
 interface DispatchProps {
   removeTask: typeof removeTask;
+  updateTask: typeof updateTask;
 }
 
 type TaskDetailProps = OwnProps & StateProps & DispatchProps;
 
 const TaskDetailPage: React.FC<TaskDetailProps> = ({ task }) => {
   const [favourite, setFavourite] = useState(false);
-  console.log('task.detailspage',task)
+  const [showEditTaskModal, setShowEditTaskModal] = useState(false);
+  const [taskTitle, setTaskTitle] = useState(task ? task.title : "");
+  const [taskDescription, setTaskDescription] = useState(
+    task ? task.description : ""
+  );
+
   if (!task) {
     return <div>Task not found</div>;
   }
@@ -50,6 +58,9 @@ const TaskDetailPage: React.FC<TaskDetailProps> = ({ task }) => {
             <IonBackButton defaultHref="/tabs/tasks"></IonBackButton>
           </IonButtons>
           <IonButtons slot="end">
+            <IonButton onClick={() => setShowEditTaskModal(true)}>
+              <IonIcon slot="icon-only" icon={createOutline}></IonIcon>
+            </IonButton>
             <IonButton onClick={() => toggleFavorite()}>
               {favourite ? (
                 <IonIcon slot="icon-only" icon={star}></IonIcon>
@@ -74,6 +85,32 @@ const TaskDetailPage: React.FC<TaskDetailProps> = ({ task }) => {
           </IonItem>
         </IonList>
       </IonContent>
+      <IonModal isOpen={showEditTaskModal}>
+        <IonContent>
+          <h1>Edit task details</h1>
+          <IonInput
+            value={taskTitle}
+            placeholder="Task Title"
+            onIonChange={(e) => setTaskTitle(e.detail.value!)}
+          />
+          <IonTextarea
+            value={taskDescription}
+            placeholder="Description..."
+            onIonChange={(e) => setTaskDescription(e.detail.value!)}
+            rows={5}
+          />
+          <IonButton
+            onClick={() => {
+              task.title = taskTitle;
+              task.description = taskDescription;
+              updateTask(task);
+              setShowEditTaskModal(false);
+            }}
+          >
+            Add
+          </IonButton>
+        </IonContent>
+      </IonModal>
     </IonPage>
   );
 };
@@ -83,7 +120,8 @@ export default connect<OwnProps, StateProps, DispatchProps>({
     task: selectors.getTask(state, OwnProps),
   }),
   mapDispatchToProps: {
-    removeTask
+    removeTask,
+    updateTask,
   },
   component: withRouter(TaskDetailPage),
 });

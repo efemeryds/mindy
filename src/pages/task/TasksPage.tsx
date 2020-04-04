@@ -28,6 +28,7 @@ import {
   IonItemOption,
   IonText,
   IonInput,
+  useIonViewWillEnter,
 } from "@ionic/react";
 import { options, search, addOutline } from "ionicons/icons";
 
@@ -45,6 +46,7 @@ import {
 } from "../../data/sessions/sessions.actions";
 import { Task } from "../../models/Task";
 import * as uuid from "uuid";
+import { useLocation, useHistory } from "react-router";
 
 interface OwnProps {}
 
@@ -66,7 +68,6 @@ const TasksPage: React.FC<TasksPageProps> = ({
   removeTask,
   addTask,
 }) => {
-  console.log("taskspage.tasks loaded", tasks);
   const [showSearchbar, setShowSearchbar] = useState<boolean>(false);
   const [showFilterModal, setShowFilterModal] = useState(false);
   const ionRefresherRef = useRef<HTMLIonRefresherElement>(null);
@@ -84,6 +85,11 @@ const TasksPage: React.FC<TasksPageProps> = ({
   const [showNewTaskModal, setShowNewTaskModal] = useState(false);
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
+  const [, setForceRefreshAfterTaskEditHack] = useState(0);
+  
+  useIonViewWillEnter(() => {
+    setForceRefreshAfterTaskEditHack((state) => state + 1);
+  });
 
   return (
     <IonPage ref={pageRef} id="schedule-page">
@@ -150,7 +156,7 @@ const TasksPage: React.FC<TasksPageProps> = ({
         <IonList>
           {tasks.map((task) => (
             <IonItemSliding key={task.id}>
-              <IonItem routerLink={`/tabs/task/${task.id}`}>
+              <IonItem routerLink={`/tabs/tasks/${task.id}`}>
                 <IonLabel>
                   <h3>{task.title}</h3>
                 </IonLabel>
