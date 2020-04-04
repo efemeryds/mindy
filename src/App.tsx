@@ -38,6 +38,8 @@ import Signup from "./pages/auth/Signup";
 import Intro from "./pages/Intro";
 import HomeOrTutorial from "./components/HomeOrTutorial";
 import { Task } from "./models/Task";
+import { Topic } from "./models/Topic";
+import { RelaxActivity } from "./models/RelaxActivity";
 
 const App: React.FC = () => {
   return (
@@ -50,6 +52,8 @@ const App: React.FC = () => {
 interface StateProps {
   darkMode: boolean;
   tasks: Task[];
+  topics: Topic[];
+  relaxActivities: RelaxActivity[];
 }
 
 interface DispatchProps {
@@ -110,6 +114,8 @@ const IonicAppConnected = connect<{}, StateProps, DispatchProps>({
     darkMode: state.user.darkMode,
     schedule: state.data.schedule,
     tasks: state.data.tasks,
+    relaxActivities: state.data.relaxActivities,
+    topics: state.data.topics,
   }),
   mapDispatchToProps: {
     loadConfData,

@@ -7,7 +7,6 @@ import {
   IonButtons,
   IonTitle,
   IonMenuButton,
-  IonSegment,
   IonButton,
   IonIcon,
   IonSearchbar,
@@ -16,7 +15,6 @@ import {
   IonToast,
   IonModal,
   IonHeader,
-  getConfig,
   IonTextarea,
   IonFab,
   IonFabButton,
@@ -26,13 +24,12 @@ import {
   IonLabel,
   IonItemOptions,
   IonItemOption,
-  IonText,
   IonInput,
 } from "@ionic/react";
 import { options, search, addOutline } from "ionicons/icons";
 
 import SessionListFilter from "../../components/SessionListFilter";
-import "./TasksPage.scss";
+import "./RelaxActivityDetailPage.scss";
 
 import ShareSocialFab from "../../components/ShareSocialFab";
 
@@ -40,33 +37,33 @@ import * as selectors from "../../data/selectors";
 import { connect } from "../../data/connect";
 import {
   setSearchText,
-  removeTask,
-  addTask,
+  removeRelaxActivity,
+  addRelaxActivity,
 } from "../../data/sessions/sessions.actions";
-import { Task } from "../../models/Task";
+import { RelaxActivity } from "../../models/RelaxActivity";
 import * as uuid from "uuid";
 
 interface OwnProps {}
 
 interface StateProps {
-  tasks: Task[];
+  relaxactivitys: RelaxActivity[];
 }
 
 interface DispatchProps {
   setSearchText: typeof setSearchText;
-  removeTask: typeof removeTask;
-  addTask: typeof addTask;
+  removeRelaxActivity: typeof removeRelaxActivity;
+  addRelaxActivity: typeof addRelaxActivity;
 }
 
-type TasksPageProps = OwnProps & StateProps & DispatchProps;
+type RelaxActivitysPageProps = OwnProps & StateProps & DispatchProps;
 
-const TasksPage: React.FC<TasksPageProps> = ({
+const RelaxActivitysPage: React.FC<RelaxActivitysPageProps> = ({
   setSearchText,
-  tasks,
-  removeTask,
-  addTask,
+  relaxactivitys,
+  removeRelaxActivity,
+  addRelaxActivity,
 }) => {
-  console.log("taskspage.tasks loaded", tasks);
+  console.log("relaxactivityspage.relaxactivitys loaded", relaxactivitys);
   const [showSearchbar, setShowSearchbar] = useState<boolean>(false);
   const [showFilterModal, setShowFilterModal] = useState(false);
   const ionRefresherRef = useRef<HTMLIonRefresherElement>(null);
@@ -80,10 +77,15 @@ const TasksPage: React.FC<TasksPageProps> = ({
       setShowCompleteToast(true);
     }, 2500);
   };
-  const [showTaskDeletedToast, setShowTaskDeletedToast] = useState(false);
-  const [showNewTaskModal, setShowNewTaskModal] = useState(false);
-  const [taskTitle, setTaskTitle] = useState("");
-  const [taskDescription, setTaskDescription] = useState("");
+  const [
+    showRelaxActivityDeletedToast,
+    setShowRelaxActivityDeletedToast,
+  ] = useState(false);
+  const [showNewRelaxActivityModal, setShowNewRelaxActivityModal] = useState(
+    false
+  );
+  const [relaxactivityTitle, setRelaxActivityTitle] = useState("");
+  const [relaxactivityDescription, setRelaxActivityDescription] = useState("");
 
   return (
     <IonPage ref={pageRef} id="schedule-page">
@@ -94,7 +96,7 @@ const TasksPage: React.FC<TasksPageProps> = ({
               <IonMenuButton />
             </IonButtons>
           )}
-          {!showSearchbar && <IonTitle>My Tasks</IonTitle>}
+          {!showSearchbar && <IonTitle>My RelaxActivitys</IonTitle>}
           {showSearchbar && (
             <IonSearchbar
               showCancelButton="always"
@@ -122,7 +124,7 @@ const TasksPage: React.FC<TasksPageProps> = ({
       <IonContent fullscreen={true}>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Tasks</IonTitle>
+            <IonTitle size="large">RelaxActivitys</IonTitle>
           </IonToolbar>
           <IonToolbar>
             <IonSearchbar
@@ -148,19 +150,19 @@ const TasksPage: React.FC<TasksPageProps> = ({
         />
 
         <IonList>
-          {tasks.map((task) => (
-            <IonItemSliding key={task.id}>
-              <IonItem routerLink={`/tabs/task/${task.id}`}>
+          {relaxactivitys.map((relaxactivity) => (
+            <IonItemSliding key={relaxactivity.id}>
+              <IonItem routerLink={`/tabs/relaxactivity/${relaxactivity.id}`}>
                 <IonLabel>
-                  <h3>{task.title}</h3>
+                  <h3>{relaxactivity.title}</h3>
                 </IonLabel>
               </IonItem>
               <IonItemOptions>
                 <IonItemOption
                   color="danger"
                   onClick={() => {
-                    removeTask(task.id);
-                    setShowTaskDeletedToast(true);
+                    removeRelaxActivity(relaxactivity.id);
+                    setShowRelaxActivityDeletedToast(true);
                   }}
                 >
                   Done
@@ -182,24 +184,30 @@ const TasksPage: React.FC<TasksPageProps> = ({
       </IonModal>
 
       <ShareSocialFab />
-      <IonModal isOpen={showNewTaskModal}>
+      <IonModal isOpen={showNewRelaxActivityModal}>
         <IonContent>
-          <h1>Create a new task</h1>
+          <h1>Create a new relaxactivity</h1>
           <IonInput
-            value={taskTitle}
-            placeholder="Task Title"
-            onIonChange={(e) => setTaskTitle(e.detail.value!)}
+            value={relaxactivityTitle}
+            placeholder="RelaxActivity Title"
+            onIonChange={(e) => setRelaxActivityTitle(e.detail.value!)}
           />
           <IonTextarea
-            value={taskDescription}
+            value={relaxactivityDescription}
             placeholder="Description..."
-            onIonChange={(e) => setTaskDescription(e.detail.value!)}
+            onIonChange={(e) => setRelaxActivityDescription(e.detail.value!)}
             rows={5}
           />
           <IonButton
             onClick={() => {
-              addTask(new Task(uuid.v4(), taskTitle, taskDescription));
-              setShowNewTaskModal(false);
+              addRelaxActivity(
+                new RelaxActivity(
+                  uuid.v4(),
+                  relaxactivityTitle,
+                  relaxactivityDescription
+                )
+              );
+              setShowNewRelaxActivityModal(false);
             }}
           >
             Add
@@ -210,13 +218,13 @@ const TasksPage: React.FC<TasksPageProps> = ({
         <IonFabButton>
           <IonIcon
             icon={addOutline}
-            onClick={() => setShowNewTaskModal(true)}
+            onClick={() => setShowNewRelaxActivityModal(true)}
           />
         </IonFabButton>
       </IonFab>
       <IonToast
-        isOpen={showTaskDeletedToast}
-        message="Task has been completed."
+        isOpen={showRelaxActivityDeletedToast}
+        message="RelaxActivity has been completed."
         duration={2000}
       />
     </IonPage>
@@ -225,13 +233,13 @@ const TasksPage: React.FC<TasksPageProps> = ({
 
 export default connect<OwnProps, StateProps, DispatchProps>({
   mapStateToProps: (state) => ({
-    taskList: selectors.getSearchedSchedule(state),
-    tasks: state.data.tasks,
+    relaxactivityList: selectors.getSearchedSchedule(state),
+    relaxactivitys: state.data.relaxActivities,
   }),
   mapDispatchToProps: {
     setSearchText,
-    removeTask,
-    addTask,
+    removeRelaxActivity,
+    addRelaxActivity,
   },
-  component: React.memo(TasksPage),
+  component: React.memo(RelaxActivitysPage),
 });

@@ -1,17 +1,32 @@
-import React  from 'react';
-import { IonTabs, IonRouterOutlet, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/react';
-import { Route, Redirect } from 'react-router';
-import { calendar, informationCircle, people,man, homeSharp, statsChartOutline, heartOutline } from 'ionicons/icons';
-import TasksPage from './pages/task/TasksPage';
-import SpeakerList from './pages/SpeakerList';
-import SpeakerDetail from './pages/SpeakerDetail';
-import About from './pages/About';
-import Mood from './pages/Mood'
+import React from "react";
+import {
+  IonTabs,
+  IonRouterOutlet,
+  IonTabBar,
+  IonTabButton,
+  IonIcon,
+  IonLabel,
+} from "@ionic/react";
+import { Route, Redirect } from "react-router";
+import {
+  calendar,
+  informationCircle,
+  people,
+  man,
+  homeSharp,
+  statsChartOutline,
+  heartOutline,
+} from "ionicons/icons";
+import TaskPage from "./pages/task/TaskPage";
+import SpeakerList from "./pages/SpeakerList";
+import SpeakerDetail from "./pages/SpeakerDetail";
+import About from "./pages/About";
+import Mood from "./pages/Mood";
 
-import Mind from './pages/Mind';
-import Talks from './pages/Talks';
+import Mind from "./pages/Mind";
+import Talks from "./pages/Talks";
 import Home from "./pages/Home";
-import TaskDetailPage from './pages/task/TaskDetailPage';
+import TaskDetailPage from "./pages/task/TaskDetailPage";
 
 interface MainTabsProps {}
 
@@ -25,7 +40,7 @@ const MainTabs: React.FC<MainTabsProps> = () => {
           Use the component prop when your component depends on the RouterComponentProps passed in automatically.
 
         */}
-        <Route path="/tabs/tasks" render={() => <TasksPage />} exact={true} />
+        <Route path="/tabs/tasks" render={() => <TaskPage />} exact={true} />
         <Route
           path="/tabs/speakers"
           render={() => <SpeakerList />}
@@ -40,7 +55,6 @@ const MainTabs: React.FC<MainTabsProps> = () => {
         <Route path="/tabs/about" render={() => <About />} exact={true} />
         <Route path="/tabs/mood" render={() => <Mood />} exact={true} />
 
-        
         <Route path="/tabs/mind" render={() => <Mind />} exact={true} />
         <Route path="/tabs/talks" render={() => <Talks />} exact={true} />
         <Route path="/tabs/home" render={() => <Home />} exact={true} />
@@ -62,7 +76,6 @@ const MainTabs: React.FC<MainTabsProps> = () => {
         <IonTabButton tab="mind" href="/tabs/mind">
           <IonIcon icon={heartOutline} />
           <IonLabel>Relax</IonLabel>
-
         </IonTabButton>
         <IonTabButton tab="talks" href="/tabs/talks">
           <IonIcon icon={people} />
@@ -72,7 +85,6 @@ const MainTabs: React.FC<MainTabsProps> = () => {
           <IonIcon icon={informationCircle} />
           <IonLabel>Mood</IonLabel>
         </IonTabButton>
-
       </IonTabBar>
     </IonTabs>
   );
