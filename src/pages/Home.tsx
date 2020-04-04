@@ -44,9 +44,6 @@ const Home: React.FC = () => {
   return (
     <IonPage id="home-page">
       <IonContent>
-        <IonHeader>
-          <IonToolbar></IonToolbar>
-        </IonHeader>
         <div className="home-title">mindy</div>
         <div className="font2">structure your life</div>
         <IonGrid>
