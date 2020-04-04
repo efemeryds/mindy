@@ -49,7 +49,7 @@ const Home: React.FC = () => {
         </IonHeader>
 
         <div className="home-title">
-          Hello <p>my friend TOUMASH</p>
+          mindy <p>structure your life</p>
         </div>
         <IonGrid>
           <IonRow>
