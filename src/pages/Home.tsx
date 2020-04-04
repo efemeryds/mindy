@@ -57,7 +57,7 @@ const Home: React.FC = () => {
               <IconNav url="/tabs/tasks" text="Tasks" iconName="tasks.png" />
             </IonCol>
             <IonCol>
-              <IconNav url="/tabs/topic" text="Topic" iconName="topics.png" />
+              <IconNav url="/tabs/talks" text="Topics" iconName="topics.png" />
             </IonCol>
           </IonRow>
           <IonRow>
@@ -70,7 +70,7 @@ const Home: React.FC = () => {
           </IonRow>
           <IonRow>
             <IonCol>
-              <IconNav url="/tabs/talks" text="Cloud" iconName="cloud.png" />
+              <IconNav url="/tabs/speakers" text="Inspirations" iconName="cloud.png" />
             </IonCol>
           </IonRow>
         </IonGrid>
