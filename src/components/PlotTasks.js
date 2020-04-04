@@ -2,20 +2,29 @@ import React, { Component } from 'react'
 import * as d3 from 'd3'
 import './PlotComponent.css'
 
-
-class PlotComponent extends Component {
+class PlotTasks extends Component {
     componentDidMount() {
-        const data = [{"time": "2014-05-13T17:00:00.000Z", "mood": 4.0},
-         {"time": "2014-05-13T18:00:00.000Z", "mood": 8.0}, 
-         {"time": "2014-05-13T20:00:00.000Z", "mood": 5.0},
-            {"time": "2014-05-14T18:30:00.000Z", "mood": 10.0}, 
-            {"time": "2014-05-14T18:45:00.000Z", "mood": 8.0},
-             {"time": "2014-05-14T19:00:00.000Z", "mood": 7.0},
-             {"time": "2014-05-15T18:00:00.000Z", "mood": 8.0}, 
-         {"time": "2014-05-16T18:15:00.000Z", "mood": 5.0},
-            {"time": "2014-05-16T18:30:00.000Z", "mood": 10.0}, 
-            {"time": "2014-05-17T18:45:00.000Z", "mood": 8.0},
-             {"time": "2014-05-17T19:00:00.000Z", "mood": 7.0}
+        const data = [{"time": "2014-05-13T17:00:00.000Z", "mood": 0.0},
+         {"time": "2014-05-13T18:00:00.000Z", "mood": 2.0}, 
+         {"time": "2014-05-13T20:00:00.000Z", "mood": 1.0},
+            {"time": "2014-05-14T18:30:00.000Z", "mood": 8.0}, 
+            {"time": "2014-05-14T18:45:00.000Z", "mood": 5.0},
+             {"time": "2014-05-14T19:00:00.000Z", "mood": 6.0},
+             {"time": "2014-05-15T18:00:00.000Z", "mood": 9.0}, 
+         {"time": "2014-05-16T18:15:00.000Z", "mood": 3.0},
+            {"time": "2014-05-16T18:30:00.000Z", "mood": 4.0}, 
+            {"time": "2014-05-17T18:45:00.000Z", "mood": 3.0},
+             {"time": "2014-05-18T19:00:00.000Z", "mood": 5.0},
+             {"time": "2014-05-18T18:00:00.000Z", "mood": 4.0}, 
+             {"time": "2014-05-18T20:00:00.000Z", "mood": 4.0},
+                {"time": "2014-05-19T18:30:00.000Z", "mood": 3.0}, 
+                {"time": "2014-05-19T18:45:00.000Z", "mood": 7.0},
+                 {"time": "2014-05-19T19:00:00.000Z", "mood": 9.0},
+                 {"time": "2014-05-19T18:00:00.000Z", "mood": 9.0}, 
+             {"time": "2014-05-19T18:15:00.000Z", "mood": 4.0},
+                {"time": "2014-05-19T18:30:00.000Z", "mood": 4.0}, 
+                {"time": "2014-05-19T18:45:00.000Z", "mood": 4.0},
+                 {"time": "2014-05-19T19:00:00.000Z", "mood": 3.0}
             
             ]
 
@@ -77,7 +86,7 @@ class PlotComponent extends Component {
                 })
                 ;
         
-            var area = d3.svg.area()
+            var area2 = d3.svg.area()
             .x(function(d) { return xScale(d.time); })
             .y0(height)
             .y1(function(d) { return yScale(d.mood); });
@@ -95,8 +104,8 @@ class PlotComponent extends Component {
             
                 myChart.append("path")
                 .datum(data)
-                .attr("class", "area")
-                .attr("d", area);
+                .attr("class", "area2")
+                .attr("d", area2);
 
 
             myChart.append("path")	
@@ -105,7 +114,7 @@ class PlotComponent extends Component {
                 .attr('class', 'line')
                 .attr("d", lineGen)
                 .attr("data-legend", "pulse")
-                .attr('stroke', "#00aaff")
+                .attr('stroke', "#9999ff")
                 .attr('stroke-width', 1)
                 .attr('fill', 'none');
         
@@ -136,6 +145,7 @@ class PlotComponent extends Component {
         
 
 
+
             var vGuide = mainElement.select('svg').append('g').attr("class", "y axis")
             vAxis(vGuide)
             vGuide.attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')');
@@ -150,12 +160,10 @@ class PlotComponent extends Component {
             hAxis(hGuide)
             hGuide.attr('transform', 'translate(' + margin.left + ', ' + (height + margin.top) + ')')
         };
-
-         
+            
 
     render() { return <div className="svg-container" ref="canvas"></div> }
 }
 
-export default PlotComponent
-
+export default PlotTasks
 
