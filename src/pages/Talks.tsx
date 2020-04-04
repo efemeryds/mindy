@@ -13,7 +13,7 @@ const Talks: React.FC = () => {
           <IonButtons slot="start">
             <IonMenuButton></IonMenuButton>
           </IonButtons>
-          <IonTitle>Talks</IonTitle>
+          <IonTitle>Topics</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent >
