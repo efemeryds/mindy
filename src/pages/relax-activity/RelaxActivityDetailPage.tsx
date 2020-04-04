@@ -49,7 +49,7 @@ const RelaxActivityDetailPage: React.FC<RelaxActivityDetailProps> = ({
     relaxActivity ? relaxActivity.title : ""
   );
   const [relaxactivityMotivation, setRelaxActivityMotivation] = useState(
-    relaxActivity ? relaxActivity.motivation : ""
+    relaxActivity ? relaxActivity.description : ""
   );
 
   if (!relaxActivity) {
@@ -86,7 +86,7 @@ const RelaxActivityDetailPage: React.FC<RelaxActivityDetailProps> = ({
       <IonContent>
         <div className="ion-padding">
           <h1>{relaxActivity.title}</h1>
-          <p>{relaxActivity.motivation}</p>
+          <p>{relaxActivity.description}</p>
         </div>
         <IonList>
           <IonItem onClick={() => {}} button>
@@ -111,7 +111,7 @@ const RelaxActivityDetailPage: React.FC<RelaxActivityDetailProps> = ({
           <IonButton
             onClick={() => {
               relaxActivity.title = relaxactivityTitle;
-              relaxActivity.motivation = relaxactivityMotivation;
+              relaxActivity.description = relaxactivityMotivation;
               updateRelaxActivity(relaxActivity);
               setShowEditRelaxActivityModal(false);
             }}

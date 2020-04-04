@@ -1,10 +1,10 @@
 export class RelaxActivity {
-  constructor(id: string, title: string, motivation: string) {
+  constructor(id: string, title: string, description: string) {
     this.id = id;
     this.title = title;
-    this.motivation = motivation;
+    this.description = description;
   }
   public id!: string;
   public title!: string;
-  public motivation!: string;
+  public description!: string;
 }
