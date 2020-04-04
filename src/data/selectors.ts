@@ -97,5 +97,5 @@ export const getSpeakerSessions = createSelector(getSessions, (sessions) => {
 export const getTasks = (state: AppState) => state.data.tasks;
 
 export const getTask = createSelector(getTasks, getIdParam, (tasks, id) =>
-  tasks.find((t) => t.id === id as number)
+  tasks.find((t) => t.id == id)
 );
