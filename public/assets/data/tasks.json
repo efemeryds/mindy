@@ -2,5 +2,11 @@
     { "id": "D4A00876-AA58-BB8A-D406-DC14EC7311F8", "title": "Read 30 minutes before sleep", "motivation": "Pleasure and avoiding electronics before sleep" },
     { "id": "E74E00ED-022A-A7FE-F6D6-21346CBDF342", "title": "Excerices for 20 minutes in the morning", "motivation": "Feel better and stay healthy" },
     { "id": "529A9907-F185-2EDD-B2F7-7FE72E2FA2B3", "title": "Prepare fresh juice", "motivation": "Getting my vitamins" },
-    { "id": "529A9907-F185-2EDD-B2F7-7FE72E2FA2B3", "title": "Meditate for 15 minutes", "motivation": "Staying calm and relaxed" }
+    { "id": "ed3381e4-178a-492c-b08a-edb9ca46f300", "title": "Meditate for 15 minutes", "motivation": "Staying calm and relaxed" },
+    { "id": "830cdfae-192e-4886-8a8d-25a50b6c957f", "title": "Practise Russian for 10 minutes", "motivation": "Travelling to Petersburg" },
+    { "id": "6951e993-e4e5-4151-ac40-ec7a13c5be6a", "title": "Tell friend why you admire them", "motivation": "Seeing good in others" },
+    { "id": "76bc0c4d-288c-49d1-a2fa-def7cd95bf24", "title": "Ordering computer files", "motivation": "Order outside helps ordering inside" },
+    { "id": "4cd24b2a-5beb-4106-a230-39a6ff64fe4e", "title": "Practise focusing on one thing", "motivation": "Being more calm" },
+    { "id": "2fc0d26c-e915-4991-9b65-394b344b2bc8", "title": "Call long unseen friend", "motivation": "Remember to think about others" },
+    { "id": "1ea46b79-ec89-4aa6-b3a8-c3d0e54a4ac3", "title": "Bake new cake", "motivation": "Learning something new" },
 ]
