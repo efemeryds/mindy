@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 import { IonToolbar, IonContent, IonPage, IonButtons, IonTitle, IonMenuButton, IonSegment, IonSegmentButton, IonButton, IonIcon, IonSearchbar, IonRefresher, IonRefresherContent, IonToast, IonModal, IonHeader, getConfig } from '@ionic/react';
 import { options, search } from 'ionicons/icons';
 
-import SessionList from '../components/SessionList';
+import TaskList from '../components/TaskList';
 import SessionListFilter from '../components/SessionListFilter';
 import './TasksPage.scss'
 
@@ -121,12 +121,12 @@ const TasksPage: React.FC<TasksPageProps> = ({ favoritesSchedule, taskList: sche
           onDidDismiss={() => setShowCompleteToast(false)}
         />
 
-        <SessionList
+        <TaskList
           tasks={schedule}
           listType={segment}
           hide={segment === 'favorites'}
         />
-        <SessionList
+        <TaskList
           // schedule={schedule}
           tasks={favoritesSchedule}
           listType={segment}

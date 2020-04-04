@@ -38,7 +38,7 @@ const TaskList: React.FC<TaskListProps> = ({ addFavorite: addPriority, removeFav
     return (
       <IonList>
         <IonListHeader>
-          No Sessions Found
+          No Tasks
         </IonListHeader>
       </IonList>
     );
@@ -49,11 +49,6 @@ const TaskList: React.FC<TaskListProps> = ({ addFavorite: addPriority, removeFav
       <IonList style={hide ? { display: 'none' } : {}}>
         {tasks.groups.map((group, index: number) => (
           <IonItemGroup key={`group-${index}`}>
-            {/* <IonItemDivider sticky>
-              <IonLabel>
-                {group.time}
-              </IonLabel>
-            </IonItemDivider> */}
             {group.sessions.map((task: Task, taskIndex: number) => (
               <TaskListItem
                 onShowAlert={handleShowAlert}
