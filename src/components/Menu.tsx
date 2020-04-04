@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { RouteComponentProps, withRouter, useLocation } from "react-router";
 
 import { IonContent, IonIcon, IonItem, IonLabel, IonList, IonListHeader, IonMenu, IonMenuToggle, IonToggle } from '@ionic/react';
-import { calendarOutline, man, people, hammer, moonOutline, help, informationCircleOutline, logIn, logOut, mapOutline, peopleOutline, person, personAdd } from 'ionicons/icons';
+import { calendarOutline, man, people, hammer, moonOutline, help, informationCircleOutline, logIn, logOut, mapOutline, peopleOutline, person, personAdd, statsChartOutline, heartOutline } from 'ionicons/icons';
 
 import { connect } from "../data/connect";
 import { setDarkMode } from "../data/user/user.actions";
@@ -12,10 +12,12 @@ import "./Menu.css";
 const routes = {
   appPages: [
     { title: 'Task list', path: '/tabs/tasks', icon: calendarOutline },
-    { title: 'Inspiration', path: '/tabs/speakers', icon: peopleOutline },
-    { title: 'Mind', path: '/tabs/mind', icon: man},
-    { title: 'Talks', path: '/tabs/talks', icon: people},
-    { title: 'Mood', path: '/tabs/mood', icon: peopleOutline }
+    { title: 'Mood', path: '/tabs/mood', icon: statsChartOutline},
+    { title: 'Relax', path: '/tabs/mind', icon: heartOutline},
+    { title: 'Topics', path: '/tabs/talks', icon: people},
+    { title: 'Inspiration', path: '/tabs/speakers', icon: peopleOutline }
+  
+
     ],
   loggedInPages: [
     { title: 'Account', path: '/account', icon: person },
