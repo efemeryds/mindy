@@ -4,6 +4,7 @@ import './Login.scss';
 import { setIsLoggedIn, setUsername } from '../data/user/user.actions';
 import { connect } from '../data/connect';
 import { RouteComponentProps } from 'react-router';
+import {registerUser} from '../firebase/firebaseConfig'
 
 interface OwnProps extends RouteComponentProps {}
 
@@ -18,11 +19,13 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [cpassword, setcPassword] = useState('');
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [usernameError, setUsernameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
+  const [cpasswordError, setcPasswordError] = useState(false);
 
-  const login = async (e: React.FormEvent) => {
+  const register = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormSubmitted(true);
     if(!username) {
@@ -31,11 +34,19 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
     if(!password) {
       setPasswordError(true);
     }
+    if(!cpassword) {
+      setcPasswordError(true);
+    }
+    if(cpassword !== password){
+      setPasswordError(true);
+      setcPasswordError(true);
+    }
 
     if(username && password) {
-      await setIsLoggedIn(true);
-      await setUsernameAction(username);
-      history.push('/tabs/tasks', {direction: 'none'});
+      var res = await registerUser(username, password);
+      if(res){
+        history.push('/login', {direction: 'none'});
+      }
     }
   };
 
@@ -52,7 +63,7 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
       <IonContent color="secondary">
         <IonGrid>
 
-        <form noValidate onSubmit={login}>
+        <form noValidate onSubmit={register}>
           
         <IonItem class="input-style">
               <IonLabel position="stacked" color="primary">Username</IonLabel>
@@ -75,8 +86,21 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
                 setPassword(e.detail.value!);
                 setPasswordError(false);
               }}>
-              </IonInput>
-          
+              </IonInput>         
+            {formSubmitted && passwordError && <IonText color="danger">
+              <p className="ion-padding-start">
+                Password is required
+              </p>
+            </IonText>}
+            </IonItem>
+
+            <IonItem class="input-style">
+              <IonLabel position="stacked" color="primary">Re-enter Password</IonLabel>
+              <IonInput name="cpassword" type="password" value={cpassword} onIonChange={e => {
+                setcPassword(e.detail.value!);
+                setcPasswordError(false);
+              }}>
+              </IonInput>          
 
             {formSubmitted && passwordError && <IonText color="danger">
               <p className="ion-padding-start">

@@ -4,7 +4,7 @@ import './Login.scss';
 import { setIsLoggedIn, setUsername } from '../data/user/user.actions';
 import { connect } from '../data/connect';
 import { RouteComponentProps } from 'react-router';
-
+import {loginUser} from '../firebase/firebaseConfig';
 interface OwnProps extends RouteComponentProps {}
 
 interface DispatchProps {
@@ -33,9 +33,12 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
     }
 
     if(username && password) {
-      await setIsLoggedIn(true);
-      await setUsernameAction(username);
-      history.push('/tabs/tasks', {direction: 'none'});
+      var result = await loginUser(username, password);
+      if(result){
+        await setIsLoggedIn(true);
+        await setUsernameAction(username);
+        history.push('/tabs/schedule', {direction: 'none'});
+      }
     }
   };
 
