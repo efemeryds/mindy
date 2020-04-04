@@ -25,6 +25,7 @@ import {
   IonItemOptions,
   IonItemOption,
   IonInput,
+  useIonViewWillEnter,
 } from "@ionic/react";
 import { options, search, addOutline } from "ionicons/icons";
 
@@ -86,7 +87,10 @@ const RelaxActivitysPage: React.FC<RelaxActivitysPageProps> = ({
   );
   const [relaxactivityTitle, setRelaxActivityTitle] = useState("");
   const [relaxactivityDescription, setRelaxActivityDescription] = useState("");
-
+  const [, setForceRefreshAfterTaskEditHack] = useState(0);
+  useIonViewWillEnter(() => {
+    setForceRefreshAfterTaskEditHack((state) => state + 1);
+  });
   return (
     <IonPage ref={pageRef} id="schedule-page">
       <IonHeader translucent={true}>
@@ -96,7 +100,7 @@ const RelaxActivitysPage: React.FC<RelaxActivitysPageProps> = ({
               <IonMenuButton />
             </IonButtons>
           )}
-          {!showSearchbar && <IonTitle>My RelaxActivitys</IonTitle>}
+          {!showSearchbar && <IonTitle>Relaxing Activities</IonTitle>}
           {showSearchbar && (
             <IonSearchbar
               showCancelButton="always"
@@ -124,7 +128,7 @@ const RelaxActivitysPage: React.FC<RelaxActivitysPageProps> = ({
       <IonContent fullscreen={true}>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">RelaxActivitys</IonTitle>
+            <IonTitle size="large">Relaxing Activities</IonTitle>
           </IonToolbar>
           <IonToolbar>
             <IonSearchbar

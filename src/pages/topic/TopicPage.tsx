@@ -25,6 +25,7 @@ import {
   IonItemOptions,
   IonItemOption,
   IonInput,
+  useIonViewWillEnter,
 } from "@ionic/react";
 import { options, search, addOutline } from "ionicons/icons";
 
@@ -81,6 +82,10 @@ const TopicPage: React.FC<TopicsPageProps> = ({
   const [showNewTopicModal, setShowNewTopicModal] = useState(false);
   const [topicTitle, setTopicTitle] = useState("");
   const [topicDescription, setTopicDescription] = useState("");
+  const [, setForceRefreshAfterTaskEditHack] = useState(0);
+  useIonViewWillEnter(() => {
+    setForceRefreshAfterTaskEditHack((state) => state + 1);
+  });
 
   return (
     <IonPage ref={pageRef} id="schedule-page">
@@ -91,7 +96,7 @@ const TopicPage: React.FC<TopicsPageProps> = ({
               <IonMenuButton />
             </IonButtons>
           )}
-          {!showSearchbar && <IonTitle>My Topics</IonTitle>}
+          {!showSearchbar && <IonTitle>Topics to discuss</IonTitle>}
           {showSearchbar && (
             <IonSearchbar
               showCancelButton="always"
@@ -119,7 +124,7 @@ const TopicPage: React.FC<TopicsPageProps> = ({
       <IonContent fullscreen={true}>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Topics</IonTitle>
+            <IonTitle size="large">Topics to discuss</IonTitle>
           </IonToolbar>
           <IonToolbar>
             <IonSearchbar
