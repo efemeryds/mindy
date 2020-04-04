@@ -1,23 +1,29 @@
 # Mindy - structure your life 
 
+![alt text](home.png)
 
-
-## Why? </br>
+# Why? </br>
 
 In these chaotic times many find it extremely difficult to organise their time, thoughts and well-being. We decided to offer a solution that address all of the above issues. **Mindy** helps to **increase our self-awareness and structure life to calm the mind**
 
-## How?
+# How?
 
 By planning time, reminding about motivation, the ability to observe the change in mood over time, gathering ideas for relaxation and topics for conversation in one place
 
-## What?
+# What?
 
 An application that combines the above functionalities: task planning, notifications, mood charts, a set of relaxation techniques, a set of important topics
 
 
-## What's next
+# How it works
 
 
+
+# What's next
+
+
+
+# How to access
 
 
 
@@ -38,3 +44,4 @@ ionic build --prod --release
 firebase deploy
 ```
 ## How to access
+
