@@ -139,3 +139,7 @@ export const mapCenter = (state: AppState) => {
   }
   return item;
 }
+
+export const getTasks = (state:AppState)=>{
+  return state.data.tasks;
+}

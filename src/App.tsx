@@ -40,6 +40,7 @@ import Intro from "./pages/Intro";
 import HomeOrTutorial from "./components/HomeOrTutorial";
 import { Schedule } from "./models/Schedule";
 import Mind from "./pages/Mind";
+import { Task } from "./models/Task";
 
 const App: React.FC = () => {
   return (
@@ -52,6 +53,7 @@ const App: React.FC = () => {
 interface StateProps {
   darkMode: boolean;
   schedule: Schedule;
+  tasks:Task[];
 }
 
 interface DispatchProps {
@@ -70,12 +72,14 @@ const IonicApp: React.FC<IonicAppProps> = ({
   setUsername,
   loadConfData,
   loadUserData,
+  tasks
 }) => {
   useEffect(() => {
     loadUserData();
     loadConfData();
     // eslint-disable-next-line
   }, []);
+  console.log('app.run tasks state',tasks);
 
   return schedule.groups.length === 0 ? (
     <div></div>
@@ -113,6 +117,7 @@ const IonicAppConnected = connect<{}, StateProps, DispatchProps>({
   mapStateToProps: (state) => ({
     darkMode: state.user.darkMode,
     schedule: state.data.schedule,
+    tasks:state.data.tasks
   }),
   mapDispatchToProps: {
     loadConfData,

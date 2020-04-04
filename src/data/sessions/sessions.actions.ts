@@ -29,10 +29,6 @@ export const removeFavorite = (sessionId: number) => ({
   sessionId
 } as const);
 
-export const removeTask = (taskId: number) => ({
-  type: 'remove-task',
-  taskId
-} as const);
 
 export const updateFilteredTracks = (filteredTracks: string[]) => ({
   type: 'update-filtered-tracks', 
@@ -42,6 +38,10 @@ export const updateFilteredTracks = (filteredTracks: string[]) => ({
 export const setSearchText = (searchText?: string) => ({ 
   type: 'set-search-text', 
   searchText 
+} as const);
+export const removeTask = (taskId: number) => ({ 
+  type: 'remove-task', 
+  taskId
 } as const);
 
 export const setMenuEnabled = (menuEnabled: boolean) => ({ 

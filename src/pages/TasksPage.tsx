@@ -12,14 +12,16 @@ import ShareSocialFab from '../components/ShareSocialFab';
 import * as selectors from '../data/selectors';
 import { connect } from '../data/connect';
 import { setSearchText, removeTask } from '../data/sessions/sessions.actions';
-import { Schedule as Task } from '../models/Schedule';
+import { Schedule as Task2 } from '../models/Schedule';
+import { Task } from '../models/Task';
 
 interface OwnProps { }
 
 interface StateProps {
-  taskList: Task;
-  favoritesSchedule: Task;
+  taskList: Task2;
+  favoritesSchedule: Task2;
   mode: 'ios' | 'md'
+  tasks:Task[];
 }
 
 interface DispatchProps {
@@ -29,7 +31,8 @@ interface DispatchProps {
 
 type TasksPageProps = OwnProps & StateProps & DispatchProps;
 
-const TasksPage: React.FC<TasksPageProps> = ({ favoritesSchedule, taskList: schedule, setSearchText, mode, removeTask}) => {
+const TasksPage: React.FC<TasksPageProps> = ({ favoritesSchedule, taskList: schedule, setSearchText, mode,tasks,removeTask}) => {
+  console.log('taskspage.tasks loaded',tasks)
   const [segment, setSegment] = useState<'all' | 'favorites'>('all');
   const [showSearchbar, setShowSearchbar] = useState<boolean>(false);
   const [showFilterModal, setShowFilterModal] = useState(false);
@@ -52,6 +55,7 @@ const TasksPage: React.FC<TasksPageProps> = ({ favoritesSchedule, taskList: sche
   };
   const [showNewTaskModal, setShowNewTaskModal] = useState(false);
   const [newTask, setNewTask] = useState("");
+
   return (
     <IonPage ref={pageRef} id="schedule-page">
       <IonHeader translucent={true}>
@@ -126,19 +130,20 @@ const TasksPage: React.FC<TasksPageProps> = ({ favoritesSchedule, taskList: sche
           duration={2000}
           onDidDismiss={() => setShowCompleteToast(false)}
         />
-
+{tasks.map(task=><div key={task.id} onClick={(e)=>{
+  console.log('task remove clicked',task)
+  removeTask(task.id)
+}}>{task.id}</div>)}
         <TaskList
           tasks={schedule}
           listType={segment}
           hide={segment === 'favorites'}
-          onRemoveTask={id=>removeTask(id)}
         />
         <TaskList
           // schedule={schedule}
           tasks={favoritesSchedule}
           listType={segment}
           hide={segment === 'all'}
-          onRemoveTask={id=> removeTask(id)}
         />
       </IonContent>
 
@@ -192,7 +197,8 @@ export default connect<OwnProps, StateProps, DispatchProps>({
   mapStateToProps: (state) => ({
     taskList: selectors.getSearchedSchedule(state),
     favoritesSchedule: selectors.getGroupedFavorites(state),
-    mode: getConfig()!.get('mode')
+    mode: getConfig()!.get('mode'),
+    tasks: state.data.tasks
   }),
   mapDispatchToProps: {
     setSearchText,

@@ -4,6 +4,7 @@ import { userReducer } from './user/user.reducer';
 
 export const initialState: AppState = {
   data: {
+    tasks: [],
     schedule: { groups: [] } as any,
     sessions: [],
     speakers: [],
