@@ -1,12 +1,11 @@
 import React  from 'react';
 import { IonTabs, IonRouterOutlet, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/react';
 import { Route, Redirect } from 'react-router';
-import { calendar, location, informationCircle, people } from 'ionicons/icons';
+import { calendar, informationCircle, people } from 'ionicons/icons';
 import TasksPage from './TasksPage';
 import SpeakerList from './SpeakerList';
 import SpeakerDetail from './SpeakerDetail';
 import SessionDetail from './SessionDetail';
-import MapView from './MapView';
 import About from './About';
 
 interface MainTabsProps { }
@@ -26,7 +25,6 @@ const MainTabs: React.FC<MainTabsProps> = () => {
         <Route path="/tabs/speakers/:id" component={SpeakerDetail} exact={true} />
         <Route path="/tabs/schedule/:id" component={SessionDetail} />
         <Route path="/tabs/speakers/sessions/:id" component={SessionDetail} />
-        <Route path="/tabs/map" render={() => <MapView />} exact={true} />
         <Route path="/tabs/about" render={() => <About />} exact={true} />
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
@@ -37,10 +35,6 @@ const MainTabs: React.FC<MainTabsProps> = () => {
         <IonTabButton tab="speakers" href="/tabs/speakers">
           <IonIcon icon={people} />
           <IonLabel>Speakers</IonLabel>
-        </IonTabButton>
-        <IonTabButton tab="map" href="/tabs/map">
-          <IonIcon icon={location} />
-          <IonLabel>Map</IonLabel>
         </IonTabButton>
         <IonTabButton tab="about" href="/tabs/about">
           <IonIcon icon={informationCircle} />

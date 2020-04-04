@@ -26,9 +26,9 @@ interface DispatchProps {
   setSearchText: typeof setSearchText;
 }
 
-type SchedulePageProps = OwnProps & StateProps & DispatchProps;
+type TasksPageProps = OwnProps & StateProps & DispatchProps;
 
-const TasksPage: React.FC<SchedulePageProps> = ({ favoritesSchedule, taskList: schedule, setSearchText, mode }) => {
+const TasksPage: React.FC<TasksPageProps> = ({ favoritesSchedule, taskList: schedule, setSearchText, mode }) => {
   const [segment, setSegment] = useState<'all' | 'favorites'>('all');
   const [showSearchbar, setShowSearchbar] = useState<boolean>(false);
   const [showFilterModal, setShowFilterModal] = useState(false);
