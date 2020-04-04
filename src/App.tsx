@@ -35,6 +35,7 @@ import Support from './pages/Support';
 import Tutorial from './pages/Tutorial';
 import HomeOrTutorial from './components/HomeOrTutorial';
 import { Schedule } from "./models/Schedule";
+import Mind from './pages/Mind';
 
 const App: React.FC = () => {
   return (
@@ -81,6 +82,7 @@ const IonicApp: React.FC<IonicAppProps> = ({ darkMode, schedule, setIsLoggedIn, 
                 <Route path="/signup" component={Signup} />
                 <Route path="/support" component={Support} />
                 <Route path="/tutorial" component={Tutorial} />
+                <Route path="/mind" component={Mind} />                
                 <Route path="/logout" render={() => {
                   setIsLoggedIn(false);
                   setUsername(undefined);
