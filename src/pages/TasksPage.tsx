@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 
-import { IonToolbar, IonContent, IonPage, IonButtons, IonTitle, IonMenuButton, IonSegment, IonSegmentButton, IonButton, IonIcon, IonSearchbar, IonRefresher, IonRefresherContent, IonToast, IonModal, IonHeader, getConfig } from '@ionic/react';
-import { options, search } from 'ionicons/icons';
+import { IonToolbar, IonContent, IonPage, IonButtons, IonTitle, IonMenuButton, IonSegment, IonSegmentButton, IonButton, IonIcon, IonSearchbar, IonRefresher, IonRefresherContent, IonToast, IonModal, IonHeader, getConfig, IonTextarea, IonFab, IonFabButton } from '@ionic/react';
+import { options, search, addOutline } from 'ionicons/icons';
 
 import TaskList from '../components/TaskList';
 import SessionListFilter from '../components/SessionListFilter';
@@ -46,6 +46,12 @@ const TasksPage: React.FC<TasksPageProps> = ({ favoritesSchedule, taskList: sche
       setShowCompleteToast(true);
     }, 2500)
   };
+  const [showTaskDeletedToast, setShowTaskDeletedToast] = useState(false);
+  const addTask = (title: string) => {
+    console.log('tasks.new called')
+  };
+  const [showNewTaskModal, setShowNewTaskModal] = useState(false);
+  const [newTask, setNewTask] = useState("");
   return (
     <IonPage ref={pageRef} id="schedule-page">
       <IonHeader translucent={true}>
@@ -149,7 +155,35 @@ const TasksPage: React.FC<TasksPageProps> = ({ favoritesSchedule, taskList: sche
       </IonModal>
 
       <ShareSocialFab />
-
+      <IonModal isOpen={showNewTaskModal}>
+          <h1>Create a new task</h1>
+            <IonTextarea
+              value={newTask}
+              placeholder="Task details...."
+              onIonChange={(e) => setNewTask(e.detail.value!)}
+            ></IonTextarea>
+          <IonButton
+            onClick={() => {
+              addTask(newTask);
+              setShowNewTaskModal(false);
+            }}
+          >
+            OK
+          </IonButton>
+        </IonModal>
+        <IonFab vertical="bottom" horizontal="end" slot="fixed">
+          <IonFabButton>
+            <IonIcon
+              icon={addOutline}
+              onClick={() => setShowNewTaskModal(true)}
+            />
+          </IonFabButton>
+        </IonFab>
+        <IonToast
+          isOpen={showTaskDeletedToast}
+          message="Task has been completed."
+          duration={2000}
+        />
     </IonPage>
   );
 };
