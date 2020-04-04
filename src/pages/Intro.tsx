@@ -42,7 +42,7 @@ const Tutorial: React.FC<TutorialProps> = ({
   const startApp = async () => {
     await setHasSeenTutorial(true);
     await setMenuEnabled(true);
-    history.push("/tabs/tasks", { direction: "none" });
+    history.push("/tabs/home", { direction: "none" });
   };
 
   const handleSlideChangeStart = () => {
