@@ -22,9 +22,19 @@ An application that combines the above functionalities: task planning, notificat
 
 
 ## How to build
-```
+
+```shell
 npm install -g @ionic/cli
 npm install
 ionic serve
+```
+
+## How to deploy?
+
+```shell
+npm install -g firebase-tools
+firebase login
+ionic build --prod --release
+firebase deploy
 ```
 ## How to access
