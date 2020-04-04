@@ -3,14 +3,45 @@
     padding: 20px 0;
     min-height: 200px;
     text-align: center;
-  }
-  
+  }  
   .login-logo img {
     max-width: 150px;
-  }
-  
+  }  
   .list {
     margin-bottom: 0;
   }
-  
+}
+
+ion-content ion-toolbar {
+  --background: translucent;
+}
+.header-class{
+  --background: var(--header);
+}
+.body{
+  --background: var(--content);
+}
+.down{
+  width: 100%;
+  padding: 40px;
+  bottom: 0;
+  left: auto;
+  right: auto;
+  position: fixed;
+}
+
+.font{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 40px;
+  font-style: italic;
+  text-align: center;
+}
+.fontless{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 30px;
+  font-style: italic;
+  text-align: center;
+}
+.input-style{
+  padding: 2px;  
 }
