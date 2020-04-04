@@ -63,10 +63,12 @@ const TaskPage: React.FC = () => {
         <IonList>
           {task.map((task, i) => (
             <IonItem key={i} onClick={() => history.push("/task/" + i)}>
+              <span className="checkbox-container">
                 <IonCheckbox
                   checked={false}
                   onIonChange={() => removeTask(i)}
                 />
+              </span>
               <IonLabel className="ion-padding-start">{task}</IonLabel>
             </IonItem>
           ))}
