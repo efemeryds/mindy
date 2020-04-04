@@ -56,11 +56,12 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
       <IonGrid>
           <IonRow class="ion-justify-content-center">
           <IonLabel class="font">
-            mindy
+           <br/>
+           <br/> mindy
           </IonLabel>
           </IonRow>
           <IonRow class="ion-justify-content-center">
-          <IonLabel class="font">
+          <IonLabel class="font2" >
             structure your life
           </IonLabel>
           </IonRow> 
