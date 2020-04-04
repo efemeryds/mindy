@@ -39,8 +39,8 @@ const TaskDetailPage: React.FC<TaskDetailProps> = ({ task }) => {
   const [favourite, setFavourite] = useState(false);
   const [showEditTaskModal, setShowEditTaskModal] = useState(false);
   const [taskTitle, setTaskTitle] = useState(task ? task.title : "");
-  const [taskDescription, setTaskDescription] = useState(
-    task ? task.description : ""
+  const [taskMotivation, setTaskMotivation] = useState(
+    task ? task.motivation : ""
   );
 
   if (!task) {
@@ -77,7 +77,7 @@ const TaskDetailPage: React.FC<TaskDetailProps> = ({ task }) => {
       <IonContent>
         <div className="ion-padding">
           <h1>{task.title}</h1>
-          <p>{task.description}</p>
+          <p>{task.motivation}</p>
         </div>
         <IonList>
           <IonItem onClick={() => {}} button>
@@ -90,19 +90,19 @@ const TaskDetailPage: React.FC<TaskDetailProps> = ({ task }) => {
           <h1>Edit task details</h1>
           <IonInput
             value={taskTitle}
-            placeholder="Task Title"
+            placeholder="What do you want to achieve?"
             onIonChange={(e) => setTaskTitle(e.detail.value!)}
           />
           <IonTextarea
-            value={taskDescription}
-            placeholder="Description..."
-            onIonChange={(e) => setTaskDescription(e.detail.value!)}
+            value={taskMotivation}
+            placeholder="I want to do that, because it will ..."
+            onIonChange={(e) => setTaskMotivation(e.detail.value!)}
             rows={5}
           />
           <IonButton
             onClick={() => {
               task.title = taskTitle;
-              task.description = taskDescription;
+              task.motivation = taskMotivation;
               updateTask(task);
               setShowEditTaskModal(false);
             }}

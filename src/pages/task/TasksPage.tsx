@@ -84,7 +84,7 @@ const TasksPage: React.FC<TasksPageProps> = ({
   const [showTaskDeletedToast, setShowTaskDeletedToast] = useState(false);
   const [showNewTaskModal, setShowNewTaskModal] = useState(false);
   const [taskTitle, setTaskTitle] = useState("");
-  const [taskDescription, setTaskDescription] = useState("");
+  const [taskMotivation, setTaskMotivation] = useState("");
   const [, setForceRefreshAfterTaskEditHack] = useState(0);
 
   useIonViewWillEnter(() => {
@@ -192,18 +192,18 @@ const TasksPage: React.FC<TasksPageProps> = ({
           <h1>Create a new task</h1>
           <IonInput
             value={taskTitle}
-            placeholder="Task Title"
+            placeholder="What do you want to achieve?"
             onIonChange={(e) => setTaskTitle(e.detail.value!)}
           />
           <IonTextarea
-            value={taskDescription}
-            placeholder="Description..."
-            onIonChange={(e) => setTaskDescription(e.detail.value!)}
+            value={taskMotivation}
+            placeholder="I want to do that, because it will ..."
+            onIonChange={(e) => setTaskMotivation(e.detail.value!)}
             rows={5}
           />
           <IonButton
             onClick={() => {
-              addTask(new Task(uuid.v4(), taskTitle, taskDescription));
+              addTask(new Task(uuid.v4(), taskTitle, taskMotivation));
               setShowNewTaskModal(false);
             }}
           >
