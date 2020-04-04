@@ -1,0 +1,92 @@
+#container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; /* aspect ratio */
+    vertical-align: top;
+    overflow: hidden;
+  }
+  .svg-content-responsive {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 0;
+  }
+  
+  
+  svg {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+      border: 1px solid #EBEBEB;
+      margin: 10px auto;
+      text-align: center;
+      width: 100%;
+  }
+  
+  .highcharts-figure, .highcharts-data-table table {
+      min-width: 310px; 
+      max-width: 800px;
+      margin: 1em auto;
+  }
+  
+  .highcharts-data-table table {
+      font-family: Verdana, sans-serif;
+      border-collapse: collapse;
+      border: 1px solid #EBEBEB;
+      margin: 10px auto;
+      text-align: center;
+      width: 100%;
+      max-width: 500px;
+  }
+  .highcharts-data-table caption {
+      padding: 1em 0;
+      font-size: 1.2em;
+      color: #555;
+  }
+  
+  
+  .svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    vertical-align: top;
+    overflow: hidden;
+  }
+  .svg-content {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  
+  .axis path,
+  .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+  }
+  
+  .y.axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+  }
+  
+  
+  .line {
+  fill: none;
+  }
+  
+  .legend rect {
+  fill:white;
+  stroke:black;
+  opacity:0.8;}
+  

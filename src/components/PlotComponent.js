@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import * as d3 from 'd3'
-
+import './PlotComponent.css'
 
 
 class PlotComponent extends Component {
@@ -78,14 +78,19 @@ class PlotComponent extends Component {
                 ;
         
             var myChart = mainElement.append('svg')
-                .style('background', '#F0F8FF')
-                .attr('width', width + margin.left + margin.right)
-                .attr('height', height + margin.top + margin.bottom)
+                // .attr('width', width + margin.left + margin.right)
+                // .attr('height', height + margin.top + margin.bottom)
+                .attr("preserveAspectRatio", "xMinYMin meet")
+                .attr("viewBox", "0 0 450 600")
+                .classed("svg-content", true)
                 .append('g')
-                .attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')')
-        
-        
-            myChart.append("path")		// Add the valueline path.
+                .attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')');
+              
+
+
+
+            myChart.append("path")	
+                	// Add the valueline path.
                 .datum(data)
                 .attr('class', 'line')
                 .attr("d", lineGen)
@@ -106,8 +111,22 @@ class PlotComponent extends Component {
             var vAxis = d3.svg.axis()
                 .scale(vGuideScale)
                 .orient('left')
-                .ticks(3);
+                .ticks(5);
+
+                mainElement.select('svg').append('g')
+        .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 20)
+        .attr("x", -100)
+        .attr("dy", ".51em")
+        .attr("font-size", "11px")
+        .style("text-anchor", "end")
+        .attr("fill", "black")
+        .text("Your mood");
         
+
+
+
             var vGuide = mainElement.select('svg').append('g').attr("class", "y axis")
             vAxis(vGuide)
             vGuide.attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')');
@@ -149,7 +168,7 @@ class PlotComponent extends Component {
     
             
 
-    render() { return <div ref="canvas"></div> }
+    render() { return <div className="svg-container" ref="canvas"></div> }
 }
 
 export default PlotComponent
