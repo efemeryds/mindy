@@ -28,6 +28,7 @@ import {
   IonItemOption,
   IonText,
   IonInput,
+  useIonViewWillEnter,
 } from "@ionic/react";
 import { options, search, addOutline } from "ionicons/icons";
 
@@ -45,6 +46,7 @@ import {
 } from "../../data/sessions/sessions.actions";
 import { Task } from "../../models/Task";
 import * as uuid from "uuid";
+import { useLocation, useHistory } from "react-router";
 
 interface OwnProps {}
 
@@ -66,7 +68,6 @@ const TasksPage: React.FC<TasksPageProps> = ({
   removeTask,
   addTask,
 }) => {
-  console.log("taskspage.tasks loaded", tasks);
   const [showSearchbar, setShowSearchbar] = useState<boolean>(false);
   const [showFilterModal, setShowFilterModal] = useState(false);
   const ionRefresherRef = useRef<HTMLIonRefresherElement>(null);
@@ -83,7 +84,12 @@ const TasksPage: React.FC<TasksPageProps> = ({
   const [showTaskDeletedToast, setShowTaskDeletedToast] = useState(false);
   const [showNewTaskModal, setShowNewTaskModal] = useState(false);
   const [taskTitle, setTaskTitle] = useState("");
-  const [taskDescription, setTaskDescription] = useState("");
+  const [taskMotivation, setTaskMotivation] = useState("");
+  const [, setForceRefreshAfterTaskEditHack] = useState(0);
+
+  useIonViewWillEnter(() => {
+    setForceRefreshAfterTaskEditHack((state) => state + 1);
+  });
 
   return (
     <IonPage ref={pageRef} id="schedule-page">
@@ -150,7 +156,7 @@ const TasksPage: React.FC<TasksPageProps> = ({
         <IonList>
           {tasks.map((task) => (
             <IonItemSliding key={task.id}>
-              <IonItem routerLink={`/tabs/task/${task.id}`}>
+              <IonItem routerLink={`/tabs/tasks/${task.id}`}>
                 <IonLabel>
                   <h3>{task.title}</h3>
                 </IonLabel>
@@ -181,24 +187,23 @@ const TasksPage: React.FC<TasksPageProps> = ({
         <SessionListFilter onDismissModal={() => setShowFilterModal(false)} />
       </IonModal>
 
-      <ShareSocialFab />
       <IonModal isOpen={showNewTaskModal}>
         <IonContent>
           <h1>Create a new task</h1>
           <IonInput
             value={taskTitle}
-            placeholder="Task Title"
+            placeholder="What do you want to achieve?"
             onIonChange={(e) => setTaskTitle(e.detail.value!)}
           />
           <IonTextarea
-            value={taskDescription}
-            placeholder="Description..."
-            onIonChange={(e) => setTaskDescription(e.detail.value!)}
+            value={taskMotivation}
+            placeholder="I want to do that, because it will ..."
+            onIonChange={(e) => setTaskMotivation(e.detail.value!)}
             rows={5}
           />
           <IonButton
             onClick={() => {
-              addTask(new Task(uuid.v4(), taskTitle, taskDescription));
+              addTask(new Task(uuid.v4(), taskTitle, taskMotivation));
               setShowNewTaskModal(false);
             }}
           >

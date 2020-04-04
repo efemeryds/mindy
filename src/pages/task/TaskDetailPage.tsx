@@ -11,30 +11,38 @@ import {
   IonList,
   IonItem,
   IonLabel,
+  IonModal,
+  IonInput,
+  IonTextarea,
 } from "@ionic/react";
 import { connect } from "../../data/connect";
 import { withRouter, RouteComponentProps } from "react-router";
 import * as selectors from "../../data/selectors";
-import { starOutline, star, share } from "ionicons/icons";
-import { removeTask } from "../../data/sessions/sessions.actions";
+import { starOutline, star, share, createOutline } from "ionicons/icons";
+import { removeTask, updateTask } from "../../data/sessions/sessions.actions";
 import { Task } from "../../models/Task";
 
 interface OwnProps extends RouteComponentProps {}
 
 interface StateProps {
   task?: Task;
-
 }
 
 interface DispatchProps {
   removeTask: typeof removeTask;
+  updateTask: typeof updateTask;
 }
 
 type TaskDetailProps = OwnProps & StateProps & DispatchProps;
 
 const TaskDetailPage: React.FC<TaskDetailProps> = ({ task }) => {
   const [favourite, setFavourite] = useState(false);
-  console.log('task.detailspage',task)
+  const [showEditTaskModal, setShowEditTaskModal] = useState(false);
+  const [taskTitle, setTaskTitle] = useState(task ? task.title : "");
+  const [taskMotivation, setTaskMotivation] = useState(
+    task ? task.motivation : ""
+  );
+
   if (!task) {
     return <div>Task not found</div>;
   }
@@ -50,6 +58,9 @@ const TaskDetailPage: React.FC<TaskDetailProps> = ({ task }) => {
             <IonBackButton defaultHref="/tabs/tasks"></IonBackButton>
           </IonButtons>
           <IonButtons slot="end">
+            <IonButton onClick={() => setShowEditTaskModal(true)}>
+              <IonIcon slot="icon-only" icon={createOutline}></IonIcon>
+            </IonButton>
             <IonButton onClick={() => toggleFavorite()}>
               {favourite ? (
                 <IonIcon slot="icon-only" icon={star}></IonIcon>
@@ -66,7 +77,7 @@ const TaskDetailPage: React.FC<TaskDetailProps> = ({ task }) => {
       <IonContent>
         <div className="ion-padding">
           <h1>{task.title}</h1>
-          <p>{task.description}</p>
+          <p>{task.motivation}</p>
         </div>
         <IonList>
           <IonItem onClick={() => {}} button>
@@ -74,6 +85,32 @@ const TaskDetailPage: React.FC<TaskDetailProps> = ({ task }) => {
           </IonItem>
         </IonList>
       </IonContent>
+      <IonModal isOpen={showEditTaskModal}>
+        <IonContent>
+          <h1>Edit task details</h1>
+          <IonInput
+            value={taskTitle}
+            placeholder="What do you want to achieve?"
+            onIonChange={(e) => setTaskTitle(e.detail.value!)}
+          />
+          <IonTextarea
+            value={taskMotivation}
+            placeholder="I want to do that, because it will ..."
+            onIonChange={(e) => setTaskMotivation(e.detail.value!)}
+            rows={5}
+          />
+          <IonButton
+            onClick={() => {
+              task.title = taskTitle;
+              task.motivation = taskMotivation;
+              updateTask(task);
+              setShowEditTaskModal(false);
+            }}
+          >
+            Save
+          </IonButton>
+        </IonContent>
+      </IonModal>
     </IonPage>
   );
 };
@@ -83,7 +120,8 @@ export default connect<OwnProps, StateProps, DispatchProps>({
     task: selectors.getTask(state, OwnProps),
   }),
   mapDispatchToProps: {
-    removeTask
+    removeTask,
+    updateTask,
   },
   component: withRouter(TaskDetailPage),
 });

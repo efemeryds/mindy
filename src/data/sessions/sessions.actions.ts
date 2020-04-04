@@ -48,6 +48,10 @@ export const addTask = (task: Task) => ({
   type: 'add-task', 
   task
 } as const);
+export const updateTask = (task: Task) => ({ 
+  type: 'update-task',
+  task
+} as const);
 export const setMenuEnabled = (menuEnabled: boolean) => ({ 
   type: 'set-menu-enabled', 
   menuEnabled
@@ -60,6 +64,7 @@ export type SessionsActions =
   | ActionType<typeof removeFavorite>
   | ActionType<typeof removeTask>
   | ActionType<typeof addTask>
+  | ActionType<typeof updateTask>
   | ActionType<typeof updateFilteredTracks>
   | ActionType<typeof setSearchText>
   | ActionType<typeof setMenuEnabled>
