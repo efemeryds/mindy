@@ -3,12 +3,13 @@ import React, { useState, useCallback } from 'react';
 import { Schedule, Session as Task } from '../models/Schedule';
 import TaskListItem from './TaskListItem';
 import { connect } from '../data/connect';
-import { addFavorite, removeFavorite } from '../data/sessions/sessions.actions';
+import { addFavorite, removeFavorite,removeTask } from '../data/sessions/sessions.actions';
 
 interface OwnProps {
   tasks: Schedule;
   listType: 'all' | 'favorites';
   hide: boolean;
+  onRemoveTask : (id:number)=>void;
 }
 
 interface StateProps {
@@ -22,7 +23,7 @@ interface DispatchProps {
 
 interface TaskListProps extends OwnProps, StateProps, DispatchProps { };
 
-const TaskList: React.FC<TaskListProps> = ({ addFavorite: addPriority, removeFavorite: removePriority, favoriteSessions: priorityTasks, hide, tasks: tasks, listType }) => {
+const TaskList: React.FC<TaskListProps> = ({ addFavorite: addPriority, removeFavorite: removePriority, favoriteSessions: priorityTasks, hide, tasks: tasks, listType, onRemoveTask }) => {
 
   const [showAlert, setShowAlert] = useState(false);
   const [alertHeader, setAlertHeader] = useState('');
@@ -56,7 +57,8 @@ const TaskList: React.FC<TaskListProps> = ({ addFavorite: addPriority, removeFav
                 onAddFavorite={addPriority}
                 onRemoveFavorite={removePriority}
                 key={`group-${index}-${taskIndex}`}
-                session={task}
+                task={task}
+                onRemoveTask={id=>onRemoveTask(id)}
                 listType={listType}
               />
             ))}
@@ -75,7 +77,7 @@ const TaskList: React.FC<TaskListProps> = ({ addFavorite: addPriority, removeFav
 
 export default connect<OwnProps, StateProps, DispatchProps>({
   mapStateToProps: (state) => ({
-    favoriteSessions: state.data.favorites
+    favoriteSessions: state.data.favorites,
   }),
   mapDispatchToProps: ({
     addFavorite,

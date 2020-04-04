@@ -11,7 +11,7 @@ import ShareSocialFab from '../components/ShareSocialFab';
 
 import * as selectors from '../data/selectors';
 import { connect } from '../data/connect';
-import { setSearchText } from '../data/sessions/sessions.actions';
+import { setSearchText, removeTask } from '../data/sessions/sessions.actions';
 import { Schedule as Task } from '../models/Schedule';
 
 interface OwnProps { }
@@ -24,11 +24,12 @@ interface StateProps {
 
 interface DispatchProps {
   setSearchText: typeof setSearchText;
+  removeTask : typeof removeTask;
 }
 
 type TasksPageProps = OwnProps & StateProps & DispatchProps;
 
-const TasksPage: React.FC<TasksPageProps> = ({ favoritesSchedule, taskList: schedule, setSearchText, mode }) => {
+const TasksPage: React.FC<TasksPageProps> = ({ favoritesSchedule, taskList: schedule, setSearchText, mode, removeTask}) => {
   const [segment, setSegment] = useState<'all' | 'favorites'>('all');
   const [showSearchbar, setShowSearchbar] = useState<boolean>(false);
   const [showFilterModal, setShowFilterModal] = useState(false);
@@ -45,7 +46,6 @@ const TasksPage: React.FC<TasksPageProps> = ({ favoritesSchedule, taskList: sche
       setShowCompleteToast(true);
     }, 2500)
   };
-
   return (
     <IonPage ref={pageRef} id="schedule-page">
       <IonHeader translucent={true}>
@@ -57,12 +57,12 @@ const TasksPage: React.FC<TasksPageProps> = ({ favoritesSchedule, taskList: sche
           }
           {ios &&
             <IonSegment value={segment} onIonChange={(e) => setSegment(e.detail.value as any)}>
-              <IonSegmentButton value="all">
+              {/* <IonSegmentButton value="all">
                 All
-              </IonSegmentButton>
-              <IonSegmentButton value="favorites">
+              </IonSegmentButton> */}
+              {/* <IonSegmentButton value="favorites">
                 Favorites
-              </IonSegmentButton>
+              </IonSegmentButton> */}
             </IonSegment>
           }
           {!ios && !showSearchbar &&
@@ -86,17 +86,17 @@ const TasksPage: React.FC<TasksPageProps> = ({ favoritesSchedule, taskList: sche
           </IonButtons>
         </IonToolbar>
 
-        {!ios &&
-          <IonToolbar>
-            <IonSegment value={segment} onIonChange={(e) => setSegment(e.detail.value as any)}>
-              <IonSegmentButton value="all">
-                All
-              </IonSegmentButton>
-              <IonSegmentButton value="favorites">
-                Favorites
-              </IonSegmentButton>
-            </IonSegment>
-          </IonToolbar>
+        {!ios && null
+          // <IonToolbar>
+          //   <IonSegment value={segment} onIonChange={(e) => setSegment(e.detail.value as any)}>
+          //     {/* <IonSegmentButton value="all">
+          //       All
+          //     </IonSegmentButton> */}
+          //     {/* <IonSegmentButton value="favorites">
+          //       Favorites
+          //     </IonSegmentButton> */}
+          //   </IonSegment>
+          // </IonToolbar>
         }
       </IonHeader>
 
@@ -125,12 +125,14 @@ const TasksPage: React.FC<TasksPageProps> = ({ favoritesSchedule, taskList: sche
           tasks={schedule}
           listType={segment}
           hide={segment === 'favorites'}
+          onRemoveTask={id=>removeTask(id)}
         />
         <TaskList
           // schedule={schedule}
           tasks={favoritesSchedule}
           listType={segment}
           hide={segment === 'all'}
+          onRemoveTask={id=> removeTask(id)}
         />
       </IonContent>
 
@@ -159,7 +161,8 @@ export default connect<OwnProps, StateProps, DispatchProps>({
     mode: getConfig()!.get('mode')
   }),
   mapDispatchToProps: {
-    setSearchText
+    setSearchText,
+    removeTask
   },
   component: React.memo(TasksPage)
 });

@@ -24,5 +24,9 @@ export const sessionsReducer = (state: ConfState, action: SessionsActions): Conf
     case 'set-menu-enabled': {
       return { ...state, menuEnabled: action.menuEnabled };
     }
+    case 'remove-task':{
+      console.log('called remove tasks!')
+      return {...state,sessions:[...state.sessions.slice(0, action.taskId), ...state.sessions.slice(action.taskId+ 1)]}
+    }
   }
 }

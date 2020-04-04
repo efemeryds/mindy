@@ -1,39 +1,56 @@
-import React, { useRef } from 'react';
-import { IonItemSliding, IonItem, IonLabel, IonItemOptions, IonItemOption, AlertButton } from '@ionic/react';
-import { Session } from '../models/Schedule';
+import React, { useRef } from "react";
+import {
+  IonItemSliding,
+  IonItem,
+  IonLabel,
+  IonItemOptions,
+  IonItemOption,
+  AlertButton,
+  IonCheckbox,
+} from "@ionic/react";
+import { Session as Task } from "../models/Schedule";
 
 interface SessionListItemProps {
-  session: Session;
+  task: Task;
   listType: "all" | "favorites";
   onAddFavorite: (id: number) => void;
   onRemoveFavorite: (id: number) => void;
   onShowAlert: (header: string, buttons: AlertButton[]) => void;
+  onRemoveTask: (id: number) => void;
   isFavorite: boolean;
 }
 
-const SessionListItem: React.FC<SessionListItemProps> = ({ isFavorite, onAddFavorite, onRemoveFavorite, onShowAlert, session, listType }) => {
-  const ionItemSlidingRef = useRef<HTMLIonItemSlidingElement>(null)
+const SessionListItem: React.FC<SessionListItemProps> = ({
+  isFavorite,
+  onAddFavorite,
+  onRemoveFavorite,
+  onShowAlert,
+  onRemoveTask,
+  task,
+  listType,
+}) => {
+  const ionItemSlidingRef = useRef<HTMLIonItemSlidingElement>(null);
 
   const dismissAlert = () => {
     ionItemSlidingRef.current && ionItemSlidingRef.current.close();
-  }
+  };
 
   const removeFavoriteSession = () => {
-    onAddFavorite(session.id);
-    onShowAlert('Favorite already added', [
+    onAddFavorite(task.id);
+    onShowAlert("Favorite already added", [
       {
-        text: 'Cancel',
-        handler: dismissAlert
+        text: "Cancel",
+        handler: dismissAlert,
       },
       {
-        text: 'Remove',
+        text: "Remove",
         handler: () => {
-          onRemoveFavorite(session.id);
+          onRemoveFavorite(task.id);
           dismissAlert();
-        }
-      }
+        },
+      },
     ]);
-  }
+  };
 
   const addFavoriteSession = () => {
     if (isFavorite) {
@@ -42,38 +59,34 @@ const SessionListItem: React.FC<SessionListItemProps> = ({ isFavorite, onAddFavo
       removeFavoriteSession();
     } else {
       // remember this session as a user favorite
-      onAddFavorite(session.id);
-      onShowAlert('Favorite Added', [
+      onAddFavorite(task.id);
+      onShowAlert("Favorite Added", [
         {
-          text: 'OK',
-          handler: dismissAlert
-        }
+          text: "OK",
+          handler: dismissAlert,
+        },
       ]);
     }
   };
 
+  const removeTask = () => {
+    onRemoveTask(task.id);
+  };
+
   return (
-    <IonItemSliding ref={ionItemSlidingRef} class={'track-' + session.tracks[0].toLowerCase()}>
-      <IonItem routerLink={`/tabs/task/${session.id}`}>
+    <IonItemSliding
+      ref={ionItemSlidingRef}
+      class={"track-" + task.tracks[0].toLowerCase()}
+    >
+      <IonItem routerLink={`/tabs/task/${task.id}`}>
         <IonLabel>
-          <h3>{session.name}</h3>
-          <p>
-            {session.timeStart}&mdash;&nbsp;
-            {session.timeStart}&mdash;&nbsp;
-            {session.location}
-          </p>
+          <h3>{task.name}</h3>
         </IonLabel>
       </IonItem>
       <IonItemOptions>
-        {listType === "favorites" ?
-          <IonItemOption color="danger" onClick={() => removeFavoriteSession()}>
-            Remove
-          </IonItemOption>
-          :
-          <IonItemOption color="favorite" onClick={addFavoriteSession}>
-            Favorite
-          </IonItemOption>
-        }
+        <IonItemOption color="danger" onClick={() => removeTask()}>
+          Done
+        </IonItemOption>
       </IonItemOptions>
     </IonItemSliding>
   );
