@@ -19,6 +19,9 @@ export const sessionsReducer = (state: ConfState, action: SessionsActions): Conf
       console.log('reducer.remove-task')
       return { ...state, tasks: [...(state.tasks).filter(x => x.id !== action.taskId)]}
     }
+    case 'add-task': {
+      return { ...state, tasks: [...state.tasks, action.task]}
+    }
     case 'update-filtered-tracks': {
       return { ...state, filteredTracks: action.filteredTracks };
     }
