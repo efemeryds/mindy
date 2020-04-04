@@ -11,11 +11,11 @@ import './Menu.css'
 
 const routes = {
   appPages: [
-    { title: 'Schedule', path: '/tabs/schedule', icon: calendarOutline },
-    { title: 'Speakers', path: '/tabs/speakers', icon: peopleOutline },
+    { title: 'Task list', path: '/tabs/tasks', icon: calendarOutline },
+    { title: 'Inspiration', path: '/tabs/speakers', icon: peopleOutline },
     { title: 'Mind', path: '/tabs/mind', icon: man},
     { title: 'Talks', path: '/tabs/talks', icon: people}
-  ],
+    ],
   loggedInPages: [
     { title: 'Account', path: '/account', icon: person },
     { title: 'Logout', path: '/logout', icon: logOut }
