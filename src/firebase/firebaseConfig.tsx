@@ -1,4 +1,5 @@
 import * as firebase from 'firebase';
+import {toast} from '../util/toast'
 
 const config = {
     apiKey: "AIzaSyDLpxv_B0s9v92mK5Ps890YsZ_EPMt_Yzc",
@@ -13,29 +14,26 @@ const config = {
 
 firebase.initializeApp(config);
 
-
-
 export async function loginUser(username:string, password:string){
     try{
         const email = `${username}@hackit.XD`
         const res = await firebase.auth().signInWithEmailAndPassword(email, password);
         return true;
     }
-    catch(error){
-        console.log(error);
+    catch(error){       
+        toast(error, 4000);
         return false;
     }
 }
 
 export async function registerUser(username:string, password:string){
     try{
-        const email = `${username}@hackit.XD`
+        const email = `${username}@hackit.yeah`
         const res = await firebase.auth().createUserWithEmailAndPassword(email, password);
-        console.log(res);
         return true;
     }
     catch(error){
-        console.log(error);
+        toast(error, 4000);
         return false;
     }
 }
