@@ -42,7 +42,6 @@ import { Task } from "../models/Task";
 interface OwnProps {}
 
 interface StateProps {
-  mode: "ios" | "md";
   tasks: Task[];
 }
 
@@ -55,20 +54,16 @@ type TasksPageProps = OwnProps & StateProps & DispatchProps;
 
 const TasksPage: React.FC<TasksPageProps> = ({
   setSearchText,
-  mode,
   tasks,
   removeTask,
 }) => {
   console.log("taskspage.tasks loaded", tasks);
-  const [segment, setSegment] = useState<"all" | "favorites">("all");
   const [showSearchbar, setShowSearchbar] = useState<boolean>(false);
   const [showFilterModal, setShowFilterModal] = useState(false);
   const ionRefresherRef = useRef<HTMLIonRefresherElement>(null);
   const [showCompleteToast, setShowCompleteToast] = useState(false);
 
   const pageRef = useRef<HTMLElement>(null);
-
-  const ios = mode === "ios";
 
   const doRefresh = () => {
     setTimeout(() => {
@@ -89,20 +84,7 @@ const TasksPage: React.FC<TasksPageProps> = ({
               <IonMenuButton />
             </IonButtons>
           )}
-          {ios && (
-            <IonSegment
-              value={segment}
-              onIonChange={(e) => setSegment(e.detail.value as any)}
-            >
-              {/* <IonSegmentButton value="all">
-                All
-              </IonSegmentButton> */}
-              {/* <IonSegmentButton value="favorites">
-                Favorites
-              </IonSegmentButton> */}
-            </IonSegment>
-          )}
-          {!ios && !showSearchbar && <IonTitle>My Tasks</IonTitle>}
+          {!showSearchbar && <IonTitle>My Tasks</IonTitle>}
           {showSearchbar && (
             <IonSearchbar
               showCancelButton="always"
@@ -113,35 +95,18 @@ const TasksPage: React.FC<TasksPageProps> = ({
           )}
 
           <IonButtons slot="end">
-            {!ios && !showSearchbar && (
+            {!showSearchbar && (
               <IonButton onClick={() => setShowSearchbar(true)}>
                 <IonIcon slot="icon-only" icon={search}></IonIcon>
               </IonButton>
             )}
             {!showSearchbar && (
               <IonButton onClick={() => setShowFilterModal(true)}>
-                {mode === "ios" ? (
-                  "Filter"
-                ) : (
-                  <IonIcon icon={options} slot="icon-only" />
-                )}
+                <IonIcon icon={options} slot="icon-only" />
               </IonButton>
             )}
           </IonButtons>
         </IonToolbar>
-
-        {!ios && null
-        // <IonToolbar>
-        //   <IonSegment value={segment} onIonChange={(e) => setSegment(e.detail.value as any)}>
-        //     {/* <IonSegmentButton value="all">
-        //       All
-        //     </IonSegmentButton> */}
-        //     {/* <IonSegmentButton value="favorites">
-        //       Favorites
-        //     </IonSegmentButton> */}
-        //   </IonSegment>
-        // </IonToolbar>
-        }
       </IonHeader>
 
       <IonContent fullscreen={true}>
@@ -242,7 +207,6 @@ const TasksPage: React.FC<TasksPageProps> = ({
 export default connect<OwnProps, StateProps, DispatchProps>({
   mapStateToProps: (state) => ({
     taskList: selectors.getSearchedSchedule(state),
-    mode: getConfig()!.get("mode"),
     tasks: state.data.tasks,
   }),
   mapDispatchToProps: {
