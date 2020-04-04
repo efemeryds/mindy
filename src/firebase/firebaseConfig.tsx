@@ -1,5 +1,6 @@
 import * as firebase from 'firebase';
 import {toast} from '../util/toast'
+import * as SM from '../util/StorageManager'
 
 const config = {
     apiKey: "AIzaSyDLpxv_B0s9v92mK5Ps890YsZ_EPMt_Yzc",
@@ -16,8 +17,9 @@ firebase.initializeApp(config);
 
 export async function loginUser(username:string, password:string){
     try{
-        const email = `${username}@hackit.XD`
+        const email = `${username}@hackit.yeah`
         const res = await firebase.auth().signInWithEmailAndPassword(email, password);
+        SM.setItem('User', JSON.stringify(res));
         return true;
     }
     catch(error){       
