@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonRow, IonCol, IonButton, IonList, IonItem, IonLabel, IonInput, IonText } from '@ionic/react';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonRow, IonCol, IonButton, IonList, IonItem, IonLabel, IonInput, IonText, IonGrid } from '@ionic/react';
 import './Login.scss';
 import { setIsLoggedIn, setUsername } from '../data/user/user.actions';
 import { connect } from '../data/connect';
@@ -42,59 +42,49 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
   return (
     <IonPage id="login-page">
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar class="header-class">
           <IonButtons slot="start">
             <IonMenuButton></IonMenuButton>
           </IonButtons>
           <IonTitle>Login</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-
-        <div className="login-logo">
-          <img src="assets/img/appicon.svg" alt="Ionic logo" />
-        </div>
-
-        <form noValidate onSubmit={login}>
-          <IonList>
-            <IonItem>
-              <IonLabel position="stacked" color="primary">Username</IonLabel>
-              <IonInput name="username" type="text" value={username} spellCheck={false} autocapitalize="off" onIonChange={e => setUsername(e.detail.value!)}
-                required>
-              </IonInput>
-            </IonItem>
-
-            {formSubmitted && usernameError && <IonText color="danger">
-              <p className="ion-padding-start">
-                Username is required
-              </p>
-            </IonText>}
-
-            <IonItem>
-              <IonLabel position="stacked" color="primary">Password</IonLabel>
-              <IonInput name="password" type="password" value={password} onIonChange={e => setPassword(e.detail.value!)}>
-              </IonInput>
-            </IonItem>
-
-            {formSubmitted && passwordError && <IonText color="danger">
-              <p className="ion-padding-start">
-                Password is required
-              </p>
-            </IonText>}
-          </IonList>
-
-          <IonRow>
-            <IonCol>
-              <IonButton type="submit" expand="block">Login</IonButton>
-            </IonCol>
-            <IonCol>
-              <IonButton routerLink="/signup" color="light" expand="block">Signup</IonButton>
-            </IonCol>
+      <IonContent class="body">
+      <IonGrid>
+          <IonRow class="ion-justify-content-center">
+          <IonLabel class="font">
+            mindy
+          </IonLabel>
           </IonRow>
-        </form>
-
+          <IonRow class="ion-justify-content-center">
+          <IonLabel class="font">
+            know thyself
+          </IonLabel>
+          </IonRow> 
+          <br/>         
+          
+          <IonItem class="input-style">
+            <IonInput placeholder="Username" onIonChange={(e:any) => setUsername(e.target.value)}></IonInput>
+          </IonItem>            
+          <IonItem class="input-style">
+            <IonInput type="password" placeholder="Password" onIonChange={(e:any) => setPassword(e.target.value)}></IonInput>
+          </IonItem>         
+          <br/>
+          <IonButton onClick={login} expand="full">Sign in</IonButton>
+          <br/>
+          
+          <br/>
+          <IonRow class="ion-justify-content-center">
+            <IonLabel class="fontless">
+              Clear your mind by planning, reviewing, practicing and meaningful converstaions
+            </IonLabel>
+          </IonRow>
+         
+          <div className="down">
+            <IonButton routerLink="/signup" expand="full">Signup</IonButton>
+          </div>
+          </IonGrid>
       </IonContent>
-
     </IonPage>
   );
 };

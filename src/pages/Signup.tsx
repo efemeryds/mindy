@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonRow, IonCol, IonButton, IonList, IonItem, IonLabel, IonInput, IonText } from '@ionic/react';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonRow, IonCol, IonButton, IonList, IonItem, IonLabel, IonInput, IonText, IonGrid } from '@ionic/react';
 import './Login.scss';
 import { setIsLoggedIn, setUsername } from '../data/user/user.actions';
 import { connect } from '../data/connect';
@@ -42,22 +42,19 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
   return (
     <IonPage id="signup-page">
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar class="header-class">
           <IonButtons slot="start">
             <IonMenuButton></IonMenuButton>
           </IonButtons>
           <IonTitle>Signup</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-
-        <div className="login-logo">
-          <img src="assets/img/appicon.svg" alt="Ionic logo" />
-        </div>
+      <IonContent color="secondary">
+        <IonGrid>
 
         <form noValidate onSubmit={login}>
-          <IonList>
-            <IonItem>
+          
+        <IonItem class="input-style">
               <IonLabel position="stacked" color="primary">Username</IonLabel>
               <IonInput name="username" type="text" value={username} spellCheck={false} autocapitalize="off" onIonChange={e => {
                 setUsername(e.detail.value!);
@@ -65,38 +62,37 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
               }}
                 required>
               </IonInput>
-            </IonItem>
-
             {formSubmitted && usernameError && <IonText color="danger">
               <p className="ion-padding-start">
                 Username is required
               </p>
             </IonText>}
+            </IonItem>
 
-            <IonItem>
+            <IonItem class="input-style">
               <IonLabel position="stacked" color="primary">Password</IonLabel>
               <IonInput name="password" type="password" value={password} onIonChange={e => {
                 setPassword(e.detail.value!);
                 setPasswordError(false);
               }}>
               </IonInput>
-            </IonItem>
+          
 
             {formSubmitted && passwordError && <IonText color="danger">
               <p className="ion-padding-start">
                 Password is required
               </p>
             </IonText>}
-          </IonList>
+            </IonItem>
 
           <IonRow>
             <IonCol>
-              <IonButton type="submit" expand="block">Create</IonButton>
+              <IonButton type="submit" expand="block">SIGN IN</IonButton>
             </IonCol>
           </IonRow>
         </form>
-
-      </IonContent>
+    </IonGrid>
+    </IonContent>
 
     </IonPage>
   );

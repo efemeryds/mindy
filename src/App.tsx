@@ -39,6 +39,7 @@ import Support from "./pages/Support";
 import Intro from "./pages/Intro";
 import HomeOrTutorial from "./components/HomeOrTutorial";
 import { Schedule } from "./models/Schedule";
+import Mind from "./pages/Mind";
 
 const App: React.FC = () => {
   return (
@@ -90,6 +91,7 @@ const IonicApp: React.FC<IonicAppProps> = ({
             <Route path="/signup" component={Signup} />
             <Route path="/support" component={Support} />
             <Route path="/intro" component={Intro} />
+            <Route path="/mind" component={Mind} />
             <Route
               path="/logout"
               render={() => {
@@ -98,7 +100,7 @@ const IonicApp: React.FC<IonicAppProps> = ({
                 return <Redirect to="/tabs" />;
               }}
             />
-            <Route path="/" component={Intro} exact />
+            <Route path="/" component={HomeOrTutorial} exact />
           </IonRouterOutlet>
         </IonSplitPane>
       </IonReactRouter>
