@@ -1,14 +1,15 @@
 import { IonItemDivider, IonItemGroup, IonLabel, IonList, IonListHeader, IonAlert, AlertButton } from '@ionic/react';
 import React, { useState, useCallback } from 'react';
-import { Schedule, Session } from '../models/Schedule';
-import SessionListItem from './SessionListItem';
+import { Schedule, Session as Task } from '../models/Schedule';
+import TaskListItem from './TaskListItem';
 import { connect } from '../data/connect';
-import { addFavorite, removeFavorite } from '../data/sessions/sessions.actions';
+import { addFavorite, removeFavorite,removeTask } from '../data/sessions/sessions.actions';
 
 interface OwnProps {
-  schedule: Schedule;
+  tasks: Schedule;
   listType: 'all' | 'favorites';
   hide: boolean;
+  onRemoveTask : (id:number)=>void;
 }
 
 interface StateProps {
@@ -20,9 +21,9 @@ interface DispatchProps {
   removeFavorite: typeof removeFavorite;
 }
 
-interface SessionListProps extends OwnProps, StateProps, DispatchProps { };
+interface TaskListProps extends OwnProps, StateProps, DispatchProps { };
 
-const SessionList: React.FC<SessionListProps> = ({ addFavorite, removeFavorite, favoriteSessions, hide, schedule, listType }) => {
+const TaskList: React.FC<TaskListProps> = ({ addFavorite: addPriority, removeFavorite: removePriority, favoriteSessions: priorityTasks, hide, tasks: tasks, listType, onRemoveTask }) => {
 
   const [showAlert, setShowAlert] = useState(false);
   const [alertHeader, setAlertHeader] = useState('');
@@ -34,11 +35,11 @@ const SessionList: React.FC<SessionListProps> = ({ addFavorite, removeFavorite, 
     setShowAlert(true);
   }, []);
 
-  if (schedule.groups.length === 0 && !hide) {
+  if (tasks.groups.length === 0 && !hide) {
     return (
       <IonList>
         <IonListHeader>
-          No Sessions Found
+          No Tasks
         </IonListHeader>
       </IonList>
     );
@@ -47,21 +48,17 @@ const SessionList: React.FC<SessionListProps> = ({ addFavorite, removeFavorite, 
   return (
     <>
       <IonList style={hide ? { display: 'none' } : {}}>
-        {schedule.groups.map((group, index: number) => (
+        {tasks.groups.map((group, index: number) => (
           <IonItemGroup key={`group-${index}`}>
-            <IonItemDivider sticky>
-              <IonLabel>
-                {group.time}
-              </IonLabel>
-            </IonItemDivider>
-            {group.sessions.map((session: Session, sessionIndex: number) => (
-              <SessionListItem
+            {group.sessions.map((task: Task, taskIndex: number) => (
+              <TaskListItem
                 onShowAlert={handleShowAlert}
-                isFavorite={favoriteSessions.indexOf(session.id) > -1}
-                onAddFavorite={addFavorite}
-                onRemoveFavorite={removeFavorite}
-                key={`group-${index}-${sessionIndex}`}
-                session={session}
+                isFavorite={priorityTasks.indexOf(task.id) > -1}
+                onAddFavorite={addPriority}
+                onRemoveFavorite={removePriority}
+                key={`group-${index}-${taskIndex}`}
+                task={task}
+                onRemoveTask={id=>onRemoveTask(id)}
                 listType={listType}
               />
             ))}
@@ -80,11 +77,11 @@ const SessionList: React.FC<SessionListProps> = ({ addFavorite, removeFavorite, 
 
 export default connect<OwnProps, StateProps, DispatchProps>({
   mapStateToProps: (state) => ({
-    favoriteSessions: state.data.favorites
+    favoriteSessions: state.data.favorites,
   }),
   mapDispatchToProps: ({
     addFavorite,
     removeFavorite
   }),
-  component: SessionList
+  component: TaskList
 });

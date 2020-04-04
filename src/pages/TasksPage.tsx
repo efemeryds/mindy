@@ -1,34 +1,35 @@
 import React, { useState, useRef } from 'react';
 
-import { IonToolbar, IonContent, IonPage, IonButtons, IonTitle, IonMenuButton, IonSegment, IonSegmentButton, IonButton, IonIcon, IonSearchbar, IonRefresher, IonRefresherContent, IonToast, IonModal, IonHeader, getConfig } from '@ionic/react';
-import { options, search } from 'ionicons/icons';
+import { IonToolbar, IonContent, IonPage, IonButtons, IonTitle, IonMenuButton, IonSegment, IonSegmentButton, IonButton, IonIcon, IonSearchbar, IonRefresher, IonRefresherContent, IonToast, IonModal, IonHeader, getConfig, IonTextarea, IonFab, IonFabButton } from '@ionic/react';
+import { options, search, addOutline } from 'ionicons/icons';
 
-import SessionList from '../components/SessionList';
+import TaskList from '../components/TaskList';
 import SessionListFilter from '../components/SessionListFilter';
-import './SchedulePage.scss'
+import './TasksPage.scss'
 
 import ShareSocialFab from '../components/ShareSocialFab';
 
 import * as selectors from '../data/selectors';
 import { connect } from '../data/connect';
-import { setSearchText } from '../data/sessions/sessions.actions';
-import { Schedule } from '../models/Schedule';
+import { setSearchText, removeTask } from '../data/sessions/sessions.actions';
+import { Schedule as Task } from '../models/Schedule';
 
 interface OwnProps { }
 
 interface StateProps {
-  schedule: Schedule;
-  favoritesSchedule: Schedule;
+  taskList: Task;
+  favoritesSchedule: Task;
   mode: 'ios' | 'md'
 }
 
 interface DispatchProps {
   setSearchText: typeof setSearchText;
+  removeTask : typeof removeTask;
 }
 
-type SchedulePageProps = OwnProps & StateProps & DispatchProps;
+type TasksPageProps = OwnProps & StateProps & DispatchProps;
 
-const SchedulePage: React.FC<SchedulePageProps> = ({ favoritesSchedule, schedule, setSearchText, mode }) => {
+const TasksPage: React.FC<TasksPageProps> = ({ favoritesSchedule, taskList: schedule, setSearchText, mode, removeTask}) => {
   const [segment, setSegment] = useState<'all' | 'favorites'>('all');
   const [showSearchbar, setShowSearchbar] = useState<boolean>(false);
   const [showFilterModal, setShowFilterModal] = useState(false);
@@ -45,7 +46,12 @@ const SchedulePage: React.FC<SchedulePageProps> = ({ favoritesSchedule, schedule
       setShowCompleteToast(true);
     }, 2500)
   };
-
+  const [showTaskDeletedToast, setShowTaskDeletedToast] = useState(false);
+  const addTask = (title: string) => {
+    console.log('tasks.new called')
+  };
+  const [showNewTaskModal, setShowNewTaskModal] = useState(false);
+  const [newTask, setNewTask] = useState("");
   return (
     <IonPage ref={pageRef} id="schedule-page">
       <IonHeader translucent={true}>
@@ -57,16 +63,16 @@ const SchedulePage: React.FC<SchedulePageProps> = ({ favoritesSchedule, schedule
           }
           {ios &&
             <IonSegment value={segment} onIonChange={(e) => setSegment(e.detail.value as any)}>
-              <IonSegmentButton value="all">
+              {/* <IonSegmentButton value="all">
                 All
-              </IonSegmentButton>
-              <IonSegmentButton value="favorites">
+              </IonSegmentButton> */}
+              {/* <IonSegmentButton value="favorites">
                 Favorites
-              </IonSegmentButton>
+              </IonSegmentButton> */}
             </IonSegment>
           }
           {!ios && !showSearchbar &&
-            <IonTitle>Schedule</IonTitle>
+            <IonTitle>My Tasks</IonTitle>
           }
           {showSearchbar &&
             <IonSearchbar showCancelButton="always" placeholder="Search" onIonChange={(e: CustomEvent) => setSearchText(e.detail.value)} onIonCancel={() => setShowSearchbar(false)}></IonSearchbar>
@@ -86,17 +92,17 @@ const SchedulePage: React.FC<SchedulePageProps> = ({ favoritesSchedule, schedule
           </IonButtons>
         </IonToolbar>
 
-        {!ios &&
-          <IonToolbar>
-            <IonSegment value={segment} onIonChange={(e) => setSegment(e.detail.value as any)}>
-              <IonSegmentButton value="all">
-                All
-              </IonSegmentButton>
-              <IonSegmentButton value="favorites">
-                Favorites
-              </IonSegmentButton>
-            </IonSegment>
-          </IonToolbar>
+        {!ios && null
+          // <IonToolbar>
+          //   <IonSegment value={segment} onIonChange={(e) => setSegment(e.detail.value as any)}>
+          //     {/* <IonSegmentButton value="all">
+          //       All
+          //     </IonSegmentButton> */}
+          //     {/* <IonSegmentButton value="favorites">
+          //       Favorites
+          //     </IonSegmentButton> */}
+          //   </IonSegment>
+          // </IonToolbar>
         }
       </IonHeader>
 
@@ -121,15 +127,18 @@ const SchedulePage: React.FC<SchedulePageProps> = ({ favoritesSchedule, schedule
           onDidDismiss={() => setShowCompleteToast(false)}
         />
 
-        <SessionList
-          schedule={schedule}
+        <TaskList
+          tasks={schedule}
           listType={segment}
           hide={segment === 'favorites'}
+          onRemoveTask={id=>removeTask(id)}
         />
-        <SessionList          
-          schedule={favoritesSchedule}
+        <TaskList
+          // schedule={schedule}
+          tasks={favoritesSchedule}
           listType={segment}
           hide={segment === 'all'}
+          onRemoveTask={id=> removeTask(id)}
         />
       </IonContent>
 
@@ -146,19 +155,48 @@ const SchedulePage: React.FC<SchedulePageProps> = ({ favoritesSchedule, schedule
       </IonModal>
 
       <ShareSocialFab />
-
+      <IonModal isOpen={showNewTaskModal}>
+          <h1>Create a new task</h1>
+            <IonTextarea
+              value={newTask}
+              placeholder="Task details...."
+              onIonChange={(e) => setNewTask(e.detail.value!)}
+            ></IonTextarea>
+          <IonButton
+            onClick={() => {
+              addTask(newTask);
+              setShowNewTaskModal(false);
+            }}
+          >
+            OK
+          </IonButton>
+        </IonModal>
+        <IonFab vertical="bottom" horizontal="end" slot="fixed">
+          <IonFabButton>
+            <IonIcon
+              icon={addOutline}
+              onClick={() => setShowNewTaskModal(true)}
+            />
+          </IonFabButton>
+        </IonFab>
+        <IonToast
+          isOpen={showTaskDeletedToast}
+          message="Task has been completed."
+          duration={2000}
+        />
     </IonPage>
   );
 };
 
 export default connect<OwnProps, StateProps, DispatchProps>({
   mapStateToProps: (state) => ({
-    schedule: selectors.getSearchedSchedule(state),
+    taskList: selectors.getSearchedSchedule(state),
     favoritesSchedule: selectors.getGroupedFavorites(state),
     mode: getConfig()!.get('mode')
   }),
   mapDispatchToProps: {
-    setSearchText
+    setSearchText,
+    removeTask
   },
-  component: React.memo(SchedulePage)
+  component: React.memo(TasksPage)
 });

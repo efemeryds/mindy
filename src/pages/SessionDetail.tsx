@@ -61,32 +61,19 @@ const SessionDetail: React.FC<SessionDetailProps> = ({ session, addFavorite, rem
       <IonContent>
         <div className="ion-padding">
           <h1>{session.name}</h1>
-          {session.tracks.map(track => (
+          {/* {session.tracks.map(track => (
             <span key={track} className={`session-track-${track.toLowerCase()}`}>{track}</span>
-          ))}
+          ))} */}
           <p>{session.description}</p>
-          <IonText color="medium">
+          {/* <IonText color="medium">
             {session.timeStart} &ndash; {session.timeEnd}
             <br />
             {session.location}
-          </IonText>
+          </IonText> */}
         </div>
         <IonList>
-          <IonItem onClick={() => sessionClick('watch')} button>
-            <IonLabel color="primary">Watch</IonLabel>
-          </IonItem>
           <IonItem onClick={() => sessionClick('add to calendar')} button>
             <IonLabel color="primary">Add to Calendar</IonLabel>
-          </IonItem>
-          <IonItem onClick={() => sessionClick('mark as unwatched')} button>
-            <IonLabel color="primary">Mark as Unwatched</IonLabel>
-          </IonItem>
-          <IonItem onClick={() => sessionClick('download video')} button>
-            <IonLabel color="primary">Download Video</IonLabel>
-            <IonIcon slot="end" color="primary" size="small" icon={cloudDownload}></IonIcon>
-          </IonItem>
-          <IonItem onClick={() => sessionClick('leave feedback')} button>
-            <IonLabel color="primary">Leave Feedback</IonLabel>
           </IonItem>
         </IonList>
       </IonContent>

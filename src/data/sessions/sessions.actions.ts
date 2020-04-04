@@ -29,6 +29,11 @@ export const removeFavorite = (sessionId: number) => ({
   sessionId
 } as const);
 
+export const removeTask = (taskId: number) => ({
+  type: 'remove-task',
+  taskId
+} as const);
+
 export const updateFilteredTracks = (filteredTracks: string[]) => ({
   type: 'update-filtered-tracks', 
   filteredTracks 
@@ -49,6 +54,7 @@ export type SessionsActions =
   | ActionType<typeof setData>
   | ActionType<typeof addFavorite>
   | ActionType<typeof removeFavorite>
+  | ActionType<typeof removeTask>
   | ActionType<typeof updateFilteredTracks>
   | ActionType<typeof setSearchText>
   | ActionType<typeof setMenuEnabled>
