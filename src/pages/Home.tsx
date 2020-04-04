@@ -47,9 +47,12 @@ const Home: React.FC = () => {
         <IonHeader>
           <IonToolbar></IonToolbar>
         </IonHeader>
-
+        
         <div className="home-title">
-          mindy <p>structure your life</p>
+          mindy
+        </div>
+        <div className="font2">
+       structure your life
         </div>
         <IonGrid>
           <IonRow>
