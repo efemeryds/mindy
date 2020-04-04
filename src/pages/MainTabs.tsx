@@ -8,6 +8,9 @@ import SpeakerDetail from './SpeakerDetail';
 import SessionDetail from './SessionDetail';
 import MapView from './MapView';
 import About from './About';
+import PlotComponent from '../components/PlotComponent'
+import Mood from './Mood'
+
 
 interface MainTabsProps { }
 
@@ -20,7 +23,8 @@ const MainTabs: React.FC<MainTabsProps> = () => {
         {/*
           Using the render method prop cuts down the number of renders your components will have due to route changes.
           Use the component prop when your component depends on the RouterComponentProps passed in automatically.
-        */}
+        */} 
+
         <Route path="/tabs/schedule" render={() => <SchedulePage />} exact={true} />
         <Route path="/tabs/speakers" render={() => <SpeakerList />} exact={true} />
         <Route path="/tabs/speakers/:id" component={SpeakerDetail} exact={true} />
@@ -28,6 +32,9 @@ const MainTabs: React.FC<MainTabsProps> = () => {
         <Route path="/tabs/speakers/sessions/:id" component={SessionDetail} />
         <Route path="/tabs/map" render={() => <MapView />} exact={true} />
         <Route path="/tabs/about" render={() => <About />} exact={true} />
+        <Route path="/tabs/mood" render={() => <Mood />} exact={true} />
+
+        
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
         <IonTabButton tab="schedule" href="/tabs/schedule">
@@ -45,6 +52,10 @@ const MainTabs: React.FC<MainTabsProps> = () => {
         <IonTabButton tab="about" href="/tabs/about">
           <IonIcon icon={informationCircle} />
           <IonLabel>About</IonLabel>
+        </IonTabButton>
+        <IonTabButton tab="mood" href="/tabs/mood">
+          <IonIcon icon={informationCircle} />
+          <IonLabel>Mood</IonLabel>
         </IonTabButton>
       </IonTabBar>
     </IonTabs>
