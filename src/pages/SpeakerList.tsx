@@ -33,9 +33,7 @@ const SpeakerList: React.FC<SpeakerListProps> = ({ speakers, speakerSessions }) 
 
       <IonContent fullscreen={true}>
         <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Speakers</IonTitle>
-          </IonToolbar>
+   
         </IonHeader>
 
           <IonGrid fixed>
