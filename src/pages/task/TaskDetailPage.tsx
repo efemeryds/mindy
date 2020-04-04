@@ -107,7 +107,7 @@ const TaskDetailPage: React.FC<TaskDetailProps> = ({ task }) => {
               setShowEditTaskModal(false);
             }}
           >
-            Add
+            Save
           </IonButton>
         </IonContent>
       </IonModal>

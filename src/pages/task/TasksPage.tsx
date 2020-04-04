@@ -86,7 +86,7 @@ const TasksPage: React.FC<TasksPageProps> = ({
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
   const [, setForceRefreshAfterTaskEditHack] = useState(0);
-  
+
   useIonViewWillEnter(() => {
     setForceRefreshAfterTaskEditHack((state) => state + 1);
   });
@@ -187,7 +187,6 @@ const TasksPage: React.FC<TasksPageProps> = ({
         <SessionListFilter onDismissModal={() => setShowFilterModal(false)} />
       </IonModal>
 
-      <ShareSocialFab />
       <IonModal isOpen={showNewTaskModal}>
         <IonContent>
           <h1>Create a new task</h1>
