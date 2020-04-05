@@ -68,7 +68,7 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
        
         <IonItem class="input-style">
       
-              <IonLabel position="stacked" color="primary">
+              <IonLabel position="stacked" color="primary-contrast">
                 
               Username </IonLabel>
               <IonInput name="username" type="text" value={username} spellCheck={false} autocapitalize="off" onIonChange={e => {
@@ -85,7 +85,7 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
             </IonItem>
 
             <IonItem class="input-style">
-              <IonLabel position="stacked" color="primary">Password</IonLabel>
+              <IonLabel position="stacked" color="primary-contrast">Password</IonLabel>
               <IonInput name="password" type="password" value={password} onIonChange={e => {
                 setPassword(e.detail.value!);
                 setPasswordError(false);
@@ -99,7 +99,7 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
             </IonItem>
 
             <IonItem class="input-style">
-              <IonLabel position="stacked" color="primary">Re-enter Password</IonLabel>
+              <IonLabel position="stacked" color="primary-contrast">Re-enter Password</IonLabel>
               <IonInput name="cpassword" type="password" value={cpassword} onIonChange={e => {
                 setcPassword(e.detail.value!);
                 setcPasswordError(false);
