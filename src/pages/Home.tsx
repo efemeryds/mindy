@@ -61,7 +61,7 @@ const Home: React.FC = () => {
             </IonCol>
             <IonCol>
               <IconNav
-                url="/tabs/speakers"
+                url="/tabs/inspirations"
                 text="Inspirations"
                 iconName="mind.png"
               />
