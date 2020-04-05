@@ -26,6 +26,7 @@ import RelaxActivityPage from "./pages/relax-activity/RelaxActivityPage";
 import TopicDetailPage from "./pages/topic/TopicDetailPage";
 import TopicPage from "./pages/topic/TopicPage";
 import InspirationPage from "./pages/inspiration/InspirationPage";
+import InspirationDetailPage from "./pages/inspiration/InspirationDetailPage";
 
 interface MainTabsProps {}
 
@@ -41,7 +42,7 @@ const MainTabs: React.FC<MainTabsProps> = () => {
         */}
 
         <Route path="/tabs/inspirations" component={InspirationPage} exact={true}/>
-        <Route path="/tabs/inspirations/:categoryId/:id" component={InspirationPage}/>
+        <Route path="/tabs/inspirations/:categoryId/:id" component={InspirationDetailPage}/>
         <Route path="/tabs/tasks" render={() => <TaskPage />} exact={true} />
         <Route path="/tabs/tasks/:id" component={TaskDetailPage} />
         <Route path="/tabs/about" render={() => <About />} exact={true} />

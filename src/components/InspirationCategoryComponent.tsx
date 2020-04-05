@@ -41,7 +41,7 @@ const InspirationCategoryComponent: React.FC<InspirationCategoryProps> = ({
             {items.map((item) => (
               <IonItem
                 detail={false}
-                routerLink={`/tabs/inspirations/${category.id}/${item.id}`}
+                href={`/tabs/inspirations/${category.id}/${item.id}`}
                 key={item.id}
               >
                 <IonLabel>
