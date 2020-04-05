@@ -68,8 +68,10 @@ const Tutorial: React.FC<TutorialProps> = ({
           onIonSlideWillChange={handleSlideChangeStart}
           pager={false}
         >
+        
           <IonSlide>
-            <img
+            
+            <img 
               src="assets/img/intro/intro-1.png"
               alt=""
               className="slide-image"
@@ -78,7 +80,7 @@ const Tutorial: React.FC<TutorialProps> = ({
               Welcome 🎉!
             </h2>
             <p>
-              Our main goal is to 
+              Our main goal is to help you focus on what is essential, create proper structure to move forward with your plans and dreams and have space for introspection, reflection and inspiration!
             </p>
           </IonSlide>
 
@@ -90,7 +92,7 @@ const Tutorial: React.FC<TutorialProps> = ({
             />
             <h2 className="slide-title">How to start?</h2>
             <p>
-            Lorem Ipsum
+            Just have a will to go back to basics and to discover how you may simply bring by yourself meaning and focus into your life to calm the mind
             </p>
           </IonSlide>
           <IonSlide>
@@ -98,7 +100,7 @@ const Tutorial: React.FC<TutorialProps> = ({
               alt=""
               className="slide-image"
             />
-            <h2 className="slide-title">Ready?</h2>
+            <h2 className="slide-title">Ready? Let's mind the mind!</h2>
             <IonButton fill="clear" onClick={startApp}>
               Start
               <IonIcon slot="end" icon={arrowForward} />
