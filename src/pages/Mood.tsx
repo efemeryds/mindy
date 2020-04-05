@@ -10,6 +10,7 @@ import {
   IonMenuButton,
 } from "@ionic/react";
 
+import "./Home.scss";
 import PlotComponent from "../components/PlotComponent";
 import PlotTasks from "../components/PlotTasks";
 
@@ -25,10 +26,14 @@ const MoodPage: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
+        
         <div className="ion-text-center mood-container">
-          <h3>Mood vs time</h3>
+          
+        <div className="font3"> Mood vs time</div>
+      
           <PlotComponent />
-          <h3>Mood vs tasks corelation</h3>
+          <div className="font3"> Mood vs tasks corelation</div>
+        
           <PlotTasks />
         </div>
       </IonContent>
