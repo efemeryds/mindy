@@ -17,14 +17,15 @@ An application that combines the above functionalities: task planning, notificat
 
 ## How it works
 
+### Tech Stack
+
+ - Ionic Framework
+ - React
+ - TypeScript
+ - Firebase
 
 
 ## What's next
-
-
-
-## How to access
-
 
 
 ## How to build
@@ -43,5 +44,5 @@ firebase login
 ionic build --prod --release
 firebase deploy
 ```
-## How to access
+
 
