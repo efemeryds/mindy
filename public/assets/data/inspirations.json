@@ -1,0 +1,58 @@
+[
+  {
+    "id": "c4e9439d-d3b9-4d63-9b6d-87f1dd91a926",
+    "categoryName": "Family Activities",
+    "categoryImage": "/assets/icon/mind.png",
+    "items": [
+      {
+        "id": "b959729b-cb9d-4788-ade9-5aa5caef9c8f",
+        "title": "With with games",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "moreLink": null
+      },
+      {
+        "id": "77d3d441-213f-405e-9bab-f00b51501ae6",
+        "title": "Cooking made easy",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "moreLink": null
+      }
+    ]
+  },
+  {
+    "id": "467a88cd-c4f5-4a18-a87c-3602421defcb",
+    "categoryName": "Solo meditation",
+    "categoryImage": "/assets/icon/mood.png",
+    "items": [
+      {
+        "id": "e301af96-2152-4e1c-8dd5-a8c1a78ff647",
+        "title": "Who will care about my death?",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "moreLink": null
+      },
+      {
+        "title": "This simple excercise",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "moreLink": null
+      }
+    ]
+  },
+  {
+    "id": "7d4a6fba-c46e-49b8-84b0-cd5c6fdb5d5c",
+    "categoryName": "3rd category",
+    "categoryImage": "/assets/icon/tasks.png",
+    "items": [
+      {
+        "id": "ba6270ed-7b4c-4121-b14b-a8fa666eb3a0",
+        "title": "Nothing really special",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "moreLink": "https://google.com"
+      },
+      {
+        "id": "d7396410-d301-4213-b94c-e009f3f725d4",
+        "title": "This simple excercise",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "moreLink": null
+      }
+    ]
+  }
+]

@@ -14,10 +14,9 @@ import {
   homeSharp,
   statsChartOutline,
   heartOutline,
+  flaskSharp,
 } from "ionicons/icons";
 import TaskPage from "./pages/task/TaskPage";
-import SpeakerList from "./pages/SpeakerList";
-import SpeakerDetail from "./pages/SpeakerDetail";
 import About from "./pages/About";
 import Mood from "./pages/Mood";
 import Home from "./pages/Home";
@@ -26,6 +25,7 @@ import RelaxActivityDetailPage from "./pages/relax-activity/RelaxActivityDetailP
 import RelaxActivityPage from "./pages/relax-activity/RelaxActivityPage";
 import TopicDetailPage from "./pages/topic/TopicDetailPage";
 import TopicPage from "./pages/topic/TopicPage";
+import InspirationPage from "./pages/inspiration/InspirationPage";
 
 interface MainTabsProps {}
 
@@ -40,16 +40,8 @@ const MainTabs: React.FC<MainTabsProps> = () => {
 
         */}
 
-        <Route
-          path="/tabs/speakers"
-          render={() => <SpeakerList />}
-          exact={true}
-        />
-        <Route
-          path="/tabs/speakers/:id"
-          component={SpeakerDetail}
-          exact={true}
-        />
+        <Route path="/tabs/inspirations" component={InspirationPage} exact={true}/>
+        <Route path="/tabs/inspirations/:categoryId/:id" component={InspirationPage}/>
         <Route path="/tabs/tasks" render={() => <TaskPage />} exact={true} />
         <Route path="/tabs/tasks/:id" component={TaskDetailPage} />
         <Route path="/tabs/about" render={() => <About />} exact={true} />
@@ -86,6 +78,10 @@ const MainTabs: React.FC<MainTabsProps> = () => {
         <IonTabButton tab="topic" href="/tabs/topic">
           <IonIcon icon={people} />
           <IonLabel>Topics</IonLabel>
+        </IonTabButton>
+        <IonTabButton tab="inspirations" href="/tabs/inspirations">
+          <IonIcon icon={flaskSharp} />
+          <IonLabel>Inspirations</IonLabel>
         </IonTabButton>
       </IonTabBar>
     </IonTabs>

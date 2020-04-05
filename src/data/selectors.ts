@@ -113,3 +113,6 @@ export const getRelaxActivity = createSelector(
   getIdParam,
   (getRelaxActivities, id) => getRelaxActivities.find((t) => t.id == id)
 );
+
+export const getInspirations = (state: AppState) =>
+  state.data.inspirations;

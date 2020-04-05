@@ -5,6 +5,7 @@ import { Location } from "../models/Location";
 import { Task } from "../models/Task";
 import { Topic } from "../models/Topic";
 import { RelaxActivity } from "../models/RelaxActivity";
+import { InspirationCategory } from "../models/Inspirations";
 
 const { Storage } = Plugins;
 
@@ -13,6 +14,7 @@ const locationsUrl = "/assets/data/locations.json";
 const tasksUrl = "/assets/data/tasks.json";
 const topicsUrl = "/assets/data/topics.json";
 const relaxActivitiesUrl = "/assets/data/relax.json";
+const inspirationsUrl = "/assets/data/inspirations.json";
 
 const HAS_LOGGED_IN = "hasLoggedIn";
 const HAS_SEEN_TUTORIAL = "hasSeenTutorial";
@@ -26,11 +28,13 @@ export const getConfData = async () => {
     fetch(tasksUrl),
     fetch(topicsUrl),
     fetch(relaxActivitiesUrl),
+    fetch(inspirationsUrl)
   ]);
 
   const tasks = (await response[2].json()) as Task[];
   const topics = (await response[3].json()) as Topic[];
   const relaxActivities = (await response[4].json()) as RelaxActivity[];
+  const inspirations = (await response[5].json()) as InspirationCategory[];
 
   const responseData = await response[0].json();
   const schedule = responseData.schedule[0] as Schedule;
@@ -52,6 +56,7 @@ export const getConfData = async () => {
     speakers,
     allTracks,
     filteredTracks: [...allTracks],
+    inspirations
   };
   return data;
 };

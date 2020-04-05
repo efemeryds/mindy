@@ -78,7 +78,6 @@ const IonicApp: React.FC<IonicAppProps> = ({
     loadConfData();
     // eslint-disable-next-line
   }, []);
-  console.log("app.run tasks state", tasks);
 
   return (
     <IonApp className={`${darkMode ? "dark-theme" : ""}`}>
