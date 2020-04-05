@@ -1,7 +1,7 @@
 import React from "react";
 import { RouteComponentProps } from "react-router";
 
-import "./InspirationPage.scss";
+import "./InspirationDetailPage.scss";
 
 import {
   IonChip,
@@ -14,6 +14,8 @@ import {
   IonButton,
   IonBackButton,
   IonPage,
+  IonList,
+  IonItem,
 } from "@ionic/react";
 import {
   callOutline,
@@ -61,23 +63,18 @@ const InspirationDetailPage: React.FC<InspirationDetailProps> = ({
         <IonHeader className="ion-no-border">
           <IonToolbar>
             <IonButtons slot="start">
-              <IonBackButton defaultHref="/tabs/speakers" />
+              <IonBackButton defaultHref="/tabs/inspirations" />
             </IonButtons>
             <IonButtons slot="end">
-              <IonButton>
-                <IonIcon
-                  slot="icon-only"
-                  ios={callOutline}
-                  md={callSharp}
-                ></IonIcon>
-              </IonButton>
-              <IonButton>
-                <IonIcon
-                  slot="icon-only"
-                  ios={shareOutline}
-                  md={shareSharp}
-                ></IonIcon>
-              </IonButton>
+              {inspiration.moreLink ? (
+                <IonButton>
+                  <IonIcon
+                    slot="icon-only"
+                    ios={shareOutline}
+                    md={shareSharp}
+                  ></IonIcon>
+                </IonButton>
+              ) : null}
             </IonButtons>
           </IonToolbar>
         </IonHeader>
@@ -91,16 +88,25 @@ const InspirationDetailPage: React.FC<InspirationDetailProps> = ({
         </div>
 
         <div className="ion-padding speaker-detail">
-          <IonChip color="twitter" onClick={() => {}}>
+          <p>
+            {inspiration.description}
+            Say hello on social media!
+          </p>
+          <hr />
+          <IonChip
+            color="twitter"
+            onClick={() => {
+              openExternalUrl(
+                "https://twitter.com/intent/tweet?text=" +
+                  encodeURI(
+                    "Check out this lockdown activities in the mindy app! https://mindy-mind.web.app"
+                  )
+              );
+            }}
+          >
             <IonIcon icon={logoTwitter}></IonIcon>
             <IonLabel>Twitter</IonLabel>
           </IonChip>
-
-          <IonChip color="dark" onClick={() => {}}>
-            <IonIcon icon={logoGithub}></IonIcon>
-            <IonLabel>GitHub</IonLabel>
-          </IonChip>
-
           <IonChip
             color="instagram"
             onClick={() =>
@@ -110,6 +116,12 @@ const InspirationDetailPage: React.FC<InspirationDetailProps> = ({
             <IonIcon icon={logoInstagram}></IonIcon>
             <IonLabel>Instagram</IonLabel>
           </IonChip>
+
+          <IonList>
+            <IonItem onClick={() => {}} button>
+              <IonLabel color="primary">Add to Task list</IonLabel>
+            </IonItem>
+          </IonList>
         </div>
       </IonContent>
     </IonPage>

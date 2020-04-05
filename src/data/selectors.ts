@@ -125,7 +125,6 @@ export const getInspiration = createSelector(
       .find((inspiration) => inspiration.id == id)
 );
 export const getCategoryIdParam = (_state: AppState, props: any): any => {
-  console.log(props.match);
   return props.match.params["categoryId"];
 };
 export const getInspirationCategory = createSelector(
