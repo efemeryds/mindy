@@ -23,39 +23,22 @@ const USERNAME = "username";
 export const getConfData = async () => {
   console.log("state.reload reloading from file");
   const response = await Promise.all([
-    fetch(dataUrl),
-    fetch(locationsUrl),
     fetch(tasksUrl),
     fetch(topicsUrl),
     fetch(relaxActivitiesUrl),
     fetch(inspirationsUrl)
   ]);
 
-  const tasks = (await response[2].json()) as Task[];
-  const topics = (await response[3].json()) as Topic[];
-  const relaxActivities = (await response[4].json()) as RelaxActivity[];
-  const inspirations = (await response[5].json()) as InspirationCategory[];
+  const tasks = (await response[0].json()) as Task[];
+  const topics = (await response[1].json()) as Topic[];
+  const relaxActivities = (await response[2].json()) as RelaxActivity[];
+  const inspirations = (await response[3].json()) as InspirationCategory[];
 
-  const responseData = await response[0].json();
-  const schedule = responseData.schedule[0] as Schedule;
-  const sessions = parseSessions(schedule);
-  const speakers = responseData.speakers as Speaker[];
-  const locations = (await response[1].json()) as Location[];
-  const allTracks = sessions
-    .reduce((all, session) => all.concat(session.tracks), [] as string[])
-    .filter((trackName, index, array) => array.indexOf(trackName) === index)
-    .sort();
 
   const data = {
     tasks,
     topics,
     relaxActivities,
-    schedule,
-    sessions,
-    locations,
-    speakers,
-    allTracks,
-    filteredTracks: [...allTracks],
     inspirations
   };
   return data;
