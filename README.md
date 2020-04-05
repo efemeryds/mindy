@@ -2,6 +2,8 @@
 
 ![alt text](home.png)
 
+[**Click here to see GIF gallery**](./docs/gallery.md)
+
 ## Why? </br>
 
 In these chaotic times many find it extremely difficult to organise their time, thoughts and well-being. We decided to offer a solution that address all of the above issues. **Mindy** helps to **increase our self-awareness and structure life to calm the mind**
