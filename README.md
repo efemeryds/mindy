@@ -2,7 +2,8 @@
 
 ![alt text](home.png)
 
-[**Click here to see GIF gallery**](./docs/gallery.md)
+[> See GIF gallery 🔥 <](./docs/gallery.md)
+---
 
 ## Why? </br>
 
