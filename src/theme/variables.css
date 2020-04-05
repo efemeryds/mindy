@@ -149,6 +149,10 @@
   --ion-color-facebook-contrast-rgb: 255,255,255;
   --ion-color-facebook-shade: #344e86;
   --ion-color-facebook-tint: #4f6aa2;
+
+
+  /* custom list item border colors */
+  --ion-item-border-color:#cce6ff5c;
 }
 
 .ion-color-favorite {

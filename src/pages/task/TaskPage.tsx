@@ -32,8 +32,6 @@ import { options, search, addOutline } from "ionicons/icons";
 import SessionListFilter from "../../components/SessionListFilter";
 import "./TaskPage.scss";
 
-import ShareSocialFab from "../../components/ShareSocialFab";
-
 import * as selectors from "../../data/selectors";
 import { connect } from "../../data/connect";
 import {
