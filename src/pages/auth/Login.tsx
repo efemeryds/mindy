@@ -104,7 +104,13 @@ const Login: React.FC<LoginProps> = ({
             ></IonInput>
           </IonItem>
           <br />
-          <IonButton onClick={login} expand="full" color="primary">Sign in</IonButton>
+          <IonButton onClick={login} expand="full" color="primary">
+            Log in
+          </IonButton>
+          <hr/>
+          <IonButton routerLink="/signup" expand="full" color="tertiary">
+            Sign up
+          </IonButton>
           <br />
 
           <br />
@@ -114,11 +120,7 @@ const Login: React.FC<LoginProps> = ({
             </IonLabel>
           </IonRow>
 
-          <div className="down">
-            <IonButton routerLink="/signup" expand="full" color="tertiary">
-              Sign up
-            </IonButton>
-          </div>
+       
         </IonGrid>
       </IonContent>
     </IonPage>
