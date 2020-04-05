@@ -113,3 +113,22 @@ export const getRelaxActivity = createSelector(
   getIdParam,
   (getRelaxActivities, id) => getRelaxActivities.find((t) => t.id == id)
 );
+
+export const getInspirations = (state: AppState) => state.data.inspirations;
+
+export const getInspiration = createSelector(
+  getInspirations,
+  getIdParam,
+  (inspirations, id) =>
+    inspirations
+      .flatMap((cat) => cat.items)
+      .find((inspiration) => inspiration.id == id)
+);
+export const getCategoryIdParam = (_state: AppState, props: any): any => {
+  return props.match.params["categoryId"];
+};
+export const getInspirationCategory = createSelector(
+  getInspirations,
+  getCategoryIdParam,
+  (inspirations, id) => inspirations.find((cat) => cat.id == id)
+);
