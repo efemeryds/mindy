@@ -41,6 +41,7 @@ import {
 } from "../../data/sessions/sessions.actions";
 import { Task } from "../../models/Task";
 import * as uuid from "uuid";
+import { useHistory } from "react-router";
 
 interface OwnProps {}
 
@@ -84,6 +85,8 @@ const TaskPage: React.FC<TasksPageProps> = ({
   useIonViewWillEnter(() => {
     setForceRefreshAfterTaskEditHack((state) => state + 1);
   });
+
+  const history = useHistory();
 
   return (
     <IonPage ref={pageRef} id="schedule-page">
@@ -148,26 +151,29 @@ const TaskPage: React.FC<TasksPageProps> = ({
         />
 
         <IonList>
-          {tasks.map((task) => (
-            <IonItemSliding key={task.id}>
-              <IonItem routerLink={`/tabs/tasks/${task.id}`}>
-                <IonLabel>
-                  <h3>{task.title}</h3>
-                </IonLabel>
-              </IonItem>
-              <IonItemOptions>
-                <IonItemOption
-                  color="danger"
-                  onClick={() => {
-                    removeTask(task.id);
-                    setShowTaskDeletedToast(true);
-                  }}
-                >
-                  Done
-                </IonItemOption>
-              </IonItemOptions>
-            </IonItemSliding>
-          ))}
+          {tasks
+            .filter((c) => c.done !== true)
+            .map((task) => (
+              <IonItemSliding key={task.id}>
+                <IonItem routerLink={`/tabs/tasks/${task.id}`}>
+                  <IonLabel>
+                    <h3>{task.title}</h3>
+                  </IonLabel>
+                </IonItem>
+                <IonItemOptions>
+                  <IonItemOption
+                    color="danger"
+                    onClick={() => {
+                      history.push("/tabs/taskDone/" + task.id);
+                      // removeTask(task.id);
+                      // setShowTaskDeletedToast(true);
+                    }}
+                  >
+                    Done
+                  </IonItemOption>
+                </IonItemOptions>
+              </IonItemSliding>
+            ))}
         </IonList>
       </IonContent>
 

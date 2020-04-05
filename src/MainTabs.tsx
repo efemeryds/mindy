@@ -25,6 +25,7 @@ import RelaxActivityDetailPage from "./pages/relax-activity/RelaxActivityDetailP
 import RelaxActivityPage from "./pages/relax-activity/RelaxActivityPage";
 import TopicDetailPage from "./pages/topic/TopicDetailPage";
 import TopicPage from "./pages/topic/TopicPage";
+import TaskDonePage from "./pages/task/TaskDonePage";
 import InspirationPage from "./pages/inspiration/InspirationPage";
 import InspirationDetailPage from "./pages/inspiration/InspirationDetailPage";
 
@@ -45,6 +46,7 @@ const MainTabs: React.FC<MainTabsProps> = () => {
         <Route path="/tabs/inspirations/:categoryId/:id" component={InspirationDetailPage}/>
         <Route path="/tabs/tasks" render={() => <TaskPage />} exact={true} />
         <Route path="/tabs/tasks/:id" component={TaskDetailPage} />
+        <Route path="/tabs/taskDone/:id" component={TaskDonePage} />
         <Route path="/tabs/about" render={() => <About />} exact={true} />
         <Route path="/tabs/mood" render={() => <Mood />} exact={true} />
 

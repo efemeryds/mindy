@@ -7,4 +7,8 @@ export class Task {
   public id!: string;
   public title!: string;
   public motivation!: string;
+  public done!: boolean;
+  public feeling!: number;
+  public startDate!: Date;
+  public endDate!: Date;
 }

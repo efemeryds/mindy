@@ -1,0 +1,56 @@
+.btn-scale {
+  margin: auto;
+  width: auto;
+  text-align: center;
+  padding: 17px;
+}
+
+.btn-scale-asc-1,
+.btn-scale-desc-5 {
+  background-color: #33ff00;
+}
+
+.btn-scale-asc-1:hover,
+.btn-scale-desc-5:hover {
+  background-color: #2cde00;
+}
+
+.btn-scale-asc-2,
+.btn-scale-desc-4 {
+  background-color: #ccff00;
+}
+
+.btn-scale-asc-2:hover,
+.btn-scale-desc-4:hover {
+  background-color: #b1de00;
+}
+
+.btn-scale-asc-3,
+.btn-scale-desc-3 {
+  background-color: #ffcc00;
+}
+
+.btn-scale-asc-3:hover,
+.btn-scale-desc-3:hover {
+  background-color: #deb100;
+}
+
+.btn-scale-asc-4,
+.btn-scale-desc-2 {
+  background-color: #ff6600;
+}
+
+.btn-scale-asc-4:hover,
+.btn-scale-desc-2:hover {
+  background-color: #de5900;
+}
+
+.btn-scale-asc-5,
+.btn-scale-desc-1 {
+  background-color: #ff0000;
+}
+
+.btn-scale-asc-5:hover,
+.btn-scale-desc-1:hover {
+  background-color: #de0000;
+}
