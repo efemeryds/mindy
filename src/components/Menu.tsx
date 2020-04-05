@@ -35,7 +35,7 @@ const routes = {
     { title: "Mood", path: "/tabs/mood", icon: statsChartOutline },
     { title: "Relax", path: "/tabs/mind", icon: heartOutline },
     { title: "Topics", path: "/tabs/topic", icon: people },
-    { title: "Inspiration", path: "/tabs/speakers", icon: peopleOutline },
+    { title: "Inspiration", path: "/tabs/inspirations", icon: peopleOutline },
   ],
   loggedInPages: [
     { title: "Account", path: "/account", icon: person },
