@@ -38,7 +38,7 @@ const TaskDonePage: React.FC<TaskDetailProps> = ({ task }) => {
   const [taskMotivation, setTaskMotivation] = useState(
     task ? task.motivation : ""
   );
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(5);
   const history = useHistory();
   if (!task) {
     return <div>Task not found</div>;
