@@ -1,43 +1,68 @@
-import React, { useState } from 'react';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonRow, IonCol, IonButton, IonList, IonItem, IonLabel, IonInput, IonText, IonGrid } from '@ionic/react';
-import './Login.scss';
-import { setIsLoggedIn, setUsername } from '../../data/user/user.actions';
-import { connect } from '../../data/connect';
-import { RouteComponentProps } from 'react-router';
-import {loginUser} from '../../firebase/firebaseConfig';
+import React, { useState } from "react";
+import {
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonPage,
+  IonButtons,
+  IonMenuButton,
+  IonRow,
+  IonButton,
+  IonItem,
+  IonLabel,
+  IonInput,
+  IonGrid,
+  useIonViewWillEnter,
+} from "@ionic/react";
+import "./Login.scss";
+import { setIsLoggedIn, setUsername } from "../../data/user/user.actions";
+import { connect } from "../../data/connect";
+import { RouteComponentProps } from "react-router";
+import { loginUser } from "../../firebase/firebaseConfig";
+import { setMenuEnabled } from "../../data/sessions/sessions.actions";
 interface OwnProps extends RouteComponentProps {}
 
 interface DispatchProps {
   setIsLoggedIn: typeof setIsLoggedIn;
   setUsername: typeof setUsername;
+  setMenuEnabled: typeof setMenuEnabled;
 }
 
-interface LoginProps extends OwnProps,  DispatchProps { }
+interface LoginProps extends OwnProps, DispatchProps {}
 
-const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUsernameAction}) => {
-
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [usernameError, setUsernameError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
+const Login: React.FC<LoginProps> = ({
+  setIsLoggedIn,
+  history,
+  setUsername: setUsernameAction,
+  setMenuEnabled,
+}) => {
+  useIonViewWillEnter(() => {
+    setMenuEnabled(false);
+  });
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [, setFormSubmitted] = useState(false);
+  const [, setUsernameError] = useState(false);
+  const [, setPasswordError] = useState(false);
 
   const login = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormSubmitted(true);
-    if(!username) {
+    if (!username) {
       setUsernameError(true);
     }
-    if(!password) {
+    if (!password) {
       setPasswordError(true);
     }
 
-    if(username && password) {
+    if (username && password) {
       var result = await loginUser(username, password);
-      if(result){
+      if (result) {
+        await setMenuEnabled(true);
         await setIsLoggedIn(true);
         await setUsernameAction(username);
-        history.push('/tabs/home', {direction: 'none'});
+        history.push("/tabs/home", { direction: "none" });
       }
     }
   };
@@ -53,41 +78,50 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
         </IonToolbar>
       </IonHeader>
       <IonContent class="body">
-      <IonGrid>
+        <IonGrid>
           <IonRow class="ion-justify-content-center">
-          <IonLabel class="font">
-           <br/>
-           <br/> mindy
-          </IonLabel>
+            <IonLabel class="font">
+              <br />
+              <br /> mindy
+            </IonLabel>
           </IonRow>
           <IonRow class="ion-justify-content-center">
-          <IonLabel class="font2" >
-            structure your life
-          </IonLabel>
-          </IonRow> 
-          <br/>         
-          
+            <IonLabel class="font2">structure your life</IonLabel>
+          </IonRow>
+          <br />
+
           <IonItem class="input-style">
-            <IonInput placeholder="Username" onIonChange={(e:any) => setUsername(e.target.value)}></IonInput>
-          </IonItem>            
+            <IonInput
+              placeholder="Username"
+              onIonChange={(e: any) => setUsername(e.target.value)}
+            ></IonInput>
+          </IonItem>
           <IonItem class="input-style">
-            <IonInput type="password" placeholder="Password" onIonChange={(e:any) => setPassword(e.target.value)}></IonInput>
-          </IonItem>         
-          <br/>
-          <IonButton onClick={login} expand="full">Sign in</IonButton>
-          <br/>
-          
-          <br/>
+            <IonInput
+              type="password"
+              placeholder="Password"
+              onIonChange={(e: any) => setPassword(e.target.value)}
+            ></IonInput>
+          </IonItem>
+          <br />
+          <IonButton onClick={login} expand="full">
+            Sign in
+          </IonButton>
+          <br />
+
+          <br />
           <IonRow class="ion-justify-content-center">
             <IonLabel class="fontless">
               by planning, reviewing, practicing and meaningful converstaions
             </IonLabel>
           </IonRow>
-         
+
           <div className="down">
-            <IonButton routerLink="/signup" expand="full">Sign up</IonButton>
+            <IonButton routerLink="/signup" expand="full">
+              Sign up
+            </IonButton>
           </div>
-          </IonGrid>
+        </IonGrid>
       </IonContent>
     </IonPage>
   );
@@ -96,7 +130,8 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
 export default connect<OwnProps, {}, DispatchProps>({
   mapDispatchToProps: {
     setIsLoggedIn,
-    setUsername
+    setUsername,
+    setMenuEnabled,
   },
-  component: Login
-})
+  component: Login,
+});

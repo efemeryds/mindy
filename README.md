@@ -1,6 +1,6 @@
 # Mindy - structure your life 
 
-
+![alt text](home.png)
 
 ## Why? </br>
 
@@ -15,16 +15,33 @@ By planning time, reminding about motivation, the ability to observe the change 
 An application that combines the above functionalities: task planning, notifications, mood charts, a set of relaxation techniques, a set of important topics
 
 
+## How it works
+
+
+
 ## What's next
 
 
 
+## How to access
+
 
 
 ## How to build
-```
+
+```shell
 npm install -g @ionic/cli
 npm install
 ionic serve
 ```
+
+## How to deploy?
+
+```shell
+npm install -g firebase-tools
+firebase login
+ionic build --prod --release
+firebase deploy
+```
 ## How to access
+

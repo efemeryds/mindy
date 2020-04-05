@@ -12,7 +12,7 @@ const dataUrl = "/assets/data/data.json";
 const locationsUrl = "/assets/data/locations.json";
 const tasksUrl = "/assets/data/tasks.json";
 const topicsUrl = "/assets/data/topics.json";
-const relaxActivitiesUrl = "/assets/data/relaxActivities.json";
+const relaxActivitiesUrl = "/assets/data/relax.json";
 
 const HAS_LOGGED_IN = "hasLoggedIn";
 const HAS_SEEN_TUTORIAL = "hasSeenTutorial";

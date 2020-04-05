@@ -126,10 +126,10 @@ class PlotComponent extends Component {
                 mainElement.select('svg').append('g')
         .append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 20)
+        .attr("y", 15)
         .attr("x", -100)
         .attr("dy", ".51em")
-        .attr("font-size", "14px")
+        .attr("font-size", "13px")
         .style("text-anchor", "end")
         .attr("fill", "black")
         .text("Mood values");
