@@ -1,24 +1,19 @@
 # Mindy - structure your life 
 
+In these chaotic times many find it extremely difficult to organise their time, thoughts and well-being. We decided to offer a solution that address all of the above issues. **Mindy** helps to **increase our self-awareness and structure life to calm the mind**
+
 ![alt text](home.png)
 
 [> See GIF gallery 🔥 <](./docs/gallery.md)
 ---
 
-## Why? </br>
-
-In these chaotic times many find it extremely difficult to organise their time, thoughts and well-being. We decided to offer a solution that address all of the above issues. **Mindy** helps to **increase our self-awareness and structure life to calm the mind**
-
-## How?
+## What is the plan to achieve app's goal?
 
 By planning time, reminding about motivation, the ability to observe the change in mood over time, gathering ideas for relaxation and topics for conversation in one place
 
-## What?
+## What exactly mindy?
 
-An application that combines the above functionalities: task planning, notifications, mood charts, a set of relaxation techniques, a set of important topics
-
-
-## How it works
+An native-like application that combines functionalities such as: task planning, notifications, mood charts, a set of relaxation techniques, a set of important topics
 
 ### Tech Stack
 
