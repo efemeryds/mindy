@@ -61,7 +61,7 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
           
         </IonToolbar>
       </IonHeader>
-      <IonContent color="secondary">
+      <IonContent>
         <IonGrid>
 
         <form noValidate onSubmit={register}>

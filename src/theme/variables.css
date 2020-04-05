@@ -223,6 +223,15 @@
   --ion-color-tint: #a04bc3;
 }
 
+.ion-color-login{
+  --ion-color-base: #FFE7E6;
+  --ion-color-base-rgb: 149,55,188;
+  --ion-color-contrast: #7D99B3;
+  --ion-color-contrast-rgb: 255,255,255;
+  --ion-color-shade: #FFE7E6;
+  --ion-color-tint: #FFE7E6;
+}
+
 /*
  * Shared Variables
  * ----------------------------------------------------------------------------

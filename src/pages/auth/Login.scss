@@ -19,16 +19,16 @@ ion-content ion-toolbar {
   --background: var(--header);
 }
 .body{
-  --background: var(--content);
+  // --background: var(--content);
 }
-.down{
-  width: 100%;
-  padding: 40px;
-  bottom: 0;
-  left: auto;
-  right: auto;
-  position: fixed;
-}
+// .down{
+//   width: 100%;
+//   padding: 40px;
+//   bottom: 0;
+//   left: auto;
+//   right: auto;
+//   position: fixed;
+// }
 
 .font{
   font-family: Georgia, serif;
@@ -53,9 +53,4 @@ ion-content ion-toolbar {
 .input-style{
   padding: 2px;  
   
-}
-
-.buttons {
-color: #FFE7E6
-
 }
