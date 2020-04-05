@@ -8,6 +8,9 @@ import {
   IonBackButton,
   IonButton,
   IonList,
+  IonRange,
+  IonIcon,
+  IonLabel,
 } from "@ionic/react";
 import { connect } from "../../data/connect";
 import { withRouter, RouteComponentProps, useHistory } from "react-router";
@@ -16,6 +19,7 @@ import { removeTask, updateTask } from "../../data/sessions/sessions.actions";
 import { Task } from "../../models/Task";
 import "./TaskPage.scss";
 import OneToTen from "../../components/oneToten";
+import { sadOutline, happyOutline } from "ionicons/icons";
 
 interface OwnProps extends RouteComponentProps {}
 
@@ -50,13 +54,32 @@ const TaskDonePage: React.FC<TaskDetailProps> = ({ task }) => {
       </IonHeader>
       <IonContent>
         <div className="ion-padding">
-          <h1>{task.title}</h1>
-          <p>{task.motivation}</p>
-          <p>{task.feeling}</p>
+          <h2>How do you feel now</h2>
+          <p>when the task is done?</p>
         </div>
-        <b> Describe your motivation ... </b>
-        <OneToTen set={setValue} />
-        <b> Your rate - {value}</b>
+
+        <div className="ion-padding">
+          <b>Task: {task.title}</b>
+          <p>{task.motivation}</p>
+        </div>
+
+        <IonRange
+          min={1}
+          max={10}
+          step={1}
+          ticks={true}
+          pin={true}
+          onIonChange={(e) => {
+            setValue(e.detail.value as number);
+          }}
+        >
+          <IonLabel slot="start">Unsatisfied</IonLabel>
+          <IonIcon slot="start" icon={sadOutline} />
+
+          <IonLabel slot="end">Satisfied</IonLabel>
+          <IonIcon slot="end" icon={happyOutline} />
+        </IonRange>
+        <div className="ion-text-center"> Your rate {value}</div>
         <div className="down">
           <IonButton
             color="danger"
